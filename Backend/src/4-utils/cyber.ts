@@ -3,7 +3,8 @@ import jwt from "jsonwebtoken";
 import crypto from "crypto";
 import { UnauthorizedError } from "../2-models/client-errors";
 import RoleModel from "../2-models/role-model";
-import { Request } from "express";
+import { Request, request } from "express";
+import { log } from "console";
 
 interface JwtPayload {
   user: UserModel;
@@ -31,60 +32,22 @@ function hashPassword(password: string): string {
   return hashedPassword;
 }
 
-async function verifyToken(request: Request): Promise<boolean>{
-  return new Promise<boolean>((resolve, reject) => {
+function verifyToken(request: Request, adminCheck?: boolean): boolean {
 
-    const header = request.headers.authorization;
-    if(!header){
-      reject(new UnauthorizedError("Access denied."))
-      return;
-    }
+  const token = request.header("authorization")?.substring(7);
+  if(!token) throw new UnauthorizedError("Something went wrong...");
 
-    const token = header.substring(7);
-    if(!token){
-      reject(new UnauthorizedError("Something went wrong..."));
-      return;
-    }
-
-    jwt.verify(token, secretKey, err => {
-      if(err){
-        reject(new UnauthorizedError("Invalid token."))
-      }
-        resolve(true);
-    });
-
+  jwt.verify(token, secretKey, (err, container: {user: UserModel}) => {
+   if(err) throw new UnauthorizedError("Invalid token."); // checking the token
+   if (adminCheck && container.user.roleId !== RoleModel.Admin) throw new UnauthorizedError("Access denied."); // checking if admin
   });
+
+  return true;
 }
-
-async function verifyAdmin(request: Request): Promise<boolean>{
-  return new Promise((resolve, reject) => {
-
-    const header = request.headers.authorization;
-    const token = header.substring(7);
-
-    jwt.verify(token, secretKey, (err, container: {user: UserModel}) => {
-
-      if(err){
-        reject(new UnauthorizedError("Invalid token."));
-        return;
-      }
-
-    const user = container.user;
-    if(user.roleId !== RoleModel.Admin){
-      reject(new UnauthorizedError("Access denied!"))
-    }
-
-    resolve(true);
-
-    });
-  });
-}
-
 
 export default {
   createToken,
   decodeToken,
   hashPassword,
-  verifyToken,
-  verifyAdmin
+  verifyToken
 }

@@ -4,6 +4,7 @@ import { CredentialsModel } from "../2-models/credentials-model";
 import UserModel from "../2-models/user-model";
 import cyber from "../4-utils/cyber";
 import dal from "../4-utils/dal";
+import RoleModel from "../2-models/role-model";
 
 async function register(user: UserModel): Promise<string>{
 
@@ -11,12 +12,10 @@ async function register(user: UserModel): Promise<string>{
 
   if(await isEmailTaken(user.email)) throw new ValidationError(`${user.email} is already in use.`);
 
-  user.roleId = 2;
+  user.roleId = RoleModel.User;
   user.password = cyber.hashPassword(user.password);
   
-  const sql = `
-  INSERT INTO users VALUES(NULL, ?, ?, ?, ?, ?);
-  `;
+  const sql = `INSERT INTO users VALUES(NULL, ?, ?, ?, ?, ?)`;
 
   const result: OkPacket = await dal.execute(sql, [user.firstName, user.lastName, user.password, user.email, user.roleId]);
   user.userId = result.insertId;

@@ -2,7 +2,7 @@ import dal from "../4-utils/dal";
 import { OkPacket } from "mysql";
 import VacationModel from "../2-models/vacation-model";
 import appConfig from "../4-utils/app-config";
-import { ResourceNotFoundError } from "../2-models/client-errors";
+import { ResourceNotFoundError, ValidationError } from "../2-models/client-errors";
 
 // get all vacations:
 async function getVacations(userId: number): Promise<VacationModel[]> {
@@ -21,6 +21,8 @@ async function getVacations(userId: number): Promise<VacationModel[]> {
   }
 
 async function addVacation(vacation: VacationModel): Promise<VacationModel>{
+    const err = vacation.validatePost();
+    if(err) throw new ValidationError("Vacation is not valid.")
     const sql = 'INSERT INTO vacations VALUES(DEFAULT,?,?,?,?,?,?)';
     const result: OkPacket = await dal.execute(sql, 
       [vacation.destination, vacation.description, vacation.startDate, vacation.endDate, vacation.price, vacation.imageFileName]);

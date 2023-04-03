@@ -19,10 +19,10 @@ function createToken(user: UserModel): string{
   return token;
 }
 
-function decodeToken(token: string): UserModel {
+function decodeToken(token: string): number {
   const decodedToken = jwt.verify(token, secretKey) as JwtPayload;
-  const user = decodedToken.user;
-  return user;
+  const userId = decodedToken.user.userId;
+  return userId;
 }
 
 function hashPassword(password: string): string {
@@ -68,6 +68,7 @@ async function verifyAdmin(request: Request): Promise<boolean>{
         reject(new UnauthorizedError("Invalid token."));
         return;
       }
+
     const user = container.user;
     if(user.roleId !== RoleModel.Admin){
       reject(new UnauthorizedError("Access denied!"))
@@ -85,6 +86,5 @@ export default {
   decodeToken,
   hashPassword,
   verifyToken,
-  verifyAdmin,
-  secretKey
+  verifyAdmin
 }

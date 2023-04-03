@@ -24,20 +24,37 @@ class VacationModel {
   }
 
   // VALIDATIONS:
+  // post validation
   private static postValiation = Joi.object({
     vacationId: Joi.number().forbidden().positive().integer(),
     destination: Joi.string().required().min(2).max(30),
     description: Joi.string().required().min(20).max(1000),
-    startDate: Joi.date().required(),
-    endDate: Joi.date().required(),
-    price: Joi.number().required().min(0).max(1000),
-    imageFileName: Joi.string().required().min(20).max(300),
+    startDate: Joi.date().greater('now').required(),
+    endDate: Joi.date().greater(Joi.ref('startDate')).required(),
+    price: Joi.number().positive().required().min(0).max(1000),
+    imageFileName: Joi.string().optional().min(20).max(300),
 });
-
-// put validation
 
   public validatePost(): string {
     const result = VacationModel.postValiation.validate(this);
+    return result.error?.message;
+  }
+
+  // put validation:
+  private static putValidation = Joi.object({
+    vacationId: Joi.number().integer().positive().forbidden(),
+    destination: Joi.string().required().min(2).max(30),
+    description: Joi.string().required().min(20).max(1000),
+    startDate: Joi.date().greater('now').required(),
+    endDate: Joi.date().greater(Joi.ref('startDate')).required(),
+    // startDate: Joi.string().isoDate().required(),
+    // endDate: Joi.string().isoDate().greater(Joi.ref('startDate')).required(),
+    price: Joi.number().positive().required().min(0).max(1000),
+    imageFileName: Joi.string().optional().min(20).max(300)
+  });
+
+  public validatePut(): string {
+    const result = VacationModel.putValidation.validate(this);
     return result.error?.message;
   }
 }

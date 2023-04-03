@@ -58,9 +58,6 @@ async function deleteVacation(id: number): Promise<void>{
     if(result.affectedRows === 0) throw new ResourceNotFoundError(id);
   }
 
-  
-
-
     export default {
         getVacations,
         addVacation,

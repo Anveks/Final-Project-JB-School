@@ -1,4 +1,4 @@
-// import { UploadedFile } from "express-fileupload";
+import { UploadedFile } from "express-fileupload";
 import Joi from "joi";
 
 class VacationModel {
@@ -10,7 +10,7 @@ class VacationModel {
   public endDate: string;
   public price: number;
   public imageFileName: string;
-  // public image: UploadedFile;
+  public image: UploadedFile;
 
   public constructor(vacation: VacationModel){
     this.vacationId = vacation.vacationId;
@@ -20,7 +20,7 @@ class VacationModel {
     this.endDate = vacation.endDate;
     this.price = vacation.price;
     this.imageFileName = vacation.imageFileName;
-    // this.image = vacation.image;
+    this.image = vacation.image;
   }
 
   // VALIDATIONS:

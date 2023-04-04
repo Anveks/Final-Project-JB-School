@@ -9,7 +9,7 @@ class VacationModel {
   public startDate: string;
   public endDate: string;
   public price: number;
-  public imageFileName: string;
+  public imageUrl: string;
   // public image: UploadedFile;
 
   public constructor(vacation: VacationModel){
@@ -19,7 +19,7 @@ class VacationModel {
     this.startDate = vacation.startDate;
     this.endDate = vacation.endDate;
     this.price = vacation.price;
-    this.imageFileName = vacation.imageFileName;
+    this.imageUrl = vacation.imageUrl;
     // this.image = vacation.image;
   }
 
@@ -32,7 +32,7 @@ class VacationModel {
     startDate: Joi.date().greater('now').required(),
     endDate: Joi.date().greater(Joi.ref('startDate')).required(),
     price: Joi.number().positive().required(),
-    imageFileName: Joi.string().optional().min(5).max(300),
+    imageUrl: Joi.string().optional().min(5).max(300),
 });
 
   public validatePost(): string {
@@ -51,7 +51,7 @@ class VacationModel {
     // startDate: Joi.string().isoDate().required(),
     // endDate: Joi.string().isoDate().greater(Joi.ref('startDate')).required(),
     price: Joi.number().positive().required().min(0).max(1000),
-    imageFileName: Joi.string().optional().min(20).max(300)
+    imageUrl: Joi.string().optional().min(20).max(300)
   });
 
   public validatePut(): string {

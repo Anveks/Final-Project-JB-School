@@ -6,6 +6,7 @@ import UserModel from "../2-models/user-model";
 import VacationModel from "../2-models/vacation-model";
 import verifyLoggedIn from "../3-middleware/verify-logged-in";
 import verifyAdmin from "../3-middleware/verify-admin";
+import imageHandler from "../4-utils/image-handler";
 
 const router = express.Router();
 
@@ -54,6 +55,17 @@ router.delete("/vacations/:id([0-9]+)", [verifyLoggedIn, verifyAdmin], async (re
         const id = +request.params.id;
         await dataService.deleteVacation(id);
         response.sendStatus(204);
+    }
+    catch(err: any) {
+        next(err);
+    }
+});
+
+router.get("/vacations/images/:imageName", async (request: Request, response: Response, next: NextFunction) => {
+    try {
+        const imageName = request.params.imageName;
+        const imagePath = imageHandler.getImagePath(imageName);
+        response.sendFile(imagePath);
     }
     catch(err: any) {
         next(err);

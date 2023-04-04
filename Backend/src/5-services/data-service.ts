@@ -9,6 +9,7 @@ async function getVacations(userId: number): Promise<VacationModel[]> {
     const sql = `
         SELECT DISTINCT
             V.*,
+            CONCAT('${appConfig.imageUrl}', V.imageFileName) AS imageUrl,
             EXISTS(SELECT * FROM followers WHERE vacationId = F.vacationId AND userId = ?) AS isFollowing,
             COUNT(F.userId) AS followersCount
         FROM vacations as V LEFT JOIN followers as F
@@ -25,7 +26,7 @@ async function addVacation(vacation: VacationModel): Promise<VacationModel>{
     if(err) throw new ValidationError("Vacation is not valid.")
     const sql = 'INSERT INTO vacations VALUES(DEFAULT,?,?,?,?,?,?)';
     const result: OkPacket = await dal.execute(sql, 
-      [vacation.destination, vacation.description, vacation.startDate, vacation.endDate, vacation.price, vacation.imageFileName]);
+      [vacation.destination, vacation.description, vacation.startDate, vacation.endDate, vacation.price, vacation.imageUrl]);
     vacation.vacationId = result.insertId;
     return vacation;
   }
@@ -44,7 +45,7 @@ async function updateVacation(vacation: VacationModel): Promise<VacationModel>{
         WHERE vacationId = ?
         `;
     
-        const result: OkPacket = await dal.execute(sql, [vacation.destination, vacation.description, vacation.startDate, vacation.endDate, vacation.price, vacation?.imageFileName, vacation.vacationId]);
+        const result: OkPacket = await dal.execute(sql, [vacation.destination, vacation.description, vacation.startDate, vacation.endDate, vacation.price, vacation?.imageUrl, vacation.vacationId]);
         
         if (result.affectedRows === 0) throw new ResourceNotFoundError(vacation.vacationId);
     

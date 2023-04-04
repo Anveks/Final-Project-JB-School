@@ -10,7 +10,7 @@ class VacationModel {
   public endDate: string;
   public price: number;
   public imageFileName: string;
-  public image: UploadedFile;
+  // public image: UploadedFile;
 
   public constructor(vacation: VacationModel){
     this.vacationId = vacation.vacationId;
@@ -20,23 +20,24 @@ class VacationModel {
     this.endDate = vacation.endDate;
     this.price = vacation.price;
     this.imageFileName = vacation.imageFileName;
-    this.image = vacation.image;
+    // this.image = vacation.image;
   }
 
   // VALIDATIONS:
   // post validation
   private static postValiation = Joi.object({
-    vacationId: Joi.number().forbidden().positive().integer(),
+    vacationId: Joi.number().optional().positive().integer(),
     destination: Joi.string().required().min(2).max(30),
     description: Joi.string().required().min(20).max(1000),
     startDate: Joi.date().greater('now').required(),
     endDate: Joi.date().greater(Joi.ref('startDate')).required(),
     price: Joi.number().positive().required(),
-    imageFileName: Joi.string().optional().min(20).max(300),
+    imageFileName: Joi.string().optional().min(5).max(300),
 });
 
   public validatePost(): string {
     const result = VacationModel.postValiation.validate(this);
+    console.log(result);
     return result.error?.message;
   }
 

@@ -17,6 +17,7 @@
     },
     "dependencies": {
         "@types/express-fileupload": "^1.4.1",
+        "@types/uuid": "^9.0.1",
         "cors": "^2.8.5",
         "crypto": "^1.0.1",
         "express": "^4.18.2",
@@ -24,6 +25,7 @@
         "helmet": "^6.0.1",
         "joi": "^17.8.3",
         "jsonwebtoken": "^9.0.0",
-        "mysql": "^2.18.1"
+        "mysql": "^2.18.1",
+        "uuid": "^9.0.0"
     }
 }

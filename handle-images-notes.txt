@@ -10,5 +10,12 @@ Then we go back to the routes and create a GET route for images. Inside its para
 
 After that - create two new URL's (for server and images) in app-config.
 
-p.s dont forget to add __dirname where needed!
+p.s: dont forget to add __dirname where needed!
+
+p.p.s: the modules that are needed: 
+        npm i uuid
+        npm i @types/uuid
+
+        npm i express-fileupload
+        npm i @types/express-fileupload
 

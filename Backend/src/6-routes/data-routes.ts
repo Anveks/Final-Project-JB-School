@@ -29,6 +29,7 @@ router.get("/vacations", verifyLoggedIn, async (request: Request, response: Resp
 
 router.post("/vacations", [verifyLoggedIn, verifyAdmin], async (request: Request, response: Response, next: NextFunction) => {
     try {
+        request.body.image = request.files?.image;
         const vacation = new VacationModel(request.body);
         const newVacation = await dataService.addVacation(vacation);
         response.status(201).json(newVacation)
@@ -40,6 +41,7 @@ router.post("/vacations", [verifyLoggedIn, verifyAdmin], async (request: Request
 
 router.put("/vacations/:id([0-9]+)", [verifyLoggedIn, verifyAdmin], async (request: Request, response: Response, next: NextFunction) => {
     try {
+        request.body.image = request.files?.image;
         request.body.id = +request.params.id;
         const vacation = new VacationModel(request.body);
         const updatedVacation = await dataService.updateVacation(vacation);

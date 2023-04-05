@@ -1,2 +1,14 @@
 2023-04-05T06:08:08.085Z - Invalid token.
 
+2023-04-05T08:35:19.679Z - Vacation is not valid.
+
+2023-04-05T08:36:10.200Z - ER_BAD_NULL_ERROR: Column 'imageFileName' cannot be null
+
+2023-04-05T08:37:21.708Z - ER_BAD_NULL_ERROR: Column 'imageFileName' cannot be null
+
+2023-04-05T08:39:10.799Z - Vacation is not valid.
+
+2023-04-05T09:19:44.201Z - Invalid token.
+
+2023-04-05T09:20:07.002Z - Vacation is not valid.
+

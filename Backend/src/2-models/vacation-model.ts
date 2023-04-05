@@ -10,7 +10,7 @@ class VacationModel {
   public endDate: string;
   public price: number;
   public imageUrl: string;
-  // public image: UploadedFile;
+  public image: UploadedFile;
 
   public constructor(vacation: VacationModel){
     this.vacationId = vacation.vacationId;
@@ -20,7 +20,7 @@ class VacationModel {
     this.endDate = vacation.endDate;
     this.price = vacation.price;
     this.imageUrl = vacation.imageUrl;
-    // this.image = vacation.image;
+    this.image = vacation.image;
   }
 
   // VALIDATIONS:
@@ -48,8 +48,6 @@ class VacationModel {
     description: Joi.string().required().min(20).max(1000),
     startDate: Joi.date().greater('now').required(),
     endDate: Joi.date().greater(Joi.ref('startDate')).required(),
-    // startDate: Joi.string().isoDate().required(),
-    // endDate: Joi.string().isoDate().greater(Joi.ref('startDate')).required(),
     price: Joi.number().positive().required().min(0).max(1000),
     imageUrl: Joi.string().optional().min(20).max(300)
   });

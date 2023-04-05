@@ -1,4 +1,5 @@
 import express from "express";
+import expressFileUpload from "express-fileupload";
 import cors from "cors";
 import dataRoutes from "./6-routes/data-routes";
 import authRoutes from "./6-routes/auth-routes"
@@ -33,6 +34,7 @@ server.use((req, res, next) => {
 
 server.use(cors());
 server.use(express.json());
+server.use(expressFileUpload());
 server.use("/api", dataRoutes);
 server.use("/api", authRoutes);
 server.use(routeNotFound);

@@ -26,10 +26,10 @@ server.use(helmet({
   }
 }));
 
-// server.use((req, res, next) => {
-//   res.set('Referrer-Policy', 'same-origin');
-//   next();
-// });
+server.use((req, res, next) => {
+  res.set('Referrer-Policy', 'same-origin');
+  next();
+});
 
 server.use(cors());
 server.use(express.json());

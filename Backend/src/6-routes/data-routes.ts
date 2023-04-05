@@ -42,7 +42,7 @@ router.post("/vacations", [verifyLoggedIn, verifyAdmin], async (request: Request
 router.put("/vacations/:id([0-9]+)", [verifyLoggedIn, verifyAdmin], async (request: Request, response: Response, next: NextFunction) => {
     try {
         request.body.image = request.files?.image;
-        request.body.id = +request.params.id;
+        request.body.vacationId = +request.params.id;
         const vacation = new VacationModel(request.body);
         const updatedVacation = await dataService.updateVacation(vacation);
         response.json(updatedVacation)

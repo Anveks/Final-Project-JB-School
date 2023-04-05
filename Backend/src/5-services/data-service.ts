@@ -77,9 +77,15 @@ async function updateVacation(vacation: VacationModel): Promise<VacationModel>{
 
 // delete an existing vacation
 async function deleteVacation(id: number): Promise<void>{
-  const sql = `DELETE FROM vacations WHERE vacationId = ${id}`;
-  const result: OkPacket = await dal.execute(sql);
+
+  const imageName = await getImgName(id);
+
+  const sql = `DELETE FROM vacations WHERE vacationId = ?`;
+  const result: OkPacket = await dal.execute(sql, [id]);
+
   if(result.affectedRows === 0) throw new ResourceNotFoundError(id);
+
+  await imageHandler.deleteImage(imageName);
 }
 
 async function getImgName(vacationId: number): Promise<string> {

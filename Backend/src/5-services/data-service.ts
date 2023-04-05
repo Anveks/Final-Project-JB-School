@@ -23,8 +23,8 @@ async function getVacations(userId: number): Promise<VacationModel[]> {
   }
 
 async function addVacation(vacation: VacationModel): Promise<VacationModel>{
-    // const err = vacation.validatePost();
-    // if(err) throw new ValidationError("Vacation is not valid.")    
+    const err = vacation.validatePost();
+    if (err) throw new ValidationError("Vacation is not valid.")    
 
     let imageName = null;
     if (vacation.image) {
@@ -43,7 +43,8 @@ async function addVacation(vacation: VacationModel): Promise<VacationModel>{
 // update an existing vacation
 async function updateVacation(vacation: VacationModel): Promise<VacationModel>{
 
-  // TODO: validation on put
+  const err = vacation.validatePut();
+  if (err) throw new ValidationError("Some changes are not valid.")
 
   console.log(vacation.vacationId);
 

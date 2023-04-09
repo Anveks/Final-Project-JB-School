@@ -4,7 +4,6 @@ import UserModel from "../../Models/UserModel"
 import authService from "../../Services/AuthService";
 import { useNavigate } from "react-router-dom";
 import notifyService from "../../Services/NotifyService";
-// import ReCAPTCHA from "react-google-recaptcha";
 import { useState } from "react";
 
 function Register(): JSX.Element {
@@ -17,16 +16,12 @@ function Register(): JSX.Element {
         try {
             await authService.register(user);
             notifyService.success("Welcome!");
-            navigate("/home");
+            navigate("/");
         }
         catch (err: any) {
             notifyService.error(err);
         }
     }
-
-    // function captchaChecked(value: string): void {
-    //     setIsBot(value?.length === 0);
-    // }
 
     return (
         <div className="Register">
@@ -45,11 +40,7 @@ function Register(): JSX.Element {
                 <label>Email:</label>
                 <input type="email" {...register("email")} required minLength={4} maxLength={20} />
 
-                {/* <div className="recaptcha">
-                    <ReCAPTCHA sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" onChange={captchaChecked} />
-                </div> */}
-
-                <button disabled={isBot}>Register</button>
+                <button>Register</button>
 
             </form>
 

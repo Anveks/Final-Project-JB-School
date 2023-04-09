@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import CredentialsModel from "../../../Models/CredentialsModel";
-import authService from "../../../Services/AuthService";
-import notifyService from "../../../Services/NotifyService";
+import CredentialsModel from "../../Models/CredentialsModel";
+import authService from "../../Services/AuthService";
+import notifyService from "../../Services/NotifyService";
 import "./Login.css";
+import { authStore } from "../../Redux/AuthState";
 
 function Login(): JSX.Element {
 
@@ -14,7 +15,9 @@ function Login(): JSX.Element {
         try {
             await authService.login(credentials);
             notifyService.success("Welcome Back!");
-            navigate("/home");
+            console.log(authStore.getState().user);
+            console.log(authStore.getState().token);
+            navigate("/");
         }
         catch (err: any) {
             notifyService.error(err);
@@ -25,9 +28,9 @@ function Login(): JSX.Element {
         <div className="Login">
 
             <form onSubmit={handleSubmit(submit)}>
-
-                <label>Username:</label>
-                <input type="text" {...register("username")} required minLength={4} maxLength={20} autoFocus />
+                <h3 className="title">Login</h3>
+                <label>Email::</label>
+                <input type="email" {...register("email")} required minLength={4} maxLength={20} autoFocus />
 
                 <label>Password:</label>
                 <input type="password" {...register("password")} required minLength={4} maxLength={20} />

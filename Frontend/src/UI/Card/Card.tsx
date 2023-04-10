@@ -1,6 +1,14 @@
 import "./Card.css";
+import ModeEditIcon from '@mui/icons-material/ModeEdit';
+import ClearIcon from '@mui/icons-material/Clear';
+import { authStore } from "../../Redux/AuthState";
+import { NavLink } from "react-router-dom";
 
 function Card(props: any): JSX.Element {
+
+    // check if admin:
+    const role = authStore.getState().user?.roleId;
+    const admin = role === 1 ? true : false;
 
     function formatDate(dateString: string): string {
         const date = new Date(dateString);
@@ -12,6 +20,10 @@ function Card(props: any): JSX.Element {
 
     return (
         <div className="Card">
+            <div className="admin-field" style={{ display: admin ? "" : "none" }}>
+                <div className="edit"><ModeEditIcon fontSize="inherit" /> <NavLink to="#"> Edit </NavLink> </div>
+                <div className="delete"><ClearIcon fontSize="inherit" /> <NavLink to="#"> Delete </NavLink></div>
+            </div>
             <div className="head">
                 <div className="title">{props.vacation.destination}</div>
                 <button className="price">{props.vacation.price}$</button>

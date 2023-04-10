@@ -1,3 +1,12 @@
-.Logout {
-	
+.Logout > button{
+	padding: 7px;
+  border-radius: 10px;
+  border: transparent;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.Logout > button:hover {
+  padding: 8px;
 }

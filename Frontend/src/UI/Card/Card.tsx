@@ -26,7 +26,7 @@ function Card(props: any): JSX.Element {
             </div>
             <div className="head">
                 <div className="title">{props.vacation.destination}</div>
-                <button className="price">{props.vacation.price}$</button>
+                <p className="price">{props.vacation.price}$</p>
             </div>
             <div className="body">
                 <div className="image">

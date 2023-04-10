@@ -4,6 +4,7 @@ import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 import { authStore } from "./Redux/AuthState";
 import EditVacation from "./Components/VacationsArea/EditVacation/EditVacation";
+import AddVacation from "./Components/VacationsArea/AddVacation/AddVacation";
 
 function App(): JSX.Element {
 
@@ -17,6 +18,10 @@ function App(): JSX.Element {
     }
 
     return children;
+  }
+
+  function closeModal() {
+    alert("closed!")
   }
 
   return (
@@ -35,7 +40,8 @@ function App(): JSX.Element {
           </Route>
 
           {/* Vacation Routes: */}
-          <Route path="edit" element={<EditVacation />} />
+          <Route path="add" element={<AddVacation />}></Route>
+          <Route path="edit" element={<EditVacation />}></Route>
 
         </Routes>
       </BrowserRouter>

@@ -9,15 +9,12 @@ import Card from "../../../UI/Card/Card";
 function VacationsList(): JSX.Element {
 
     const [vacations, setVacations] = useState<VacationModel[]>([]);
-    // const id = +authStore.getState().user.userId;
 
     useEffect(() => {
         dataService.getAllVacations()
             .then((res) => setVacations(res))
             .catch((err) => notifyService.error(err.message));
     }, []);
-
-    console.log(vacations);
 
     return (
         <div className="VacationsList">

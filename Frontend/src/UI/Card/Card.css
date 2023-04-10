@@ -4,21 +4,23 @@
   margin: 10px;
   padding: 10px;
   width: 350px;
-  height: 400px;
+  height: 415px;
   background-color: whitesmoke;
   color: black;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+  font-size: 16px;
 }
 
 .title {
   font-weight: bold;
   text-align: left;
+  font-size: 20px;
 }
 
 .description {
   height: 100px;
   overflow: auto;
-  font-size: 18px;
+  font-size: 16px;
   text-align: justify;
 }
 
@@ -48,6 +50,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.price{
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .Card button {

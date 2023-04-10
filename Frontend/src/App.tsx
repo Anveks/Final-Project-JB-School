@@ -1,9 +1,8 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 import { authStore } from "./Redux/AuthState";
-import Home from "./Pages/Home/Home";
-import { ReactNode } from "react";
 
 function App(): JSX.Element {
 
@@ -25,8 +24,6 @@ function App(): JSX.Element {
         <Routes>
 
           <Route path="/">
-
-            {/* <Route index element={authStore.getState().token ? <Home /> : <Login />} /> */}
 
             <Route index element={<ProtectedRoute>
               <Home />

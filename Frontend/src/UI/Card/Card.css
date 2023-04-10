@@ -1,0 +1,58 @@
+.Card{
+  border: 1px solid transparent;
+  border-radius: 12px;
+  margin: 10px;
+  padding: 10px;
+  width: 350px;
+  height: 400px;
+  background-color: whitesmoke;
+  color: black;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+}
+
+.title {
+  font-weight: bold;
+  text-align: left;
+}
+
+.description {
+  height: 100px;
+  overflow: auto;
+  font-size: 18px;
+  text-align: justify;
+}
+
+::-webkit-scrollbar{
+  display: none; 
+ }
+
+.Card img {
+	width: 350px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.date {
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 15px;
+  text-align: left;
+  background-color: lightgray;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  margin: 5px;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Card button {
+  border: transparent;
+  border-radius: 10px;
+  font-weight: bold;
+  height: 20px;
+  font-size: 20px;
+}

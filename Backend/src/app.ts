@@ -19,6 +19,7 @@ const server = express();
 
 // protecting headers
 server.use(helmet({
+  crossOriginResourcePolicy: false,
   contentSecurityPolicy: {
     directives: {
       ...helmet.contentSecurityPolicy.getDefaultDirectives(), 

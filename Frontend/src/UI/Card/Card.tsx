@@ -21,7 +21,7 @@ function Card(props: any): JSX.Element {
     return (
         <div className="Card">
             <div className="admin-field" style={{ display: admin ? "" : "none" }}>
-                <div className="edit"><ModeEditIcon fontSize="inherit" /> <NavLink to="#"> Edit </NavLink> </div>
+                <div className="edit"><ModeEditIcon fontSize="inherit" /> <NavLink to="edit"> Edit </NavLink> </div>
                 <div className="delete"><ClearIcon fontSize="inherit" /> <NavLink to="#"> Delete </NavLink></div>
             </div>
             <div className="head">

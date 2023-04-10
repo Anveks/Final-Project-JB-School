@@ -3,6 +3,7 @@ import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 import { authStore } from "./Redux/AuthState";
+import EditVacation from "./Components/VacationsArea/EditVacation/EditVacation";
 
 function App(): JSX.Element {
 
@@ -23,8 +24,8 @@ function App(): JSX.Element {
       <BrowserRouter>
         <Routes>
 
+          {/* Default Route: */}
           <Route path="/">
-
             <Route index element={<ProtectedRoute>
               <Home />
             </ProtectedRoute>} />
@@ -32,6 +33,9 @@ function App(): JSX.Element {
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
           </Route>
+
+          {/* Vacation Routes: */}
+          <Route path="edit" element={<EditVacation />} />
 
         </Routes>
       </BrowserRouter>

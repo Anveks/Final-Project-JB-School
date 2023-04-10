@@ -7,6 +7,19 @@ class DataService {
        const result = await axios.get<VacationModel[]>(appConfig.vacationsUrl);
        const vacations = result.data;
        return vacations; 
+       // TODO: redux
+    }
+
+    public async addVacation(vacation: VacationModel): Promise<void>{
+        const headers = { "Content-Type": "multipart/form-data" };
+        await axios.post<VacationModel>(appConfig.vacationsUrl, vacation, {headers});
+        // TODO: redux
+    }
+
+    public async deleteVacation(id: number): Promise<void> {
+        await axios.delete(appConfig.vacationsUrl + id);
+
+        // TODO: redux dispatch
     }
 }
 

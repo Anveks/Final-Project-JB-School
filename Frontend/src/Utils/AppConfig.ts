@@ -4,7 +4,7 @@ class AppConfig {
     public loginUrl = "http://localhost:4000/api/auth/login"
 
     // data URL's
-    public vacationsUrl = "http://localhost:4000/api/vacations"
+    public vacationsUrl = "http://localhost:4000/api/vacations/"
 }
 
 const appConfig = new AppConfig();

@@ -3,14 +3,23 @@ import VacationModel from "../../../Models/VacationModel";
 import "./AddVacation.css";
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import { useNavigate } from "react-router-dom";
+import dataService from "../../../Services/DataService";
+import notifyService from "../../../Services/NotifyService";
 
 function AddVacation(): JSX.Element {
 
     const { handleSubmit, register } = useForm<VacationModel>();
     const navigate = useNavigate();
 
-    function send() {
-        //
+    async function send(vacation: VacationModel) {
+        try {
+            vacation.image = (vacation.image as unknown as FileList)[0];
+            await dataService.addVacation(vacation);
+            notifyService.success("A new vacation has been added!");
+            navigate("/");
+        } catch (err: any) {
+            notifyService.error(err);
+        }
     }
 
     return (
@@ -24,10 +33,10 @@ function AddVacation(): JSX.Element {
                 <input type="text" {...register("description")} />
 
                 <label>Start Date:</label>
-                <input type="text" {...register("startDate")} />
+                <input type="date" {...register("startDate")} />
 
                 <label>End Date:</label>
-                <input type="text" {...register("endDate")} />
+                <input type="date" {...register("endDate")} />
 
                 <label>Price:</label>
                 <input type="number" {...register("price")} />

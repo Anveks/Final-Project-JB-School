@@ -1,6 +1,12 @@
+import axios from "axios";
+import VacationModel from "../Models/VacationModel";
+import appConfig from "../Utils/AppConfig";
+
 class DataService {
-    public async getAll____() {
-        
+    public async getAllVacations(id: number): Promise<VacationModel[]> {
+       const result = await axios.get<VacationModel[]>(appConfig.vacationsUrl);
+       const vacations = result.data;
+       return vacations; 
     }
 }
 

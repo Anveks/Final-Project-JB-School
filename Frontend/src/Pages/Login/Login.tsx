@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CredentialsModel from "../../Models/CredentialsModel";
 import authService from "../../Services/AuthService";
 import notifyService from "../../Services/NotifyService";
@@ -37,6 +37,7 @@ function Login(): JSX.Element {
 
                 <button>Login</button>
 
+                <p>You don't have an account? <Link to="/register">Register.</Link></p>
             </form>
         </div>
     );

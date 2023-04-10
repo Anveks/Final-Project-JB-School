@@ -1,3 +1,4 @@
+import VacationsList from "../../Components/VacationsArea/VacationsList/VacationsList";
 import { authStore } from "../../Redux/AuthState";
 import Logout from "../Logout/Logout";
 import "./Home.css";
@@ -9,6 +10,9 @@ function Home(): JSX.Element {
             <h2>Im a Home Page</h2>
             <span className="greeting">Welcome back, {fullName} </span>
             <Logout />
+
+
+            <VacationsList />
         </div>
     );
 }

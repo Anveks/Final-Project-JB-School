@@ -2,7 +2,7 @@ import "./Register.css";
 import { useForm } from "react-hook-form";
 import UserModel from "../../Models/UserModel"
 import authService from "../../Services/AuthService";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import notifyService from "../../Services/NotifyService";
 import { useState } from "react";
 
@@ -41,6 +41,8 @@ function Register(): JSX.Element {
                 <input type="email" {...register("email")} required minLength={4} maxLength={20} />
 
                 <button>Register</button>
+
+                <p>You do have an account? <Link to="/login">Login.</Link></p>
 
             </form>
 

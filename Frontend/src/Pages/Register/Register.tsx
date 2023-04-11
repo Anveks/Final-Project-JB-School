@@ -8,7 +8,6 @@ import { useState } from "react";
 
 function Register(): JSX.Element {
 
-    const [isBot, setIsBot] = useState<boolean>(true);
     const { register, handleSubmit } = useForm<UserModel>();
     const navigate = useNavigate();
 
@@ -27,7 +26,7 @@ function Register(): JSX.Element {
         <div className="Register">
 
             <form onSubmit={handleSubmit(submit)}>
-
+                <h2>Registration</h2>
                 <label>First Name:</label>
                 <input type="text" {...register("firstName")} required minLength={2} maxLength={20} autoFocus />
 

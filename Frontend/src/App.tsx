@@ -16,12 +16,15 @@ function App(): JSX.Element {
     if (!authStore.getState().token) {
       return <Navigate to="/login" />
     }
-
     return children;
   }
 
-  function closeModal() {
-    alert("closed!")
+  const AdminRoute = ({ children }: Props) => {
+    const isAdmin = authStore.getState().user.roleId === 1 ? true : false;
+    if (!isAdmin) {
+      return <Navigate to="/" />
+    }
+    return children;
   }
 
   return (
@@ -39,9 +42,18 @@ function App(): JSX.Element {
             <Route path="register" element={<Register />} />
           </Route>
 
-          {/* Vacation Routes: */}
-          <Route path="add" element={<AddVacation />}></Route>
-          <Route path="edit" element={<EditVacation />}></Route>
+          {/* Admin Routes: */}
+          <Route path="add">
+            <Route index element={<AdminRoute>
+              <AddVacation />
+            </AdminRoute>}></Route>
+          </Route>
+
+          <Route path="edit">
+            <Route index element={<AdminRoute>
+              <EditVacation />
+            </AdminRoute>}></Route>
+          </Route>
 
         </Routes>
       </BrowserRouter>

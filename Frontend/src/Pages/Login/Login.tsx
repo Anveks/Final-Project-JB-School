@@ -28,14 +28,14 @@ function Login(): JSX.Element {
         <div className="Login">
 
             <form onSubmit={handleSubmit(submit)}>
-                <h3 className="title">Login</h3>
-                <label>Email::</label>
+                <h2 className="title">Login</h2>
+                <label>Email:</label>
                 <input type="email" {...register("email")} required minLength={4} maxLength={20} autoFocus />
 
                 <label>Password:</label>
                 <input type="password" {...register("password")} required minLength={4} maxLength={20} />
 
-                <button>Login</button>
+                <button>Log in</button>
 
                 <p>You don't have an account? <Link to="/register">Register.</Link></p>
             </form>

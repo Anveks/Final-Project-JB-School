@@ -22,6 +22,15 @@ async function getVacations(userId: number): Promise<VacationModel[]> {
     return vacations;
   }
 
+async function getOneVacation(id: number): Promise<VacationModel> {
+  const sql = `SELECT * FROM vacations WHERE vacationId = ?
+  `;
+  const vacations = await dal.execute(sql, [id]);
+  const vacation = vacations[0];
+  if(!vacation) throw new ResourceNotFoundError(id);
+  return vacation;
+}
+
 async function addVacation(vacation: VacationModel): Promise<VacationModel>{
     const err = vacation.validatePost();
     if (err) throw new ValidationError("Vacation is not valid.")    
@@ -98,6 +107,7 @@ async function getImgName(vacationId: number): Promise<string> {
 
 export default {
   getVacations,
+  getOneVacation,
   addVacation,
   updateVacation,
   deleteVacation

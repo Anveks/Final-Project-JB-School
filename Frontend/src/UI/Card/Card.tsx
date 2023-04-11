@@ -42,7 +42,13 @@ function Card(props: any): JSX.Element {
     return (
         <div className="Card">
             <div className="admin-field" style={{ display: admin ? "" : "none" }}>
-                <div className="edit"><ModeEditIcon fontSize="inherit" /> <NavLink to="edit"> Edit </NavLink> </div>
+                <div className="edit">
+                    <ModeEditIcon fontSize="inherit" /> <NavLink
+                        to="edit"
+                        state={{ id: props.vacation.vacationId }}>
+                        Edit
+                    </NavLink>
+                </div>
                 <p className="delete" onClick={deleteVacation}><ClearIcon fontSize="inherit" /> Delete</p>
             </div>
             <div className="head">

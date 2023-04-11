@@ -10,6 +10,18 @@ class DataService {
        // TODO: redux
     }
 
+    public async getOneVacation(id: number): Promise<VacationModel> {
+        const result = await axios.get<VacationModel>(appConfig.vacationsUrl + id);
+        const vacation = result.data;
+        return vacation;
+    }
+
+    public async editVacation(vacation: VacationModel): Promise<void>{
+        const headers = { "Content-Type": "multipart/form-data" }
+        await axios.put<VacationModel>(appConfig.vacationsUrl + vacation.destination, vacation, {headers});
+        // TODO: redux
+    }
+
     public async addVacation(vacation: VacationModel): Promise<void>{
         const headers = { "Content-Type": "multipart/form-data" };
         await axios.post<VacationModel>(appConfig.vacationsUrl, vacation, {headers});

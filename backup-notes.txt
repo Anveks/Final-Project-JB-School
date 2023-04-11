@@ -1,0 +1,7 @@
+1. passing data through navlinks:
+
+    <div className="edit"><ModeEditIcon fontSize="inherit" /> <NavLink to={{
+                    pathname: "edit",
+                    //@ts-ignore
+                    state: { id: props.vacation.vacationId },
+                }}> Edit </NavLink>

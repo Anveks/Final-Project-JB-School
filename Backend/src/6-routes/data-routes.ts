@@ -27,6 +27,16 @@ router.get("/vacations", verifyLoggedIn, async (request: Request, response: Resp
     }
 });
 
+router.get("/vacations/:id", [verifyLoggedIn, verifyAdmin], async (request: Request, response: Response, next: NextFunction) => {
+    try {
+        const id = +request.params.id;
+        const vacation = await dataService.getOneVacation(id);
+        response.json(vacation);
+    } catch(err: any){
+        next(err);
+    }
+})
+
 router.post("/vacations", [verifyLoggedIn, verifyAdmin], async (request: Request, response: Response, next: NextFunction) => {
     try {
         request.body.image = request.files?.image;

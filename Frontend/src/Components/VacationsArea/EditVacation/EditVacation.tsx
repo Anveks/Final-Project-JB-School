@@ -10,6 +10,7 @@ import "./EditVacation.css";
 function EditVacation(): JSX.Element {
 
     // TODO: fix date that displays time also
+    // TODO: add required here and in addVacation form
 
     const location = useLocation();
     const { register, handleSubmit, setValue } = useForm<VacationModel>();

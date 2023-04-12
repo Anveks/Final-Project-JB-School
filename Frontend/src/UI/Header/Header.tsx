@@ -15,7 +15,7 @@ function Header(): JSX.Element {
     return (
         <div className="header">
 
-            <p>Vacations</p>
+            <p>Vacations.com</p>
             <div className="user"> Hello, {fullName}
                 <Logout />
                 <div className="admin-field" style={{ display: admin ? "" : "none" }}>

@@ -5,11 +5,16 @@ import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import { useNavigate } from "react-router-dom";
 import dataService from "../../../Services/DataService";
 import notifyService from "../../../Services/NotifyService";
+import { useRef, useState } from "react";
 
 function AddVacation(): JSX.Element {
 
     const { handleSubmit, register } = useForm<VacationModel>();
     const navigate = useNavigate();
+
+    // trying to display image preview:
+    // const imgRef = useRef(null);
+    // const [img, setImg] = useState(null);
 
     async function send(vacation: VacationModel) {
         try {
@@ -45,7 +50,12 @@ function AddVacation(): JSX.Element {
                     <label htmlFor='file'>
                         <AddPhotoAlternateIcon fontSize='large' /> Upload Image
                     </label>
-                    <input style={{ display: 'none' }} type='file' id="file" accept="image/*" {...register("image")} />
+                    <input
+                        style={{ display: 'none' }} type='file' id="file" accept="image/*" {...register("image")}
+                    // ref={imgRef}
+                    // onChange={() => { setImg(imgRef.current.value) }}
+                    />
+                    {/* <img src={img} /> */}
                 </div>
 
                 <button>Submit</button>

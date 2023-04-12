@@ -2,7 +2,7 @@ html, body, #root {
     height: 100%;
     text-align: center;
     font-size: x-large;
-    background-image: linear-gradient(gray, lightgray);
+    /* background-image: linear-gradient(gray, lightgray); */
     color: white;
     background-size: cover;
     background-attachment: fixed;
@@ -17,7 +17,7 @@ a {
     font-weight: bold;
 }
 
-a:hover{
+/* a:hover{
     color:orange;
-}
+} */
 

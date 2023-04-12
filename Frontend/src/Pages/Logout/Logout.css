@@ -1,7 +1,8 @@
 .Logout > button{
 	padding: 5px;
   border-radius: 10px;
-  border: transparent;
+  border: 3px solid #ffb700;
+  background-color: white;
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;

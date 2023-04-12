@@ -18,7 +18,7 @@ class DataService {
 
     public async editVacation(vacation: VacationModel): Promise<void>{
         const headers = { "Content-Type": "multipart/form-data" }
-        await axios.put<VacationModel>(appConfig.vacationsUrl + vacation.destination, vacation, {headers});
+        await axios.put<VacationModel>(appConfig.vacationsUrl + vacation.vacationId, vacation, {headers});
         // TODO: redux
     }
 

@@ -107,6 +107,7 @@
 .likeBtn{
   display: flex;
   align-items: center;
+  color: lightblue;
 }
 
 .like{

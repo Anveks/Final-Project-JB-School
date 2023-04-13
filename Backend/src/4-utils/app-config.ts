@@ -2,6 +2,7 @@ class AppConfig {
 
     // Server Port:
     public port = 4000;
+    public httpPort = 4001;
 
     // server url:
     public serverUrl = "http://localhost:" + this.port;

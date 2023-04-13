@@ -8,7 +8,7 @@ export class AuthState {
     public user: UserModel = null;
     
     public constructor() {
-        this.token = sessionStorage.getItem("token");
+        this.token = localStorage.getItem("token");
         if(this.token) {
             const jwtPayload = jwtDecode(this.token);
             this.user = (jwtPayload as any).user;
@@ -39,13 +39,13 @@ export function authReducer(currentState = new AuthState(), action: AuthAction):
             newState.token = action.payload;
             const jwtPayload = jwtDecode(newState.token);
             newState.user = (jwtPayload as any).user;
-            sessionStorage.setItem("token", newState.token);
+            localStorage.setItem("token", newState.token);
             break;
 
         case AuthActionType.Logout:
             newState.token = null;
             newState.user = null;
-            sessionStorage.removeItem("token");
+            localStorage.removeItem("token");
             break;
 
         case AuthActionType.Update:

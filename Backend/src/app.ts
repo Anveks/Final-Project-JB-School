@@ -7,6 +7,7 @@ import routeNotFound from "./3-middleware/route-not-found";
 import catchAll from "./3-middleware/catch-all";
 import appConfig from "./4-utils/app-config";
 import helmet from "helmet";
+import socketIoService from "./5-services/socket.io-service";
 
 const server = express();
 
@@ -42,3 +43,6 @@ server.use(routeNotFound);
 server.use(catchAll);
 
 server.listen(appConfig.port, () => console.log("Listening on http://localhost:" + appConfig.port));
+
+const httpServer = server.listen(appConfig.httpPort, () => console.log("Listening on http://localhost:" + appConfig.httpPort));
+socketIoService.init(httpServer);

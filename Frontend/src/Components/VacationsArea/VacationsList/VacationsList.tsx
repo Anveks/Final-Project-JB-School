@@ -24,6 +24,7 @@ function VacationsList(): JSX.Element {
     function handlePageChange(pageNumber: number) {
         setTransition("nextPage 1s ease-out forwards");
         setCurrentPage(pageNumber);
+        setTransition("");
     }
 
     useEffect(() => {

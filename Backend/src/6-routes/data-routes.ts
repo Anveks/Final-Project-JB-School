@@ -84,5 +84,37 @@ router.get("/vacations/images/:imageName", async (request: Request, response: Re
     }
 });
 
+// add like route
+router.post("/vacations/add-like/:id([0-9]+)", async (request: Request, response: Response, next: NextFunction) => {
+    try {
+        const header = request.headers.authorization;
+        const token = header.substring(7);
+        const userId = +cyber.decodeToken(token);
+        const vacationId = +request.params.id;
+        await dataService.addLike(userId, vacationId);
+        response.send("Like has been added");    
+    }
+    catch(err: any) {
+        next(err);
+    }
+});
+
+// remove like route
+router.delete("/vacations/delete-like/:id([0-9]+)", async (request: Request, response: Response, next: NextFunction) => {
+    try {
+        const header = request.headers.authorization;
+        const token = header.substring(7);
+        const userId = +cyber.decodeToken(token);
+        const vacationId = +request.params.id;
+        await dataService.removeLike(userId, vacationId);
+        response.send("Like has been removed");    
+    }
+    catch(err: any) {
+        next(err);
+    }
+});
+
 
 export default router;
+
+// TODO: see how can get-userId-from-token code be refactored into one-line code 

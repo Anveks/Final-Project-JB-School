@@ -1,0 +1,16 @@
+2023-04-13T08:13:21.495Z - Invalid token.
+
+2023-04-13T08:34:01.304Z - ER_BAD_FIELD_ERROR: Unknown column 'userId' in 'where clause'
+
+2023-04-13T08:43:45.066Z - This like does not exist.
+
+2023-04-13T08:43:55.776Z - This like does not exist.
+
+2023-04-13T08:56:30.998Z - Cannot read properties of undefined (reading '0')
+
+2023-04-13T08:58:58.746Z - Same like cannot be added twice!
+
+2023-04-13T08:59:13.207Z - This like does not exist.
+
+2023-04-13T08:59:16.997Z - Same like cannot be added twice!
+

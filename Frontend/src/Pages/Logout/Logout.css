@@ -10,5 +10,5 @@
 }
 
 .Logout > button:hover {
-  padding: 5.5px;
+  transform: scale(1.05);
 }

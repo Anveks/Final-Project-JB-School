@@ -60,7 +60,7 @@ function Card(props: any): JSX.Element {
                     <img src={props.vacation.imageUrl} />
                 </div>
                 <div className="date">{formatDate(props.vacation.startDate)} - {formatDate(props.vacation.endDate)}</div>
-                <div className="description" style={{ height: admin ? "100px" : "150px" }}>
+                <div className="description" style={{ height: admin ? "100px" : "140px" }}>
                     {props.vacation.description}
                 </div>
             </div>

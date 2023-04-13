@@ -23,6 +23,12 @@
   transform: scale(1.05);
 }
 
+.pagination {
+  position: fixed;
+  top: 1.5%;
+  right: 0.5%;
+}
+
 @keyframes VacationsList-appear {
   from {
     opacity: 0;
@@ -35,6 +41,7 @@
   }
 }
 
+/* next page animation: */
 @keyframes nextPage {
   0% {
     opacity: 0;

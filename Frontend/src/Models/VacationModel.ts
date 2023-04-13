@@ -8,6 +8,8 @@ class VacationModel {
   public price: number;
   public imageUrl: string;
   public image: File;
+  public isFollowing: boolean;
+  public likes: number;
 }
 
 export default VacationModel;

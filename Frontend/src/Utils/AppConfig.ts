@@ -5,6 +5,9 @@ class AppConfig {
 
     // data URL's
     public vacationsUrl = "http://localhost:4000/api/vacations/"
+
+    // like URL's:
+    public likeUrl = "http://localhost:4000/api/vacations/like/"
 }
 
 const appConfig = new AppConfig();

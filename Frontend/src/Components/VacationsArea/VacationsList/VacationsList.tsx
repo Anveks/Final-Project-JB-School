@@ -33,6 +33,9 @@ function VacationsList(): JSX.Element {
             .catch((err) => notifyService.error(err.message));
     }, []);
 
+    console.log(vacations);
+
+
     return (
         <div className="VacationsList" style={{ animation: transition }}>
             {vacationsToDisplay.map((v) => (

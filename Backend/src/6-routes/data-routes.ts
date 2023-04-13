@@ -85,7 +85,7 @@ router.get("/vacations/images/:imageName", async (request: Request, response: Re
 });
 
 // add like route
-router.post("/vacations/add-like/:id([0-9]+)", async (request: Request, response: Response, next: NextFunction) => {
+router.post("/vacations/like/:id([0-9]+)", async (request: Request, response: Response, next: NextFunction) => {
     try {
         const header = request.headers.authorization;
         const token = header.substring(7);
@@ -100,7 +100,7 @@ router.post("/vacations/add-like/:id([0-9]+)", async (request: Request, response
 });
 
 // remove like route
-router.delete("/vacations/delete-like/:id([0-9]+)", async (request: Request, response: Response, next: NextFunction) => {
+router.delete("/vacations/like/:id([0-9]+)", async (request: Request, response: Response, next: NextFunction) => {
     try {
         const header = request.headers.authorization;
         const token = header.substring(7);

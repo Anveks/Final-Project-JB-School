@@ -5,6 +5,9 @@ import { authStore } from "../../Redux/AuthState";
 import { NavLink, useNavigate } from "react-router-dom";
 import dataService from "../../Services/DataService";
 import notifyService from "../../Services/NotifyService";
+import NoLike from '@mui/icons-material/FavoriteBorder';
+import Like from '@mui/icons-material/Favorite';
+import { useState } from "react";
 
 function Card(props: any): JSX.Element {
 
@@ -39,6 +42,24 @@ function Card(props: any): JSX.Element {
         }
     }
 
+    const [likeActive, setLikeActive] = useState<boolean>(false);
+    const btnClasses = `likeBtn ${likeActive && 'like'}`;
+    setTimeout(() => {
+        setLikeActive(false);
+    }, 300);
+
+    async function handleLike() {
+        try {
+            props.vacation.isFollowing === 0
+                ? await dataService.addLike(props.vacation.vacationId)
+                : await dataService.removeLike(props.vacation.vacationId);
+            setLikeActive(true);
+        } catch (err: any) {
+            notifyService.error(err.message);
+            console.error(err.message);
+        }
+    }
+
     return (
         <div className="Card">
             <div className="admin-field" style={{ display: admin ? "" : "none" }}>
@@ -54,6 +75,7 @@ function Card(props: any): JSX.Element {
             <div className="head">
                 <div className="title">{props.vacation.destination}</div>
                 <p className="price">{props.vacation.price}$</p>
+                <div className={btnClasses} onClick={() => handleLike()} style={{ display: admin ? "none" : "", color: props.vacation.isFollowing === 1 ? "red" : "lightblue" }}><Like /> <div>{props.vacation.followersCount}</div></div>
             </div>
             <div className="body">
                 <div className="image">
@@ -64,7 +86,7 @@ function Card(props: any): JSX.Element {
                     {props.vacation.description}
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 

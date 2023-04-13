@@ -43,6 +43,16 @@ class DataService {
         await axios.delete(appConfig.vacationsUrl + id);
         vacationsStore.dispatch({type: VacationsAcrionType.DeleteVacation, payload: id});
     }
+
+    // LIKES
+    // TODO: merge into one function later
+    public async addLike(vacationId: number): Promise<void>{
+        await axios.post(appConfig.likeUrl + vacationId);
+    }
+
+    public async removeLike(vacationId: number): Promise<void>{
+        await axios.delete(appConfig.likeUrl + vacationId);
+    }
 }
 
 const dataService = new DataService();

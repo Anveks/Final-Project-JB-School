@@ -1,7 +1,7 @@
 import axios from "axios";
 import VacationModel from "../Models/VacationModel";
 import appConfig from "../Utils/AppConfig";
-import { VacationsActionType, vacationsStore } from "../Redux/VacationsState";
+import { VacationsAcrionType, vacationsStore } from "../Redux/VacationsState";
 
 class DataService {
     public async getAllVacations(): Promise<VacationModel[]> {
@@ -10,7 +10,7 @@ class DataService {
     if (vacations.length === 0){
        const result = await axios.get<VacationModel[]>(appConfig.vacationsUrl);
        vacations = result.data;
-       vacationsStore.dispatch({type: VacationsActionType.FetchVacations, payload: vacations});
+       vacationsStore.dispatch({type: VacationsAcrionType.FetchVacations, payload: vacations});
     }
        return vacations;
     }
@@ -29,19 +29,19 @@ class DataService {
         const headers = { "Content-Type": "multipart/form-data" }
         const result = await axios.put<VacationModel>(appConfig.vacationsUrl + vacation.vacationId, vacation, {headers});
         const editedVacation = result.data;
-        vacationsStore.dispatch({type: VacationsActionType.AddVacation, payload: editedVacation});
+        vacationsStore.dispatch({type: VacationsAcrionType.AddVacation, payload: editedVacation});
     }
 
     public async addVacation(vacation: VacationModel): Promise<void>{
         const headers = { "Content-Type": "multipart/form-data" };
         const result = await axios.post<VacationModel>(appConfig.vacationsUrl, vacation, {headers});
         const newVacation = result.data;
-        vacationsStore.dispatch({type: VacationsActionType.AddVacation, payload: newVacation});
+        vacationsStore.dispatch({type: VacationsAcrionType.AddVacation, payload: newVacation});
     }
 
     public async deleteVacation(id: number): Promise<void> {
         await axios.delete(appConfig.vacationsUrl + id);
-        vacationsStore.dispatch({type: VacationsActionType.DeleteVacation, payload: id});
+        vacationsStore.dispatch({type: VacationsAcrionType.DeleteVacation, payload: id});
     }
 
     // LIKES

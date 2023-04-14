@@ -6,13 +6,14 @@ import dataService from "../../../Services/DataService";
 import notifyService from "../../../Services/NotifyService";
 import Card from "../../../UI/Card/Card";
 import "./VacationsList.css";
+import { vacationsStore } from '../../../Redux/VacationsState';
 
 function VacationsList(): JSX.Element {
 
     const [vacations, setVacations] = useState<VacationModel[]>([]);
 
     // pagination:
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState<number>(1);
     const pageSize = 9;
 
     // transition:

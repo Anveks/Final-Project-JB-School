@@ -5,15 +5,16 @@ export class VacationState {
   public vacations: VacationModel[] = [];
 }
 
-export enum VacationsActionType {
+export enum VacationsAcrionType {
   FetchVacations,
   AddVacation,
   EditVacation,
   DeleteVacation,
+  UpdateVacations
 }
 
 export interface VacationAction {
-  type: VacationsActionType,
+  type: VacationsAcrionType,
   payload: any;
 }
 
@@ -21,27 +22,37 @@ export function vacationsReducer(currentState = new VacationState(), action: Vac
   const newState = { ...currentState };
 
   switch(action.type){
-    case VacationsActionType.FetchVacations:
+    case VacationsAcrionType.FetchVacations:
       newState.vacations = action.payload;
       break;
 
-    case VacationsActionType.AddVacation:
+    case VacationsAcrionType.AddVacation:
       newState.vacations.push(action.payload);
       break;
       
-    case VacationsActionType.EditVacation:
+    case VacationsAcrionType.EditVacation:
       const index = newState.vacations.findIndex(v => v.vacationId === action.payload.vacationId);
       if(index >= 0){
         newState.vacations[index] = action.payload;
       }
       break;
     
-    case VacationsActionType.DeleteVacation:
+    case VacationsAcrionType.DeleteVacation:
       const deleteIndex = newState.vacations.findIndex(v => v.vacationId === action.payload);
       if (deleteIndex >= 0) {
         newState.vacations.splice(deleteIndex, 1);
       }  
       break;
+
+    //  case VacationsAcrionType.UpdateVacations:
+    //   newState.vacations.map((item) => {   
+    //     if(item.vacationId === action.payload.vacationId){  
+    //       console.log(item);
+    //       return {...item, likes: action.payload.followersCount}
+    //     }
+    //     return item;
+    //   });
+    //   break;
   }
 
   return newState;

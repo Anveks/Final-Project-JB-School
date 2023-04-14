@@ -44,15 +44,15 @@ export function vacationsReducer(currentState = new VacationState(), action: Vac
       }  
       break;
 
-    //  case VacationsAcrionType.UpdateVacations:
-    //   newState.vacations.map((item) => {   
-    //     if(item.vacationId === action.payload.vacationId){  
-    //       console.log(item);
-    //       return {...item, likes: action.payload.followersCount}
-    //     }
-    //     return item;
-    //   });
-    //   break;
+     case VacationsAcrionType.UpdateVacations:
+      newState.vacations.map((item) => {   
+        if(item.vacationId === action.payload.vacationId){  
+          console.log(item);
+          return {...item, likes: action.payload.followersCount}
+        }
+        return item;
+      });
+      break;
   }
 
   return newState;

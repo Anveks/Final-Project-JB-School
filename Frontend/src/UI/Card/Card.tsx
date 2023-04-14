@@ -13,8 +13,8 @@ import LikeButton from "../LikeButton/LikeButton";
 function Card(props: any): JSX.Element {
 
     const navigate = useNavigate();
-    const [followersCount, setFollowersCount] = useState<number>(props.vacation.followersCount);
-    const [clicked, setClicked] = useState<boolean>(props.vacation.isFollowing === 1 ? true : false);
+    // const [followersCount, setFollowersCount] = useState<number>(props.vacation.followersCount);
+    // const [clicked, setClicked] = useState<boolean>(props.vacation.isFollowing === 1 ? true : false);
 
     // check if admin:
     const role = authStore.getState().user?.roleId;
@@ -61,11 +61,7 @@ function Card(props: any): JSX.Element {
                 <div className="title">{props.vacation.destination}</div>
                 <p className="price">{props.vacation.price}$</p>
                 <LikeButton
-                    vacations={props.vacation}
-                    clicked={clicked}
-                    setClicked={setClicked}
-                    followersCount={followersCount}
-                    setFollowersCount={setFollowersCount} />
+                    vacations={props.vacation} />
             </div>
             <div className="body">
                 <div className="image">

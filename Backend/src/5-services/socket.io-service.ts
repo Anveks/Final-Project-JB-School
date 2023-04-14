@@ -26,7 +26,8 @@ function init(httpServer: http.Server): void {
       const followersCount = countResult[0].followersCount;
 
       // emit updated followers count to all clients
-      socketServer.emit("updateFollowersCount", { vacationId: data.vacationId, followersCount });} catch(err: any){
+      socket.emit("updateFollowersCount", { vacationId: data.vacationId, followersCount });
+    } catch(err: any){
         console.log(err.message);
       }
     });
@@ -42,7 +43,8 @@ function init(httpServer: http.Server): void {
       const followersCount = countResult[0].followersCount;
 
       // emit updated followers count to all clients
-      socketServer.emit("updateFollowersCount", { vacationId: data.vacationId, followersCount });} catch(err: any) {
+      socket.emit("updateFollowersCount", { vacationId: data.vacationId, followersCount });
+    } catch(err: any) {
         console.log(err.message);
       }
     });

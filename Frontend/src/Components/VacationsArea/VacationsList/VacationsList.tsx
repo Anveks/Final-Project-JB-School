@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
-import VacationModel from "../../../Models/VacationModel";
-import "./VacationsList.css";
-import dataService from "../../../Services/DataService";
-import { authStore } from "../../../Redux/AuthState";
-import notifyService from "../../../Services/NotifyService";
-import Card from "../../../UI/Card/Card";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { useEffect, useState } from "react";
+import VacationModel from "../../../Models/VacationModel";
+import dataService from "../../../Services/DataService";
+import notifyService from "../../../Services/NotifyService";
+import Card from "../../../UI/Card/Card";
+import "./VacationsList.css";
 
 function VacationsList(): JSX.Element {
 
@@ -14,17 +13,11 @@ function VacationsList(): JSX.Element {
 
     // pagination:
     const [currentPage, setCurrentPage] = useState(1);
-    const pageSize = 3;
-    const startIndex = (currentPage - 1) * pageSize;
-    const endIndex = startIndex + pageSize;
-    const vacationsToDisplay = vacations.slice(startIndex, endIndex);
+    const pageSize = 9;
 
     // transition:
-    const [transition, setTransition] = useState("");
     function handlePageChange(pageNumber: number) {
-        setTransition("nextPage 1s ease-out forwards");
         setCurrentPage(pageNumber);
-        setTransition("");
     }
 
     useEffect(() => {
@@ -33,11 +26,12 @@ function VacationsList(): JSX.Element {
             .catch((err) => notifyService.error(err.message));
     }, []);
 
-    console.log(vacations);
-
+    const startIndex = (currentPage - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    const vacationsToDisplay = vacations.slice(startIndex, endIndex);
 
     return (
-        <div className="VacationsList" style={{ animation: transition }}>
+        <div className="VacationsList">
             {vacationsToDisplay.map((v) => (
                 <Card vacation={v} key={v.vacationId}></Card>
             ))}

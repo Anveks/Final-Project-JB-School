@@ -5,15 +5,15 @@ export class VacationState {
   public vacations: VacationModel[] = [];
 }
 
-export enum VacationsAcrionType {
+export enum VacationsActionType {
   FetchVacations,
   AddVacation,
   EditVacation,
-  DeleteVacation
+  DeleteVacation,
 }
 
 export interface VacationAction {
-  type: VacationsAcrionType,
+  type: VacationsActionType,
   payload: any;
 }
 
@@ -21,22 +21,22 @@ export function vacationsReducer(currentState = new VacationState(), action: Vac
   const newState = { ...currentState };
 
   switch(action.type){
-    case VacationsAcrionType.FetchVacations:
+    case VacationsActionType.FetchVacations:
       newState.vacations = action.payload;
       break;
 
-    case VacationsAcrionType.AddVacation:
+    case VacationsActionType.AddVacation:
       newState.vacations.push(action.payload);
       break;
       
-    case VacationsAcrionType.EditVacation:
+    case VacationsActionType.EditVacation:
       const index = newState.vacations.findIndex(v => v.vacationId === action.payload.vacationId);
       if(index >= 0){
         newState.vacations[index] = action.payload;
       }
       break;
     
-    case VacationsAcrionType.DeleteVacation:
+    case VacationsActionType.DeleteVacation:
       const deleteIndex = newState.vacations.findIndex(v => v.vacationId === action.payload);
       if (deleteIndex >= 0) {
         newState.vacations.splice(deleteIndex, 1);

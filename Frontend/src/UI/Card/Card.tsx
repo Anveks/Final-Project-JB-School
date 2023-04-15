@@ -13,8 +13,7 @@ import LikeButton from "../LikeButton/LikeButton";
 function Card(props: any): JSX.Element {
 
     const navigate = useNavigate();
-    // const [followersCount, setFollowersCount] = useState<number>(props.vacation.followersCount);
-    // const [clicked, setClicked] = useState<boolean>(props.vacation.isFollowing === 1 ? true : false);
+    const [visible, setVisible] = useState<boolean>(true);
 
     // check if admin:
     const role = authStore.getState().user?.roleId;
@@ -35,9 +34,8 @@ function Card(props: any): JSX.Element {
             await dataService.deleteVacation(props.vacation.vacationId);
             notifyService.success("Vacation has been deleted");
 
-            // TODO: check for a better solution
             setTimeout(() => {
-                window.location.reload();
+                setVisible(false)
             }, 1500);
         }
         catch (err: any) {
@@ -46,7 +44,7 @@ function Card(props: any): JSX.Element {
     }
 
     return (
-        <div className="Card">
+        <div className="Card" style={{ display: visible ? "" : "none" }}>
             <div className="admin-field" style={{ display: admin ? "" : "none" }}>
                 <div className="edit">
                     <ModeEditIcon fontSize="inherit" /> <NavLink

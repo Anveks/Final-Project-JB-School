@@ -13,22 +13,23 @@ function init(httpServer: http.Server): void {
     console.log("Client has been connected: " + socket.id);
     
     socket.on("addLike", async (data: any) => {
-      try {const checkSql = `SELECT EXISTS(SELECT 1 FROM followers WHERE userId = ? AND vacationId = ?) AS checkResult`;
-      const checkResult = await dal.execute(checkSql, [data.userId, data.vacationId]);
-      if (checkResult[0].checkResult === 1) throw new OtherNotFound("Same like cannot be added twice!")
+      try 
+        {const checkSql = `SELECT EXISTS(SELECT 1 FROM followers WHERE userId = ? AND vacationId = ?) AS checkResult`;
+        const checkResult = await dal.execute(checkSql, [data.userId, data.vacationId]);
+        if (checkResult[0].checkResult === 1) throw new OtherNotFound("Same like cannot be added twice!")
 
-      // adding new like:
-      const sql = `INSERT INTO followers VALUES(?, ?)`;
-      await dal.execute(sql, [data.userId, data.vacationId]);
+        // adding new like:
+        const sql = `INSERT INTO followers VALUES(?, ?)`;
+        await dal.execute(sql, [data.userId, data.vacationId]);
 
-      // get updated followers count
-      const followersCount = await dataService.getFollowersCount(data.vacationId);
+        // get updated followers count
+        const followersCount = await dataService.getFollowersCount(data.vacationId);
 
-      // emit updated followers count to all clients
-      socket.emit("updateFollowersCount", { vacationId: data.vacationId, followersCount });
-    } catch(err: any){
-        console.log(err.message);
-      }
+        // emit updated followers count to all clients
+        socket.emit("updateFollowersCount", { vacationId: data.vacationId, followersCount });
+      } catch(err: any){
+          console.log(err.message);
+        }
     });
 
     socket.on("removeLike", async (data: any) => {

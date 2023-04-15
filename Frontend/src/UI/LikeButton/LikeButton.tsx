@@ -51,7 +51,7 @@ function LikeButton(props: any): JSX.Element {
   // updating likes count:
   const [followersCount, setFollowersCount] = useState<number>(props.vacations.followersCount);
   useEffect(() => {
-    socket.on("updateFollowersCount", (data: { vacationId: number, followersCount: number }) => {
+    socket.on("updateFollowersCount", (data: any) => {
       if (data.vacationId === props.vacations.vacationId) {
         vacationsStore.dispatch({ type: VacationsAcrionType.UpdateVacations, payload: data })
         setFollowersCount(data.followersCount);

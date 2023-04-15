@@ -33,6 +33,8 @@ function init(httpServer: http.Server): void {
     });
 
     socket.on("removeLike", async (data: any) => {
+      console.log('removed!');
+      
       try {const sql = `DELETE FROM followers WHERE vacationId = ? AND userId = ?`;
       const result: OkPacket = await dal.execute(sql, [data.vacationId, data.userId]);
       if(result.affectedRows === 0) throw new OtherNotFound("This like does not exist.");
@@ -43,7 +45,7 @@ function init(httpServer: http.Server): void {
       const followersCount = countResult[0].followersCount;
 
       // emit updated followers count to all clients
-      socket.emit("updateFollowersCount", { vacationId: data.vacationId, followersCount });
+      socket.emit("updateFollowersCount", ({ vacationId: data.vacationId, followersCount }));
     } catch(err: any) {
         console.log(err.message);
       }

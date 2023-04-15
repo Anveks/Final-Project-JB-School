@@ -45,13 +45,22 @@ export function vacationsReducer(currentState = new VacationState(), action: Vac
       break;
 
      case VacationsAcrionType.UpdateVacations:
-      newState.vacations.map((item) => {   
+      const updatedVacations = newState.vacations.map((item) => {   
         if(item.vacationId === action.payload.vacationId){  
-          console.log(item);
-          return {...item, likes: action.payload.followersCount}
+          // const isFollowing = item.followersCount > action.payload.followersCount ? 0 : 1;
+          console.log('before:' + item.followersCount);
+          console.log('after: ' + action.payload.followersCount);
+
+          let isFollowing = 1;
+          if (item.followersCount > action.payload.followersCount) isFollowing = 0;
+
+          return {...item, isFollowing: isFollowing, followersCount: action.payload.followersCount}
         }
         return item;
       });
+      newState.vacations = updatedVacations;
+      console.log(newState.vacations);
+      
       break;
   }
 

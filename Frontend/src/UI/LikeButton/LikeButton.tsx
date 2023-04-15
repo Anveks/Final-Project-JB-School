@@ -22,19 +22,24 @@ function LikeButton(props: any): JSX.Element {
   }, 300);
 
   // socket.io likes handling:
-  const [clicked, setClicked] = useState<boolean>(props.vacations.isFollowing === 1 ? true : false);
+  const following = vacationsStore.getState().vacations.find((v) => v.vacationId === props.vacations.vacationId);
+  // console.log('redux: ' + following.isFollowing);
+  // console.log('props: ' + props.vacations.isFollowing);
+
+  const [isFollowing, setIsFollowing] = useState<boolean>(props.vacations.isFollowing === 1 ? true : false);
+
   async function handleLike() {
     setLikeActive(true);
     try {
       const userId = authStore.getState().user?.userId;
       const vacationId = props.vacations.vacationId;
 
-      if (!clicked) {
+      if (!isFollowing) {
         socket.emit("addLike", { userId, vacationId })
-        setClicked(true)
+        setIsFollowing(true)
       } else {
         socket.emit("removeLike", { userId, vacationId })
-        setClicked(false)
+        setIsFollowing(false);
       }
 
     } catch (err: any) {
@@ -48,19 +53,18 @@ function LikeButton(props: any): JSX.Element {
   useEffect(() => {
     socket.on("updateFollowersCount", (data: { vacationId: number, followersCount: number }) => {
       if (data.vacationId === props.vacations.vacationId) {
-        setFollowersCount(data.followersCount);
         vacationsStore.dispatch({ type: VacationsAcrionType.UpdateVacations, payload: data })
+        setFollowersCount(data.followersCount);
       }
     });
-  }, [props.clicked]);
+  }, [isFollowing]);
 
   return (
     <div className="LikeButton">
-      <div className={btnClasses} onClick={() => handleLike()} style={{ display: admin ? "none" : "", color: clicked ? "red" : "lightblue" }}><Like /> <div>{followersCount}</div></div>
+      <div className={btnClasses} onClick={() => handleLike()} style={{ display: admin ? "none" : "", color: isFollowing ? "red" : "lightblue" }}><Like /> <div>{followersCount}</div></div>
     </div >
   );
 }
 
 export default LikeButton;
 
-// TODO: clean the redux from all the unnecessary functions

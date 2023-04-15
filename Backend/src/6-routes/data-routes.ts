@@ -18,7 +18,8 @@ router.get("/vacations", verifyLoggedIn, async (request: Request, response: Resp
     try {
         const header = request.headers.authorization;
         const token = header.substring(7);
-        const userId = cyber.decodeToken(token);      
+        const userId = cyber.decodeToken(token); 
+        console.log(userId);       
         const vacations = await dataService.getVacations(+userId);
         response.json(vacations);
     }

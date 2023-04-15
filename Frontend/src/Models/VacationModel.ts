@@ -5,10 +5,11 @@ class VacationModel {
   public description: string;
   public startDate: string;
   public endDate: string;
+  public followersCount: number;
   public price: number;
   public imageUrl: string;
   public image: File;
-  public isFollowing: boolean;
+  public isFollowing: number;
   public likes: number;
 }
 

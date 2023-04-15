@@ -18,6 +18,7 @@ function VacationsList(): JSX.Element {
 
     // transition:
     function handlePageChange(pageNumber: number) {
+        setVacations(vacationsStore.getState().vacations)
         setCurrentPage(pageNumber);
     }
 
@@ -25,7 +26,7 @@ function VacationsList(): JSX.Element {
         dataService.getAllVacations()
             .then((res) => setVacations(res))
             .catch((err) => notifyService.error(err.message));
-    }, [vacationsStore.getState().vacations]);
+    }, []);
 
     const startIndex = (currentPage - 1) * pageSize;
     const endIndex = startIndex + pageSize;

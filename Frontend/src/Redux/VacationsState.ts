@@ -51,10 +51,15 @@ export function vacationsReducer(currentState = new VacationState(), action: Vac
           console.log('before:' + item.followersCount);
           console.log('after: ' + action.payload.followersCount);
 
-          let isFollowing = 1;
-          if (item.followersCount > action.payload.followersCount) isFollowing = 0;
-
-          return {...item, isFollowing: isFollowing, followersCount: action.payload.followersCount}
+          let isFollowing;
+          if (item.followersCount > action.payload.followersCount) {
+            isFollowing = 0;
+            return {...item, isFollowing: isFollowing, followersCount: action.payload.followersCount};
+          } else if (item.followersCount < action.payload.followersCount){
+            isFollowing = 1;
+            return {...item, isFollowing: isFollowing, followersCount: action.payload.followersCount};
+          }
+          return item;
         }
         return item;
       });

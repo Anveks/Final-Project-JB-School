@@ -123,6 +123,13 @@ async function removeLike(userId: number, vacationId: number): Promise<void>{
   if(result.affectedRows === 0) throw new OtherNotFound("This like does not exist.")
 }
 
+async function getFollowersCount(vacationId: number): Promise<number>{
+  const countSql = `SELECT COUNT(*) AS followersCount FROM followers WHERE vacationId = ?`;
+  const countResult = await dal.execute(countSql, [vacationId]);
+  const followersCount = countResult[0].followersCount;
+  return followersCount;
+}
+
 export default {
   getVacations,
   getOneVacation,
@@ -130,5 +137,6 @@ export default {
   updateVacation,
   deleteVacation,
   addLike,
-  removeLike
+  removeLike,
+  getFollowersCount
 };

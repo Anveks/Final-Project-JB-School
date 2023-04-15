@@ -3,6 +3,7 @@ import socketIo from "socket.io";
 import { OtherNotFound } from "../2-models/client-errors";
 import dal from "../4-utils/dal";
 import { OkPacket } from "mysql";
+import dataService from "./data-service";
 
 function init(httpServer: http.Server): void {
   const options = { cors: { origin: "*" } };
@@ -21,9 +22,7 @@ function init(httpServer: http.Server): void {
       await dal.execute(sql, [data.userId, data.vacationId]);
 
       // get updated followers count
-      const countSql = `SELECT COUNT(*) AS followersCount FROM followers WHERE vacationId = ?`;
-      const countResult = await dal.execute(countSql, [data.vacationId]);
-      const followersCount = countResult[0].followersCount;
+      const followersCount = await dataService.getFollowersCount(data.vacationId);
 
       // emit updated followers count to all clients
       socket.emit("updateFollowersCount", { vacationId: data.vacationId, followersCount });
@@ -40,9 +39,7 @@ function init(httpServer: http.Server): void {
       if(result.affectedRows === 0) throw new OtherNotFound("This like does not exist.");
 
       // get updated followers count
-      const countSql = `SELECT COUNT(*) AS followersCount FROM followers WHERE vacationId = ?`;
-      const countResult = await dal.execute(countSql, [data.vacationId]);
-      const followersCount = countResult[0].followersCount;
+      const followersCount = await dataService.getFollowersCount(data.vacationId);
 
       // emit updated followers count to all clients
       socket.emit("updateFollowersCount", ({ vacationId: data.vacationId, followersCount }));

@@ -25,6 +25,9 @@ router.get("/vacations", verifyLoggedIn, async (request: Request, response: Resp
     }
     catch(err: any) {
         next(err);
+
+
+        
     }
 });
 

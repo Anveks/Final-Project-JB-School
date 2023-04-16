@@ -34,9 +34,7 @@ function VacationsList(): JSX.Element {
 
     return (
         <div className="VacationsList">
-            {vacationsToDisplay.map((v) => (
-                <Card vacation={v} key={v.vacationId}></Card>
-            ))}
+            {vacationsToDisplay.map((v) => (<Card vacation={v} key={v.vacationId}></Card>))}
 
             <div className="pagination">
                 <button disabled={currentPage === 1} onClick={() => handlePageChange(currentPage - 1)}> <ArrowBackIosIcon /> </button>

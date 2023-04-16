@@ -22,10 +22,6 @@ function LikeButton(props: any): JSX.Element {
   }, 300);
 
   // socket.io likes handling:
-  const following = vacationsStore.getState().vacations.find((v) => v.vacationId === props.vacations.vacationId);
-  // console.log('redux: ' + following.isFollowing);
-  // console.log('props: ' + props.vacations.isFollowing);
-
   const [isFollowing, setIsFollowing] = useState<boolean>(props.vacations.isFollowing === 1 ? true : false);
 
   async function handleLike() {

@@ -75,5 +75,11 @@
   bottom: 100%;
   padding-top: 20px;
   /* padding: 20px; */
-  background-color: lightblue;
+  /* background-color: lightblue; */
+}
+
+.vacations-not-found{
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
 }

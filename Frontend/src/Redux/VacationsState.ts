@@ -44,13 +44,38 @@ export function vacationsReducer(currentState = new VacationState(), action: Vac
       }  
       break;
 
-    case VacationsActionType.UpdateFollowers:
-      const vacationIndex = newState.vacations.findIndex((v) => v.vacationId === action.payload.vacationId);
-      newState.vacations[vacationIndex].isFollowing = action.payload.isFollowing;
-      action.payload.isFollowing === 0 
-        ? newState.vacations[vacationIndex].followersCount-- 
-        : newState.vacations[vacationIndex].followersCount++
-      break;
+    //  case VacationsActionType.UpdateVacations:
+    //   const updatedVacations = newState.vacations.map((item) => {   
+    //     if(item.vacationId === action.payload.vacationId){  
+
+    //       let isFollowing;
+    //       if (item.followersCount > action.payload.followersCount) {
+    //         isFollowing = 0;
+    //         return {...item, isFollowing: isFollowing, followersCount: action.payload.followersCount};
+    //       } else if (item.followersCount < action.payload.followersCount){
+    //         isFollowing = 1;
+    //         return {...item, isFollowing: isFollowing, followersCount: action.payload.followersCount};
+    //       }
+    //       return item;
+    //     }
+    //     return item;
+    //   });
+    //   newState.vacations = updatedVacations;      
+    //   break;
+
+      case VacationsActionType.UpdateFollowers:
+        // const updatedVacations = newState.vacations.map((item) => { 
+        //   if(item.vacationId === action.payload.vacationId){
+        //     return {...item, isFollowing: action.payload.isFollowing, followersCount: action.payload.followersCount};
+        //   }
+        // });
+        // newState.vacations = updatedVacations;   
+        const vacationIndex = newState.vacations.findIndex((v) => v.vacationId === action.payload.vacationId);
+        newState.vacations[vacationIndex].isFollowing = action.payload.isFollowing;
+        action.payload.isFollowing === 0 
+          ? newState.vacations[vacationIndex].followersCount-- 
+          : newState.vacations[vacationIndex].followersCount++
+        break;
   }
 
   return newState;

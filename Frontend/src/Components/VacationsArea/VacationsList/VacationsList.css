@@ -4,6 +4,7 @@
   flex-wrap: wrap;
   justify-content: center;
   animation: VacationsList-appear 1s ease-out forwards;
+  margin-top: 8%;
 }
 
 .VacationsList button {
@@ -64,4 +65,15 @@
     opacity: 1;
     transform: translate(0, 0);
   }
+}
+
+.filters {
+  color:#006ce4;
+  padding: 10px;
+  display: inline;
+  position: fixed;
+  bottom: 100%;
+  padding-top: 20px;
+  /* padding: 20px; */
+  background-color: lightblue;
 }

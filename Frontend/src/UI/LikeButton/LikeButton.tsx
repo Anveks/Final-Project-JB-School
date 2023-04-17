@@ -10,17 +10,20 @@ import appConfig from '../../Utils/AppConfig';
 // connecting to the socket.io port:
 const socket = io(appConfig.socketUrl);
 
-// socket.on('updateFollowers', (data: any) => {
-//   vacationsStore.dispatch({
-//     type: VacationsActionType.UpdateFollowers, payload: {
-//       vacationId: data.vacationId,
-//       isFollowing: data.isFollowing
-//     }
-//   });
-
-// });
-
 function LikeButton(props: any): JSX.Element {
+
+  socket.on('updateFollowers', (data: any) => {
+    console.log(data);
+
+    // vacationsStore.dispatch({
+    //   type: VacationsActionType.UpdateFollowers,
+    //   payload: {
+    //     vacationId: data.vacationId,
+    //     isFollowing: data.isFollowing
+    //   }
+    // });
+
+  });
 
   // like animation:
   const [likeActive, setLikeActive] = useState<boolean>(false);
@@ -34,7 +37,7 @@ function LikeButton(props: any): JSX.Element {
   const admin = role === 1 ? true : false;
 
   const [isFollowing, setIsFollowing] = useState(props.vacations.isFollowing === 0 ? false : true);
-  const [followersCount, setFollowersCount] = useState(props.vacations.followersCount);
+  const [followersCount, setFollowersCount] = useState<number>(props.vacations.followersCount);
 
   useEffect(() => {
     const unsubscribe = vacationsStore.subscribe(() => {

@@ -4,6 +4,7 @@ import VacationModel from "../2-models/vacation-model";
 import appConfig from "../4-utils/app-config";
 import { OtherNotFound, ResourceNotFoundError, ValidationError } from "../2-models/client-errors";
 import imageHandler from "../4-utils/image-handler";
+import socketIoService from "./socket.io-service";
 
 // get all vacations:
 async function getVacations(userId: number): Promise<VacationModel[]> {
@@ -106,28 +107,22 @@ async function getImgName(vacationId: number): Promise<string> {
 }
 
 async function addLike(userId: number, vacationId: number): Promise<void>{
-  // checking if like already exists:
-  const checkSql = `SELECT EXISTS(SELECT 1 FROM followers WHERE userId = ? AND vacationId = ?) AS checkResult`;
-  const checkResult = await dal.execute(checkSql, [userId, vacationId]);
-  if (checkResult[0].checkResult === 1) throw new OtherNotFound("Same like cannot be added twice!")
-
   // adding new like:
-  const sql = `INSERT INTO followers VALUES(?, ?)`;
-  const result = await dal.execute(sql, [userId, vacationId]);
-  return result;
+  const sql = `INSERT INTO followers (userId, vacationId) SELECT ?, ? 
+  WHERE NOT EXISTS (SELECT 1 FROM followers WHERE userId = ? AND vacationId = ?)`;
+  await dal.execute(sql, [userId, vacationId, userId, vacationId]);
+  
+  const socketServer = socketIoService.getSocketServer();
+  socketServer.sockets.emit('updateFollowers', {vacationId: vacationId, isFollowing: 1});
 }
 
 async function removeLike(userId: number, vacationId: number): Promise<void>{
   const sql = `DELETE FROM followers WHERE vacationId = ? AND userId = ?`;
   const result: OkPacket = await dal.execute(sql, [vacationId, userId]);
   if(result.affectedRows === 0) throw new OtherNotFound("This like does not exist.")
-}
 
-async function getFollowersCount(vacationId: number): Promise<number>{
-  const countSql = `SELECT COUNT(*) AS followersCount FROM followers WHERE vacationId = ?`;
-  const countResult = await dal.execute(countSql, [vacationId]);
-  const followersCount = countResult[0].followersCount;
-  return followersCount;
+  const socketServer = socketIoService.getSocketServer();
+  socketServer.sockets.emit('updateFollowers', {vacationId: vacationId, isFollowing: 0});
 }
 
 export default {
@@ -137,6 +132,5 @@ export default {
   updateVacation,
   deleteVacation,
   addLike,
-  removeLike,
-  getFollowersCount
+  removeLike
 };

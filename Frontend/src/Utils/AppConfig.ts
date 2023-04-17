@@ -8,6 +8,9 @@ class AppConfig {
 
     // like URL's:
     public likeUrl = "http://localhost:4000/api/vacations/like/"
+
+    // socket Port:
+    public socketUrl = "http://localhost:4001"
 }
 
 const appConfig = new AppConfig();

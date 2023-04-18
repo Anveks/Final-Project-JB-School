@@ -8,6 +8,7 @@ import Card from "../../../UI/Card/Card";
 import "./VacationsList.css";
 import { vacationsStore } from '../../../Redux/VacationsState';
 import miniNotFound from '../../../assets/img/not-found-mini.gif'
+import { off } from 'process';
 
 function VacationsList(): JSX.Element {
 
@@ -37,109 +38,57 @@ function VacationsList(): JSX.Element {
     const endIndex = startIndex + pageSize;
     const vacationsToDisplay = vacations.slice(startIndex, endIndex);
 
-    const [filters, setFilters] = useState<any>({
-        favorites: false,
-        current: false,
-        future: false,
-    });
-
+    const [filters, setFilters] = useState<string[]>([]);
     let filtersArr: any = [];
+
     function handleFilterChange(e: any) {
         const checked = e.target.checked;
-        const filterName = e.target.name;
-        if (checked) {
-            filtersArr.push(filterName);
-            console.log(filtersArr);
-        } else {
-            filtersArr = filtersArr.filter((f: any) => f !== filterName);
-            console.log(filtersArr);
-        }
+        const filterName: string = e.target.name;
 
+        checked ? setFilters([...filters, filterName]) : setFilters(filters.filter((f: any) => f !== filterName))
+    };
+
+    function filter() {
         let resultArr: any = [];
+        let filteredVacations: VacationModel[] = [...vacations]; // make a copy of the original vacations array
 
-        filtersArr.forEach((filter: any) => {
-
-            let keyword = filter;
-            switch (keyword) {
-                case "favorites":
-                    const favoriteVacations = originalVacations.filter((v) => v.isFollowing === 1);
-                    // resultArr = [...resultArr, favoriteVacations];
+        for (const filter of filters) {
+            if (filter === "favorites") {
+                const favoriteVacations = filteredVacations.filter((v) => v.isFollowing === 1);
+                if (favoriteVacations.every((fv) => !resultArr.includes(fv))) {
                     resultArr.push(...favoriteVacations);
-                    console.log(resultArr);
-                    // setOriginalVacations(favoriteVacations.slice(startIndex, endIndex));
-                    break;
-                case "current":
-                    const currentVacations = originalVacations.filter((v) => {
-                        const startDate = new Date(v.startDate).getTime();
-                        if (startDate < Date.now()) return v;
-                    });
-                    // resultArr = [...resultArr, currentVacations];
-                    resultArr.push(...currentVacations);
-                    console.log(resultArr);
-                    // setOriginalVacations(currentVacations.slice(startIndex, endIndex));
-                    break;
-                case "future":
-                    const futureVacations = originalVacations.filter((v) => {
-                        const startDate = new Date(v.startDate).getTime();
-                        if (startDate > Date.now()) return v;
-                    });
-                    // resultArr = [...resultArr, futureVacations];
-                    resultArr.push(...futureVacations)
-                    console.log(resultArr);
-                    // setOriginalVacations(futureVacations.slice(startIndex, endIndex));
-                    break;
+                }
+                filteredVacations = favoriteVacations; // apply the filter on the filteredVacations array
             }
-            setVacations(resultArr);
-        });
 
-        // if (!e.target.checked) {
-        //     setVacations(originalVacations.slice(startIndex, endIndex)); // set the vacations back to original data
-        //     return;
-        // } else {
-        //     let keyword = e.target.value;
-        //     switch (keyword) {
-        //         case "favorites":
-        //             const favoriteVacations = originalVacations.filter((v) => v.isFollowing === 1);
-        //             setVacations(favoriteVacations.slice(startIndex, endIndex));
-        //             break;
-        //         case "current":
-        //             const currentVacations = originalVacations.filter((v) => {
-        //                 const startDate = new Date(v.startDate).getTime();
-        //                 if (startDate < Date.now()) return v;
-        //             });
-        //             setVacations(currentVacations.slice(startIndex, endIndex));
-        //             break;
-        //         case "future":
-        //             const futureVacations = originalVacations.filter((v) => {
-        //                 const startDate = new Date(v.startDate).getTime();
-        //                 if (startDate > Date.now()) return v;
-        //             });
-        //             setVacations(futureVacations.slice(startIndex, endIndex));
-        //             break;
-        //         default:
-        //             setVacations(originalVacations.slice(startIndex, endIndex));
-        //             break;
-        //     }
-        // }
+            if (filter === "current") {
+                const currentVacations = filteredVacations.filter((v) => {
+                    const startDate = new Date(v.startDate).getTime();
+                    if (startDate < Date.now()) return v;
+                });
+                if (currentVacations.every((cv) => !resultArr.includes(cv))) {
+                    resultArr.push(...currentVacations);
+                }
+                filteredVacations = currentVacations; // apply the filter on the filteredVacations array
+            }
+
+            if (filter === "future") {
+                const futureVacations = filteredVacations.filter((v) => {
+                    const startDate = new Date(v.startDate).getTime();
+                    if (startDate > Date.now()) return v;
+                });
+                if (futureVacations.every((fv) => !resultArr.includes(fv))) {
+                    resultArr.push(...futureVacations);
+                }
+                filteredVacations = futureVacations; // apply the filter on the filteredVacations array
+            }
+        };
+        setVacations(filteredVacations);
     }
 
-    // const filterVacations = () => {
-    //     return vacations
-    //         .filter((v) => !filters.favorites || v.isFollowing === 1)
-    //         .filter((v) => !filters.future || new Date(v.startDate) > new Date())
-    //         .filter((v) => {
-    //             if (!filters.current) return true;
-    //             const now = new Date();
-    //             const startDate = new Date(v.startDate);
-    //             const endDate = new Date(v.endDate);
-    //             return startDate <= now && endDate > now;
-    //         });
-    // };
-
-    // useEffect(() => {
-    //     const filteredVacations = filterVacations();
-    //     setVacations(filteredVacations);
-    // }, [filters])
+    useEffect(() => {
+        filter()
+    }, [filters]);
 
     return (
         <div className="VacationsList">
@@ -171,4 +120,38 @@ function VacationsList(): JSX.Element {
 }
 
 export default VacationsList;
+
+            // let keyword = filter;
+            // switch (keyword) {
+            //     case "favorites":
+            //         const favoriteVacations = originalVacations.filter((v) => v.isFollowing === 1);
+            //         // resultArr = [...resultArr, favoriteVacations];
+            //         resultArr.push(...favoriteVacations);
+            //         console.log(resultArr);
+            //         // setVacations(resultArr);
+            //         // setOriginalVacations(favoriteVacations.slice(startIndex, endIndex));
+            //         break;
+            //     case "current":
+            //         const currentVacations = originalVacations.filter((v) => {
+            //             const startDate = new Date(v.startDate).getTime();
+            //             if (startDate < Date.now()) return v;
+            //         });
+            //         // resultArr = [...resultArr, currentVacations];
+            //         resultArr.push(...currentVacations);
+            //         console.log(resultArr);
+            //         // setVacations(resultArr);
+            //         // setOriginalVacations(currentVacations.slice(startIndex, endIndex));
+            //         break;
+            //     case "future":
+            //         const futureVacations = originalVacations.filter((v) => {
+            //             const startDate = new Date(v.startDate).getTime();
+            //             if (startDate > Date.now()) return v;
+            //         });
+            //         // resultArr = [...resultArr, futureVacations];
+            //         resultArr.push(...futureVacations)
+            //         console.log(resultArr);
+            //         // setVacations(resultArr);
+            //         // setOriginalVacations(futureVacations.slice(startIndex, endIndex));
+            //         break;
+            // }
 

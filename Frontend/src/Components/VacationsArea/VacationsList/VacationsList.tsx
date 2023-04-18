@@ -49,14 +49,13 @@ function VacationsList(): JSX.Element {
     };
 
     function filter() {
-        let resultArr: any = [];
         let filteredVacations: VacationModel[] = [...vacations]; // make a copy of the original vacations array
 
         for (const filter of filters) {
             if (filter === "favorites") {
                 const favoriteVacations = filteredVacations.filter((v) => v.isFollowing === 1);
-                if (favoriteVacations.every((fv) => !resultArr.includes(fv))) {
-                    resultArr.push(...favoriteVacations);
+                if (favoriteVacations.every((fv) => !filteredVacations.includes(fv))) {
+                    filteredVacations.push(...favoriteVacations);
                 }
                 filteredVacations = favoriteVacations; // apply the filter on the filteredVacations array
             }
@@ -66,8 +65,8 @@ function VacationsList(): JSX.Element {
                     const startDate = new Date(v.startDate).getTime();
                     if (startDate < Date.now()) return v;
                 });
-                if (currentVacations.every((cv) => !resultArr.includes(cv))) {
-                    resultArr.push(...currentVacations);
+                if (currentVacations.every((cv) => !filteredVacations.includes(cv))) {
+                    filteredVacations.push(...currentVacations);
                 }
                 filteredVacations = currentVacations; // apply the filter on the filteredVacations array
             }
@@ -77,8 +76,8 @@ function VacationsList(): JSX.Element {
                     const startDate = new Date(v.startDate).getTime();
                     if (startDate > Date.now()) return v;
                 });
-                if (futureVacations.every((fv) => !resultArr.includes(fv))) {
-                    resultArr.push(...futureVacations);
+                if (futureVacations.every((fv) => !filteredVacations.includes(fv))) {
+                    filteredVacations.push(...futureVacations);
                 }
                 filteredVacations = futureVacations; // apply the filter on the filteredVacations array
             }

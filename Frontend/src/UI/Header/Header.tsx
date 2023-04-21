@@ -19,14 +19,15 @@ function Header(): JSX.Element {
             const fileData = await dataService.getCSVFileData();
             const blob = new Blob([fileData], { type: 'text/csv' });
 
-            // Create a link to download the CSV file
+            // Create a link to download the CSV file:
             const link = document.createElement('a');
             link.href = window.URL.createObjectURL(blob);
             link.download = 'filename.csv';
 
+            // trigger click:
             link.click();
         } catch (err: any) {
-            console.log(err.message);
+            notifyService.error(err.message);
         }
     }
 

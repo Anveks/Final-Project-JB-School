@@ -1,0 +1,10 @@
+2023-04-21T09:37:39.175Z - Invalid token.
+
+2023-04-21T09:38:17.876Z - ER_BAD_FIELD_ERROR: Unknown column 'NaN' in 'where clause'
+
+2023-04-21T09:40:42.015Z - ER_BAD_FIELD_ERROR: Unknown column 'NaN' in 'where clause'
+
+2023-04-21T09:40:50.767Z - ER_BAD_FIELD_ERROR: Unknown column 'NaN' in 'where clause'
+
+2023-04-21T10:56:41.913Z - ER_BAD_FIELD_ERROR: Unknown column 'NaN' in 'where clause'
+

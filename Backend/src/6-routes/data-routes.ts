@@ -1,12 +1,14 @@
-import express, { Request, Response, NextFunction } from "express";
-import dataService from "../5-services/data-service";
-import jwt from "jsonwebtoken";
-import cyber from "../4-utils/cyber";
+import { stringify } from "csv-stringify";
+import express, { NextFunction, Request, Response } from "express";
 import UserModel from "../2-models/user-model";
 import VacationModel from "../2-models/vacation-model";
-import verifyLoggedIn from "../3-middleware/verify-logged-in";
 import verifyAdmin from "../3-middleware/verify-admin";
+import verifyLoggedIn from "../3-middleware/verify-logged-in";
+import cyber from "../4-utils/cyber";
 import imageHandler from "../4-utils/image-handler";
+import dataService from "../5-services/data-service";
+import fs from 'fs'
+import stringifyData from '../4-utils/cvs-file-writer'
 
 const router = express.Router();
 
@@ -112,6 +114,27 @@ router.delete("/vacations/like/:id([0-9]+)", async (request: Request, response: 
         const vacationId = +request.params.id;
         await dataService.removeLike(userId, vacationId);
         response.send("Like has been removed");    
+    }
+    catch(err: any) {
+        next(err);
+    }
+});
+
+// get Followers Data route [TEST]
+router.get("/vacations/files/csv-file", async (request: Request, response: Response, next: NextFunction) => {
+    try {
+        // const csvFile = await createCvs();
+        // response.setHeader('Content-Type', 'text/csv').send(csvFile)
+        // TODO: delete stringify package
+
+        const fileData = await dataService.getFollowersData();
+        const csv = stringifyData(fileData);
+        const filename = 'data.csv';
+        const filepath = `${__dirname}/${filename}`;
+        fs.writeFileSync(filepath, csv, 'utf-8');
+        response.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+        response.setHeader('Content-Type', 'text/csv');
+        response.sendFile(filepath);
     }
     catch(err: any) {
         next(err);

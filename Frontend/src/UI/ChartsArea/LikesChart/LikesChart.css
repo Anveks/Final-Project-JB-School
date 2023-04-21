@@ -1,0 +1,13 @@
+.PopulationChart {
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  height: 400px;
+  width: 90%;
+  height: 550px;
+  margin: 0 auto;
+  margin-top: 20px;
+  color: black;
+}

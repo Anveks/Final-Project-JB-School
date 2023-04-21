@@ -9,6 +9,9 @@ class AppConfig {
     // like URL's:
     public likeUrl = "http://localhost:4000/api/vacations/like/"
 
+    // CSV File URL:
+    public CSVFileUrl = "http://localhost:4000/api/vacations/files/csv-file";
+
     // socket Port:
     public socketUrl = "http://localhost:4001"
 }

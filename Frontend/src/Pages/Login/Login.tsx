@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import CredentialsModel from "../../Models/CredentialsModel";
+import { authStore } from "../../Redux/AuthState";
 import authService from "../../Services/AuthService";
 import notifyService from "../../Services/NotifyService";
 import "./Login.css";
-import { authStore } from "../../Redux/AuthState";
 
 function Login(): JSX.Element {
 

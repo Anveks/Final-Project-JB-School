@@ -1,10 +1,11 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import AddVacation from "./Components/VacationsArea/AddVacation/AddVacation";
+import EditVacation from "./Components/VacationsArea/EditVacation/EditVacation";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 import { authStore } from "./Redux/AuthState";
-import EditVacation from "./Components/VacationsArea/EditVacation/EditVacation";
-import AddVacation from "./Components/VacationsArea/AddVacation/AddVacation";
+import LikesChart from "./UI/ChartsArea/LikesChart/LikesChart";
 
 function App(): JSX.Element {
 
@@ -31,7 +32,6 @@ function App(): JSX.Element {
     <div className="App">
       <BrowserRouter>
         <Routes>
-
           {/* Default Route: */}
           <Route path="/">
             <Route index element={<ProtectedRoute>
@@ -52,6 +52,12 @@ function App(): JSX.Element {
           <Route path="edit">
             <Route index element={<AdminRoute>
               <EditVacation />
+            </AdminRoute>}></Route>
+          </Route>
+
+          <Route path="chart">
+            <Route index element={<AdminRoute>
+              <LikesChart />
             </AdminRoute>}></Route>
           </Route>
 

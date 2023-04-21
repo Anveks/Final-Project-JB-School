@@ -125,6 +125,23 @@ async function removeLike(userId: number, vacationId: number): Promise<void>{
   socketServer.sockets.emit('updateFollowers', {vacationId: vacationId, isFollowing: 0});
 }
 
+async function getFollowersData(): Promise<{ destination: string, followers: number }[]>{
+  const sql = `
+    SELECT vacations.destination, 
+    COUNT(followers.userId) AS followers FROM vacations
+    LEFT JOIN followers ON vacations.vacationId = followers.vacationId
+    GROUP BY vacations.destination
+  `;
+  const result = await dal.execute(sql);
+  const resultArr = result.map((item: any) => {
+    return {
+      destination: item.destination,
+      followers: item.followers
+    }
+  })
+  return resultArr;
+}
+
 export default {
   getVacations,
   getOneVacation,
@@ -132,5 +149,6 @@ export default {
   updateVacation,
   deleteVacation,
   addLike,
-  removeLike
+  removeLike,
+  getFollowersData
 };

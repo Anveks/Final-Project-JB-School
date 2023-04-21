@@ -53,6 +53,11 @@ class DataService {
     public async removeLike(vacationId: number): Promise<void>{
         await axios.delete(appConfig.likeUrl + vacationId);
     }
+
+    public async getCSVFileData(): Promise<any>{
+        const response = await axios.get(appConfig.CSVFileUrl);
+        return response.data;
+    }
 }
 
 const dataService = new DataService();

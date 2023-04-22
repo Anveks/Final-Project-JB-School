@@ -116,9 +116,9 @@ router.get("/vacations/files/csv-file", async (request: Request, response: Respo
     try {
         // TODO: delete stringify package
         const CSVFile = await createCvs();
-        response.setHeader('Content-Disposition', `attachment; filename="${CSVFile}"`);
-        response.setHeader('Content-Type', 'text/csv');
-        response.sendFile(CSVFile);
+        // response.setHeader('Content-Disposition', `attachment; filename="${CSVFile}"`);
+        // response.setHeader('Content-Type', 'text/csv');
+        response.send(CSVFile);
     }
     catch(err: any) {
         next(err);

@@ -22,7 +22,7 @@ function Header(): JSX.Element {
             // Create a link to download the CSV file:
             const link = document.createElement('a');
             link.href = window.URL.createObjectURL(blob);
-            link.download = 'filename.csv';
+            link.download = 'vacations-data.csv';
 
             // trigger click:
             link.click();

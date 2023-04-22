@@ -1,0 +1,10 @@
+2023-04-22T09:00:33.811Z - Invalid token.
+
+2023-04-22T09:19:44.062Z - ENOENT: no such file or directory, open 'data.csv\C:\Users\sylva\OneDrive\Documents\GitHub\Final-Project-JB-School\Backend\src\1-assets\csv-data\'
+
+2023-04-22T09:20:19.533Z - ENOENT: no such file or directory, open 'data.csv\C:\Users\sylva\OneDrive\Documents\GitHub\Final-Project-JB-School\Backend\src\1-assets\csv-data\'
+
+2023-04-22T09:22:44.944Z - ENOENT: no such file or directory, open 'data.csv\C:\Users\sylva\OneDrive\Documents\GitHub\Final-Project-JB-School\Backend\src\1-assets\csv-data\'
+
+2023-04-22T09:30:05.692Z - ENOENT: no such file or directory, open 'C:\Users\sylva\OneDrive\Documents\GitHub\Final-Project-JB-School\Backend\src\4-utils + "../1-assets/csv-data"/data.csv'
+

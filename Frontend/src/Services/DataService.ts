@@ -54,6 +54,7 @@ class DataService {
         await axios.delete(appConfig.likeUrl + vacationId);
     }
 
+    // SCV file data:
     public async getCSVFileData(): Promise<any>{
         const response = await axios.get(appConfig.CSVFileUrl);
         return response.data;

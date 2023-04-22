@@ -1,4 +1,4 @@
-import fs, { existsSync, mkdirSync } from "fs";
+import fs from "fs";
 import path from "path";
 
 // Log error:

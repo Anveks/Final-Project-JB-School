@@ -8,3 +8,41 @@
 
 2023-04-22T09:30:05.692Z - ENOENT: no such file or directory, open 'C:\Users\sylva\OneDrive\Documents\GitHub\Final-Project-JB-School\Backend\src\4-utils + "../1-assets/csv-data"/data.csv'
 
+2023-04-22T10:19:34.714Z - Route /data.csv not found
+
+2023-04-22T10:19:34.826Z - Route /favicon.ico not found
+
+2023-04-22T10:21:33.697Z - Route /folder/data.csv not found
+
+2023-04-22T10:21:35.899Z - Route /folder/data.csv not found
+
+2023-04-22T10:22:08.630Z - Route /api/folder/data.csv not found
+
+2023-04-22T10:24:29.019Z - Route /data.csv not found
+
+2023-04-22T10:26:34.326Z - Route /data.csv not found
+
+2023-04-22T10:26:36.338Z - Route /data.csv not found
+
+2023-04-22T10:26:38.370Z - Route /data.csv not found
+
+2023-04-22T10:26:49.601Z - Route /data.csv not found
+
+2023-04-22T10:26:52.391Z - Route /data.csv not found
+
+2023-04-22T10:28:25.695Z - Route /data.csv not found
+
+2023-04-22T10:28:27.786Z - Route /data.csv not found
+
+2023-04-22T10:28:34.456Z - Route /api/data.csv not found
+
+2023-04-22T10:29:00.592Z - Route /api/data.csv not found
+
+2023-04-22T10:29:21.695Z - Route /api/data.csv not found
+
+2023-04-22T10:30:14.143Z - Route /api/data.csv not found
+
+2023-04-22T10:31:13.840Z - Route /api/data.csv not found
+
+2023-04-22T10:31:16.682Z - Route /api/data.csv not found
+

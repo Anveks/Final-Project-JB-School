@@ -19,15 +19,7 @@ function ChartBar(props: any): JSX.Element {
                     <div className="value">{props.value}</div>
                 </div>
                 <div className="label">{props.label}</div>
-                {/* <div className="chartBar_inner">{props.value}
-                </div>
-                <div className="chartBar_fill" style={{
-                    height: barFillHeight,
-                    backgroundColor: "#ffb700"
-                }}></div>
-            </div>
 
-            <div className="chartBar_label">{props.label} */}
             </div>
         </>
     );

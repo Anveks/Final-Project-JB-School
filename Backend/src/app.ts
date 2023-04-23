@@ -8,6 +8,7 @@ import catchAll from "./3-middleware/catch-all";
 import appConfig from "./4-utils/app-config";
 import helmet from "helmet";
 import socketIoService from "./5-services/socket.io-service";
+import path from "path";
 
 const server = express();
 
@@ -33,6 +34,10 @@ server.use((req, res, next) => {
   res.set('Referrer-Policy', 'same-origin');
   next();
 });
+
+// TODO: check express.static() and how does it work
+// const folder = path.join(__dirname, '..', '1-assets', 'csv-data');
+// server.use(express.static(folder))
 
 server.use(cors());
 server.use(express.json());

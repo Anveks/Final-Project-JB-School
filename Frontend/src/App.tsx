@@ -20,8 +20,8 @@ function App(): JSX.Element {
     return children;
   }
 
-  const AdminRoute = ({ children }: Props) => {
-    const isAdmin = authStore.getState().user.roleId === 1 ? true : false;
+  const ProtectedAdminRoute = ({ children }: Props) => {
+    const isAdmin = authStore.getState().user?.roleId === 1 ? true : false;
     if (!isAdmin) {
       return <Navigate to="/" />
     }
@@ -44,21 +44,21 @@ function App(): JSX.Element {
 
           {/* Admin Routes: */}
           <Route path="add">
-            <Route index element={<AdminRoute>
+            <Route index element={<ProtectedAdminRoute>
               <AddVacation />
-            </AdminRoute>}></Route>
+            </ProtectedAdminRoute>}></Route>
           </Route>
 
           <Route path="edit">
-            <Route index element={<AdminRoute>
+            <Route index element={<ProtectedAdminRoute>
               <EditVacation />
-            </AdminRoute>}></Route>
+            </ProtectedAdminRoute>}></Route>
           </Route>
 
           <Route path="chart">
-            <Route index element={<AdminRoute>
+            <Route index element={<ProtectedAdminRoute>
               <LikesChart />
-            </AdminRoute>}></Route>
+            </ProtectedAdminRoute>}></Route>
           </Route>
 
         </Routes>

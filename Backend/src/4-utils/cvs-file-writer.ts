@@ -17,3 +17,5 @@ function stringifyData(data: any[]): string {
   const rows = data.map((item) => Object.values(item).join(','));  
   return headers + '\n' + rows.join('\n');
 }
+
+// TODO: cleanup

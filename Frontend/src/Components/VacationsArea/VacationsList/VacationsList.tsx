@@ -10,6 +10,7 @@ import { vacationsStore } from '../../../Redux/VacationsState';
 import miniNotFound from '../../../assets/img/not-found-mini.gif'
 import { off } from 'process';
 import MiniNotFound from '../../MiniNotFound/MiniNotFound';
+import { authStore } from '../../../Redux/AuthState';
 
 function VacationsList(): JSX.Element {
 
@@ -78,10 +79,12 @@ function VacationsList(): JSX.Element {
         filter();
     }, [filters]);
 
+    const user = authStore.getState().user.roleId === 2 ? true : false;
+
     return (
         <div className="VacationsList">
             {vacationsToDisplay.map((v) => (<Card vacation={v} key={v.vacationId}></Card>))}
-            <div className="filters" >
+            {user && <div className="filters" >
                 <input type="checkbox" name="favorites" value="favorites" onChange={(e) => handleFilterChange(e)} />
                 <label htmlFor="favorites">My Favorites</label>
 
@@ -90,7 +93,7 @@ function VacationsList(): JSX.Element {
 
                 <input type="checkbox" name="future" value="future" onChange={(e) => handleFilterChange(e)} />
                 <label htmlFor="future">Future Vacations</label>
-            </div >
+            </div >}
             <div>{noVacationsMessage}</div>
             <div className="pagination">
                 <button disabled={currentPage === 1} onClick={() => handlePageChange(currentPage - 1)}> <ArrowBackIosIcon /> </button>

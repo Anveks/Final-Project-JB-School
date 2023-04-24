@@ -20,6 +20,7 @@ export enum AuthActionType {
     Register = "Register",
     Login = "Login",
     Logout = "Logout",
+    UpdateToken = "UpdateToken",
 }
 
 export interface AuthAction {
@@ -45,6 +46,10 @@ export function authReducer(currentState = new AuthState(), action: AuthAction):
             newState.token = null;
             newState.user = null;
             localStorage.removeItem("token");
+            break;
+
+        case AuthActionType.UpdateToken:
+            newState.token = action.payload;
             break;
 
     }

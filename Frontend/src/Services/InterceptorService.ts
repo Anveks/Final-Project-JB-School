@@ -1,16 +1,26 @@
 import axios from "axios";
-import { authStore } from "../Redux/AuthState";
+import { AuthActionType, authStore } from "../Redux/AuthState";
 import authService from "./AuthService";
 
 class InterceptorsService {
 
     public createInterceptors(): void {
 
-        axios.interceptors.request.use(request => {
+        // adding existing token to requests:
+        axios.interceptors.request.use((request) => {
             if (authService.isLoggedIn()) {
                 request.headers.Authorization = "Bearer " + authStore.getState().token;
             }
             return request;
+        });
+
+        // updating token after expiration:
+        axios.interceptors.response.use((response) => {
+            if (response.headers['Authorization']) {
+                const freshToken = response.headers['Authorization'].substring(7);
+                authStore.dispatch({ type: AuthActionType.UpdateToken, payload: freshToken });
+            }
+            return response;
         });
     }
 }

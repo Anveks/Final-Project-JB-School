@@ -35,6 +35,7 @@ export function authReducer(currentState = new AuthState(), action: AuthAction):
     switch (action.type) {
 
         case AuthActionType.Register:
+        case AuthActionType.UpdateToken: // updating the token here
         case AuthActionType.Login:
             newState.token = action.payload;
             const jwtPayload = jwtDecode(newState.token);
@@ -48,9 +49,11 @@ export function authReducer(currentState = new AuthState(), action: AuthAction):
             localStorage.removeItem("token");
             break;
 
-        case AuthActionType.UpdateToken:
-            newState.token = action.payload;
-            break;
+        // case AuthActionType.UpdateToken:
+        //     localStorage.removeItem("token");
+        //     newState.token = action.payload;
+        //     localStorage.setItem("token", newState.token);
+        //     break;
 
     }
 

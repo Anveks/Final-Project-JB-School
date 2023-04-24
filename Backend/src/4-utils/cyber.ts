@@ -38,8 +38,20 @@ function verifyToken(request: Request, adminCheck?: boolean): boolean {
   if(!token) throw new UnauthorizedError("Something went wrong...");
 
   jwt.verify(token, secretKey, (err, container: {user: UserModel}) => {
-   if(err) throw new UnauthorizedError("Invalid token."); // checking the token
-   if (adminCheck && container.user.roleId !== RoleModel.Admin) throw new UnauthorizedError("Access denied."); // checking if admin
+    if(err) {
+      // checking if the token has expired
+      if (err.name === "TokenExpiredError") {
+        const user = container.user;
+        const newToken = createToken(user);
+        // @ts-ignore
+        request.header("Authorization", `Bearer ${newToken}`);
+      } else {
+        throw new UnauthorizedError("Invalid token.");
+      }
+    } else {
+      // checking if admin
+      if (adminCheck && container.user.roleId !== RoleModel.Admin) throw new UnauthorizedError("Access denied.");
+    }
   });
 
   return true;

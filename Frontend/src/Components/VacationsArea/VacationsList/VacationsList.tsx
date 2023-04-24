@@ -14,6 +14,12 @@ import { authStore } from '../../../Redux/AuthState';
 
 function VacationsList(): JSX.Element {
 
+    const [currentUser, setUser] = useState<number>(authStore.getState().user?.userId);
+    useEffect(() => {
+        setUser(authStore.getState().user?.userId);
+    })
+    console.log(currentUser);
+
     const [vacations, setVacations] = useState<VacationModel[]>([]);
 
     // pagination:
@@ -28,10 +34,10 @@ function VacationsList(): JSX.Element {
     useEffect(() => {
         dataService.getAllVacations()
             .then((res) => {
-                setVacations(res);
+                setVacations(vacationsStore.getState().vacations);
             })
             .catch((err) => notifyService.error(err.message));
-    }, []);
+    }, [currentUser]);
 
     const startIndex = (currentPage - 1) * pageSize;
     const endIndex = startIndex + pageSize;
@@ -79,7 +85,7 @@ function VacationsList(): JSX.Element {
         filter();
     }, [filters]);
 
-    const user = authStore.getState().user.roleId === 2 ? true : false;
+    const user = authStore.getState().user?.roleId === 2 ? true : false;
 
     return (
         <div className="VacationsList">

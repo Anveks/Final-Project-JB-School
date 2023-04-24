@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import crypto from "crypto";
 import { UnauthorizedError } from "../2-models/client-errors";
 import RoleModel from "../2-models/role-model";
-import { Request, request } from "express";
+import { Request, Response, request } from "express";
 import { log } from "console";
 
 interface JwtPayload {
@@ -32,26 +32,21 @@ function hashPassword(password: string): string {
   return hashedPassword;
 }
 
-function verifyToken(request: Request, adminCheck?: boolean): boolean {
-
+function verifyToken(request: Request, response: Response, adminCheck?: boolean): boolean {
+  
   const token = request.header("authorization")?.substring(7);
   if(!token) throw new UnauthorizedError("Something went wrong...");
 
   jwt.verify(token, secretKey, (err, container: {user: UserModel}) => {
-    if(err) {
-      // checking if the token has expired
-      if (err.name === "TokenExpiredError") {
-        const user = container.user;
-        const newToken = createToken(user);
-        // @ts-ignore
-        request.header("Authorization", `Bearer ${newToken}`);
-      } else {
-        throw new UnauthorizedError("Invalid token.");
-      }
+    if(err.name === "TokenExpiredError") {
+      const user = container.user;  
+      const freshToken = createToken(user);
+      response.setHeader("Authorization", `Bearer ${freshToken}`);
     } else {
-      // checking if admin
-      if (adminCheck && container.user.roleId !== RoleModel.Admin) throw new UnauthorizedError("Access denied.");
+      throw new UnauthorizedError("Invalid token."); // checking the token
     }
+
+   if (adminCheck && container.user.roleId !== RoleModel.Admin) throw new UnauthorizedError("Access denied."); // checking if admin
   });
 
   return true;

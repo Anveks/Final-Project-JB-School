@@ -3,7 +3,7 @@ import cyber from "../4-utils/cyber";
 
 function verifyLoggedIn(request: Request, response: Response, next: NextFunction) {
   try{
-    cyber.verifyToken(request);
+    cyber.verifyToken(request, response);
     next();
   } catch(err:any){
     next(err);

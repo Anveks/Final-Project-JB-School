@@ -62,3 +62,51 @@
 
 2023-04-24T09:14:21.019Z - jwt expired
 
+2023-04-24T09:27:54.093Z - Cannot read properties of undefined (reading 'user')
+
+2023-04-24T09:28:01.478Z - Cannot read properties of undefined (reading 'user')
+
+2023-04-24T09:29:09.774Z - Cannot read properties of undefined (reading 'user')
+
+2023-04-24T09:29:12.852Z - Cannot read properties of undefined (reading 'user')
+
+2023-04-24T09:29:17.701Z - Cannot read properties of undefined (reading 'user')
+
+2023-04-24T09:29:35.495Z - Cannot read properties of undefined (reading 'user')
+
+2023-04-24T09:32:08.493Z - Cannot read properties of undefined (reading 'user')
+
+2023-04-24T09:32:59.241Z - Invalid token.
+
+2023-04-24T09:34:56.227Z - jwt expired
+
+2023-04-24T09:39:33.855Z - jwt expired
+
+2023-04-24T09:41:13.174Z - jwt expired
+
+2023-04-24T09:41:40.055Z - jwt expired
+
+2023-04-24T09:42:10.564Z - jwt expired
+
+2023-04-24T09:42:37.256Z - jwt expired
+
+2023-04-24T09:43:08.979Z - jwt expired
+
+2023-04-24T09:43:54.881Z - jwt expired
+
+2023-04-24T09:45:47.682Z - jwt expired
+
+2023-04-24T09:55:33.843Z - Cannot read properties of undefined (reading 'user')
+
+2023-04-24T09:55:56.746Z - Cannot read properties of undefined (reading 'user')
+
+2023-04-24T09:56:22.625Z - Cannot read properties of undefined (reading 'user')
+
+2023-04-24T09:57:41.825Z - Cannot read properties of undefined (reading 'user')
+
+2023-04-24T09:58:06.644Z - jwt expired
+
+2023-04-24T09:58:27.268Z - jwt expired
+
+2023-04-24T09:59:34.204Z - jwt expired
+

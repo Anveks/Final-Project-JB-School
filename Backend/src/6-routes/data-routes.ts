@@ -12,10 +12,12 @@ const router = express.Router();
 
 router.get("/vacations", verifyLoggedIn, async (request: Request, response: Response, next: NextFunction) => {
     try {
-        const header = request.headers.authorization;
-        const token = header.substring(7);
-        const userId = cyber.decodeToken(token);     
-        const vacations = await dataService.getVacations(+userId);
+        const header = request.headers.authorization; // get the authorization header
+        const token = header.substring(7); // extract token
+        const user = await cyber.decodeToken(token); // decode it and extract the user
+        const vacations = await dataService.getVacations(+user.userId); // use user id
+        console.log(response.getHeaders());
+        
         response.json(vacations);
     }
     catch(err: any) {
@@ -85,7 +87,8 @@ router.post("/vacations/like/:id([0-9]+)", async (request: Request, response: Re
     try {
         const header = request.headers.authorization;
         const token = header.substring(7);
-        const userId = +cyber.decodeToken(token);
+        const user = await cyber.decodeToken(token);
+        const userId = +user.userId;
         const vacationId = +request.params.id;
         await dataService.addLike(userId, vacationId);
         response.send("Like has been added");    
@@ -100,7 +103,8 @@ router.delete("/vacations/like/:id([0-9]+)", async (request: Request, response: 
     try {
         const header = request.headers.authorization;
         const token = header.substring(7);
-        const userId = +cyber.decodeToken(token);
+        const user = await cyber.decodeToken(token);
+        const userId = +user.userId;
         const vacationId = +request.params.id;
         await dataService.removeLike(userId, vacationId);
         response.send("Like has been removed");    

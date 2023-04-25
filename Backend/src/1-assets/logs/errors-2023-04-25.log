@@ -1,0 +1,20 @@
+2023-04-25T08:29:50.307Z - Invalid token
+
+2023-04-25T08:31:06.478Z - ER_BAD_FIELD_ERROR: Unknown column 'NaN' in 'field list'
+
+2023-04-25T08:31:09.834Z - ER_BAD_FIELD_ERROR: Unknown column 'NaN' in 'field list'
+
+2023-04-25T08:31:11.664Z - ER_BAD_FIELD_ERROR: Unknown column 'NaN' in 'field list'
+
+2023-04-25T08:31:13.067Z - ER_BAD_FIELD_ERROR: Unknown column 'NaN' in 'field list'
+
+2023-04-25T08:31:16.778Z - ER_BAD_FIELD_ERROR: Unknown column 'NaN' in 'field list'
+
+2023-04-25T08:32:33.829Z - ER_BAD_FIELD_ERROR: Unknown column 'NaN' in 'field list'
+
+2023-04-25T08:45:17.284Z - ER_BAD_FIELD_ERROR: Unknown column 'NaN' in 'field list'
+
+2023-04-25T08:50:44.494Z - ER_BAD_FIELD_ERROR: Unknown column 'NaN' in 'where clause'
+
+2023-04-25T08:50:59.693Z - ER_BAD_FIELD_ERROR: Unknown column 'NaN' in 'where clause'
+

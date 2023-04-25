@@ -16,9 +16,11 @@ class InterceptorsService {
 
         // updating token after expiration:
         axios.interceptors.response.use((response) => {
-            if (response.headers['Authorization']) {
+            console.log(response.headers);
+            
+            if (response.headers['authorization']) {
                 console.log('test');
-                const freshToken = response.headers['Authorization'].substring(7);
+                const freshToken = response.headers['authorization'].substring(7);
                 authStore.dispatch({ type: AuthActionType.UpdateToken, payload: freshToken });
             }
             return response;

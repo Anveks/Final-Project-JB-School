@@ -43,7 +43,8 @@ function verifyToken(request: Request, response: Response, adminCheck?: boolean)
     console.log("fuck you");
     const newToken = createToken(decodedToken.user);
     // console.log(newToken);
-    response.setHeader("Authorization", `Bearer ${newToken}`);
+    response.setHeader("Access-Control-Expose-Headers", "authorization");
+    response.setHeader("authorization", `Bearer ${newToken}`);
   }
 
   if(!token) throw new UnauthorizedError('No token found');

@@ -8,7 +8,7 @@ class DataService {
         let vacations = vacationsStore.getState().vacations;
 
     if (vacations.length === 0){
-       const result = await axios.get<VacationModel[]>(appConfig.vacationsUrl);
+       const result = await axios.get<VacationModel[]>(appConfig.vacationsUrl);       
        vacations = result.data;
        vacationsStore.dispatch({type: VacationsActionType.FetchVacations, payload: vacations});
     }

@@ -18,7 +18,7 @@ function VacationsList(): JSX.Element {
     useEffect(() => {
         setUser(authStore.getState().user?.userId);
     })
-    console.log(currentUser);
+    // console.log(currentUser);
 
     const [vacations, setVacations] = useState<VacationModel[]>([]);
 

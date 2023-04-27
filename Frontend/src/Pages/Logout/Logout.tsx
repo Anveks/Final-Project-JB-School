@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import authService from "../../Services/AuthService";
 import notifyService from "../../Services/NotifyService";
 import "./Logout.css";
+import LogoutIcon from '@mui/icons-material/Logout';
 
 function Logout(): JSX.Element {
     const navigate = useNavigate();
@@ -15,7 +16,7 @@ function Logout(): JSX.Element {
     }
     return (
         <div className="Logout">
-            <button className="logout" onClick={logout}>Logout</button>
+            <button className="logout" onClick={logout}> <LogoutIcon /></button>
         </div>
     );
 }

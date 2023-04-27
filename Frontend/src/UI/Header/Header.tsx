@@ -4,6 +4,8 @@ import { authStore } from "../../Redux/AuthState";
 import "./Header.css";
 import dataService from "../../Services/DataService";
 import notifyService from "../../Services/NotifyService";
+import MenuIcon from '@mui/icons-material/Menu';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 function Header(): JSX.Element {
 
@@ -37,11 +39,18 @@ function Header(): JSX.Element {
             <p>Vacations.com</p>
             <div className="user"> Hello, {fullName}
                 <Logout />
-                <div className="admin-field" style={{ display: admin ? "" : "none" }}>
-                    <NavLink to={"add"}>  Add Vacation </NavLink>
-                    <NavLink to={"chart"}>| See Chart </NavLink>
-                    <button className="downloadCSV" onClick={handleDownload}>Download CSV</button>
-                </div>
+
+                {admin && <div className="admin-field dropdown">
+
+                    <button className="dropBtn"><MenuIcon /></button>
+                    <div className="dropdown-content">
+                        <NavLink to={"add"}>  Add Vacation </NavLink>
+                        <NavLink to={"chart"}> See Chart </NavLink>
+                        <NavLink to={"#"} className="downloadCSV" onClick={handleDownload}>Download CSV</NavLink>
+                    </div>
+
+                </div>}
+
             </div>
 
         </div>

@@ -31,15 +31,11 @@ function VacationsList(): JSX.Element {
     }
 
     useEffect(() => {
-        if (vacationsStore.getState().vacations.length !== 0) {
-            setVacations(vacationsStore.getState().vacations);
-        } else {
-            dataService.getAllVacations()
-                .then((res) => {
-                    setVacations(res);
-                })
-                .catch((err) => notifyService.error(err.message));
-        }
+        dataService.getAllVacations()
+            .then((res) => {
+                setVacations(res);
+            })
+            .catch((err) => notifyService.error(err.message));
     }, []);
 
     function handleFilterChange(e: any) {
@@ -69,7 +65,7 @@ function VacationsList(): JSX.Element {
 
         setVacations(filteredVacations);
 
-        // using timeout so that the noVacations message wont be displayed upon component rendering (when we fetch the data)
+        // adding slight delay so that the noVacations message won't be displayed upon component rendering (when we fetch the data)
         setTimeout(() => {
             if (filteredVacations.length === 0) {
                 setNoVacations(true)
@@ -97,7 +93,7 @@ function VacationsList(): JSX.Element {
                 <input type="checkbox" name="future" value="future" onChange={(e) => handleFilterChange(e)} />
                 <label htmlFor="future">Future Vacations</label>
             </div >}
-            {noVacations && noVacationsMessage}
+            {authStore.getState().user.roleId !== 1 && noVacations && noVacationsMessage}
             <div className="pagination">
                 <button disabled={currentPage === 1} onClick={() => handlePageChange(currentPage - 1)}> <ArrowBackIosIcon /> </button>
                 <button disabled={endIndex >= vacations.length} onClick={() => handlePageChange(currentPage + 1)}> <ArrowForwardIosIcon /> </button>

@@ -9,6 +9,8 @@ import NoLike from '@mui/icons-material/FavoriteBorder';
 import Like from '@mui/icons-material/Favorite';
 import { useState } from "react";
 import LikeButton from "../../Components/VacationsArea/LikeButton/LikeButton";
+import MoreHorizIcon from '@mui/icons-material/MoreVert';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 function Card(props: any): JSX.Element {
 
@@ -40,26 +42,30 @@ function Card(props: any): JSX.Element {
         }
         catch (err: any) {
             notifyService.error(err);
+            console.log(err);
+
         }
     }
 
     return (
         <div className="Card" style={{ display: visible ? "" : "none" }}>
-            <div className="admin-field" style={{ display: admin ? "" : "none" }}>
-                <div className="edit">
-                    <ModeEditIcon fontSize="inherit" /> <NavLink
-                        to="edit"
-                        state={{ id: props.vacation.vacationId }}>
-                        Edit
-                    </NavLink>
-                </div>
-                <p className="delete" onClick={deleteVacation}><ClearIcon fontSize="inherit" /> Delete</p>
-            </div>
             <div className="head">
                 <div className="title">{props.vacation.destination}</div>
                 <p className="price">{props.vacation.price}$</p>
-                <LikeButton
-                    vacations={props.vacation} />
+                {!admin && <LikeButton vacations={props.vacation} />}
+                {
+                    admin && <div className="admin-field dropdown">
+                        <button className="dropBtn"><MoreHorizIcon /></button>
+                        <div className="dropdown-content">
+                            <NavLink
+                                to="edit"
+                                state={{ id: props.vacation.vacationId }}>
+                                Edit Vacation
+                            </NavLink>
+                            <a href="#" onClick={deleteVacation}>Delete Vacation</a>
+                        </div>
+                    </div>
+                }
             </div>
             <div className="body">
                 <div className="image">

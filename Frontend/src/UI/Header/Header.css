@@ -18,7 +18,8 @@
 .user {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  padding-right: 8%;
+  /* gap: 5px; */
   align-items: center;
   font-size: 16px;
   margin-right: 12%;
@@ -31,7 +32,8 @@
 }
 
 .header .dropBtn {
-color: whitesmoke;
+  padding: 0;
+  color: whitesmoke;
 }
 
 .header .dropBtn:hover{

@@ -5,7 +5,7 @@ import "./Header.css";
 import dataService from "../../Services/DataService";
 import notifyService from "../../Services/NotifyService";
 import MenuIcon from '@mui/icons-material/Menu';
-import LogoutIcon from '@mui/icons-material/Logout';
+
 
 function Header(): JSX.Element {
 
@@ -40,16 +40,15 @@ function Header(): JSX.Element {
             <div className="user"> Hello, {fullName}
                 <Logout />
 
-                {admin && <div className="admin-field dropdown">
-
-                    <button className="dropBtn"><MenuIcon /></button>
-                    <div className="dropdown-content">
-                        <NavLink to={"add"}>  Add Vacation </NavLink>
-                        <NavLink to={"chart"}> See Chart </NavLink>
-                        <NavLink to={"#"} className="downloadCSV" onClick={handleDownload}>Download CSV</NavLink>
-                    </div>
-
-                </div>}
+                {admin &&
+                    <div className="admin-field dropdown">
+                        <button className="dropBtn"><MenuIcon /></button>
+                        <div className="dropdown-content">
+                            <NavLink to={"add"}>  Add Vacation </NavLink>
+                            <NavLink to={"chart"}> See Chart </NavLink>
+                            <NavLink to={"#"} className="downloadCSV" onClick={handleDownload}>Download CSV</NavLink>
+                        </div>
+                    </div>}
 
             </div>
 

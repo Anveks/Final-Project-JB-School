@@ -11,14 +11,13 @@ import miniNotFound from '../../../assets/img/not-found-mini.gif'
 import { off } from 'process';
 import MiniNotFound from '../../MiniNotFound/MiniNotFound';
 import { authStore } from '../../../Redux/AuthState';
+import appConfig from '../../../Utils/AppConfig';
 
 function VacationsList(): JSX.Element {
 
+    const user = authStore.getState().user?.roleId === 2 ? true : false; // checking if user or admin
     const [currentUser, setUser] = useState<number>(authStore.getState().user?.userId);
-    useEffect(() => {
-        setUser(authStore.getState().user?.userId);
-    })
-    // console.log(currentUser);
+    console.log(currentUser);
 
     const [vacations, setVacations] = useState<VacationModel[]>([]);
 
@@ -32,11 +31,16 @@ function VacationsList(): JSX.Element {
     }
 
     useEffect(() => {
-        dataService.getAllVacations()
-            .then((res) => {
-                setVacations(vacationsStore.getState().vacations);
-            })
-            .catch((err) => notifyService.error(err.message));
+        if (vacationsStore.getState().vacations.length !== 0) {
+            setVacations(vacationsStore.getState().vacations)
+        } else {
+            dataService.getAllVacations()
+                .then((res) => {
+                    setVacations(res);
+                })
+                .catch((err) => notifyService.error(err.message));
+        }
+
     }, [currentUser]);
 
     const startIndex = (currentPage - 1) * pageSize;
@@ -84,8 +88,6 @@ function VacationsList(): JSX.Element {
     useEffect(() => {
         filter();
     }, [filters]);
-
-    const user = authStore.getState().user?.roleId === 2 ? true : false;
 
     return (
         <div className="VacationsList">

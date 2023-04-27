@@ -14,17 +14,13 @@ class InterceptorsService {
             return request;
         });
 
+        // TODO: dont forget to delete if not needed!
         // updating token after expiration:
         axios.interceptors.response.use((response) => {
-
-            // console.log(response.headers['authorization']);
             
-            if (response.headers['authorization']) {
-                console.log('test');
-                const freshToken = response.headers['authorization'].substring(7);
-                console.log(freshToken);
-                
-                authStore.dispatch({ type: AuthActionType.UpdateToken, payload: freshToken });
+            if (response.headers['authorization']) { // getting the custom 'authorization' header from the backend
+                const freshToken = response.headers['authorization'].substring(7); // extracting new token                
+                authStore.dispatch({ type: AuthActionType.UpdateToken, payload: freshToken }); // updating the token in Redux
             }
             return response;
         });

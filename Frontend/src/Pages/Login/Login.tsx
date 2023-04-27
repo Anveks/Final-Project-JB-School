@@ -15,8 +15,8 @@ function Login(): JSX.Element {
         try {
             await authService.login(credentials);
             notifyService.success("Welcome Back!");
-            console.log(authStore.getState().user);
-            console.log(authStore.getState().token);
+            // console.log(authStore.getState().user);
+            // console.log(authStore.getState().token);
             navigate("/");
         }
         catch (err: any) {

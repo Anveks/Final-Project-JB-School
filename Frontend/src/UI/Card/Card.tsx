@@ -8,7 +8,7 @@ import notifyService from "../../Services/NotifyService";
 import NoLike from '@mui/icons-material/FavoriteBorder';
 import Like from '@mui/icons-material/Favorite';
 import { useState } from "react";
-import LikeButton from "../LikeButton/LikeButton";
+import LikeButton from "../../Components/VacationsArea/LikeButton/LikeButton";
 
 function Card(props: any): JSX.Element {
 

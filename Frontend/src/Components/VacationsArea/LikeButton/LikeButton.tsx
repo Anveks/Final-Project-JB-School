@@ -1,11 +1,11 @@
 import Like from '@mui/icons-material/Favorite';
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
-import { VacationsActionType, vacationsStore } from '../../Redux/VacationsState';
-import dataService from '../../Services/DataService';
-import notifyService from '../../Services/NotifyService';
-import { authStore } from '../../Redux/AuthState';
-import appConfig from '../../Utils/AppConfig';
+import { VacationsActionType, vacationsStore } from '../../../Redux/VacationsState';
+import dataService from '../../../Services/DataService';
+import notifyService from '../../../Services/NotifyService';
+import { authStore } from '../../../Redux/AuthState';
+import appConfig from '../../../Utils/AppConfig';
 
 // connecting to the socket.io port:
 const socket = io(appConfig.socketUrl);

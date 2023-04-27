@@ -49,7 +49,7 @@ function LikeButton(props: any): JSX.Element {
     });
 
     return () => unsubscribe();
-  }, [])
+  }, [authStore.getState().user?.userId])
 
   async function handleLike() {
     setLikeActive(true)

@@ -7,32 +7,32 @@ import notifyService from "../../../Services/NotifyService";
 import Card from "../../../UI/Card/Card";
 import "./VacationsList.css";
 import { vacationsStore } from '../../../Redux/VacationsState';
-import miniNotFound from '../../../assets/img/not-found-mini.gif'
-import { off } from 'process';
 import MiniNotFound from '../../MiniNotFound/MiniNotFound';
 import { authStore } from '../../../Redux/AuthState';
 import appConfig from '../../../Utils/AppConfig';
 
 function VacationsList(): JSX.Element {
 
-    const user = authStore.getState().user?.roleId === 2 ? true : false; // checking if user or admin
-    const [currentUser, setUser] = useState<number>(authStore.getState().user?.userId);
-    console.log(currentUser);
+    const user = authStore.getState().user?.roleId === 2;
 
     const [vacations, setVacations] = useState<VacationModel[]>([]);
+    const [noVacations, setNoVacations] = useState<boolean>(false);
 
-    // pagination:
+    // handling pagination:
     const [currentPage, setCurrentPage] = useState<number>(1);
     const pageSize = 9;
+    const [filters, setFilters] = useState<string[]>([]);
+    const startIndex = (currentPage - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    const vacationsToDisplay = vacations.slice(startIndex, endIndex);
 
-    // transition:
     function handlePageChange(pageNumber: number) {
         setCurrentPage(pageNumber);
     }
 
     useEffect(() => {
         if (vacationsStore.getState().vacations.length !== 0) {
-            setVacations(vacationsStore.getState().vacations)
+            setVacations(vacationsStore.getState().vacations);
         } else {
             dataService.getAllVacations()
                 .then((res) => {
@@ -40,14 +40,7 @@ function VacationsList(): JSX.Element {
                 })
                 .catch((err) => notifyService.error(err.message));
         }
-
-    }, [currentUser]);
-
-    const startIndex = (currentPage - 1) * pageSize;
-    const endIndex = startIndex + pageSize;
-    const vacationsToDisplay = vacations.slice(startIndex, endIndex);
-
-    const [filters, setFilters] = useState<string[]>([]);
+    }, []);
 
     function handleFilterChange(e: any) {
         const checked = e.target.checked;
@@ -55,11 +48,10 @@ function VacationsList(): JSX.Element {
         checked ? setFilters([...filters, filterName]) : setFilters(filters.filter((f: any) => f !== filterName))
     };
 
-    let noVacationsMessage;
-    function filter() {
-        let filteredVacations: VacationModel[] = vacationsStore.getState().vacations; // make a copy of the original vacations array
+    let noVacationsMessage = <div><MiniNotFound /></div>;
 
-        console.log(filters);
+    function filterVacations() {
+        let filteredVacations: VacationModel[] = vacationsStore.getState().vacations;
 
         for (const filter of filters) {
             if (filter === "favorites") {
@@ -67,26 +59,29 @@ function VacationsList(): JSX.Element {
             }
 
             if (filter === "current") {
-                filteredVacations = filteredVacations.filter((v) => {
-                    const startDate = new Date(v.startDate).getTime();
-                    if (startDate < Date.now()) return v;
-                });
+                filteredVacations = filteredVacations.filter((v) => new Date(v.startDate).getTime() < Date.now());
             }
 
             if (filter === "future") {
-                filteredVacations = filteredVacations.filter((v) => {
-                    const startDate = new Date(v.startDate).getTime();
-                    if (startDate > Date.now()) return v;
-                });
+                filteredVacations = filteredVacations.filter((v) => new Date(v.startDate).getTime() > Date.now());
             }
         };
 
-        // TODO: add mini not found somewhere here
         setVacations(filteredVacations);
+
+        // using timeout so that the noVacations message wont be displayed upon component rendering (when we fetch the data)
+        setTimeout(() => {
+            if (filteredVacations.length === 0) {
+                setNoVacations(true)
+            } else {
+                setNoVacations(false);
+            }
+        }, 200);
+
     }
 
     useEffect(() => {
-        filter();
+        filterVacations();
     }, [filters]);
 
     return (
@@ -102,7 +97,7 @@ function VacationsList(): JSX.Element {
                 <input type="checkbox" name="future" value="future" onChange={(e) => handleFilterChange(e)} />
                 <label htmlFor="future">Future Vacations</label>
             </div >}
-            <div>{noVacationsMessage}</div>
+            {noVacations && noVacationsMessage}
             <div className="pagination">
                 <button disabled={currentPage === 1} onClick={() => handlePageChange(currentPage - 1)}> <ArrowBackIosIcon /> </button>
                 <button disabled={endIndex >= vacations.length} onClick={() => handlePageChange(currentPage + 1)}> <ArrowForwardIosIcon /> </button>

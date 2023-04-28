@@ -29,7 +29,7 @@ class DataService {
         const headers = { "Content-Type": "multipart/form-data" }
         const result = await axios.put<VacationModel>(appConfig.vacationsUrl + vacation.vacationId, vacation, {headers});
         const editedVacation = result.data;
-        vacationsStore.dispatch({type: VacationsActionType.AddVacation, payload: editedVacation});
+        vacationsStore.dispatch({type: VacationsActionType.EditVacation, payload: editedVacation});
     }
 
     public async addVacation(vacation: VacationModel): Promise<void>{

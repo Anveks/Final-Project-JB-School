@@ -12,8 +12,9 @@ const socket = io(appConfig.socketUrl);
 
 function LikeButton(props: any): JSX.Element {
 
+  // TODO: fix sockets part
   socket.on('updateFollowers', (data: any) => {
-    console.log(data);
+    // console.log(data);
 
     // vacationsStore.dispatch({
     //   type: VacationsActionType.UpdateFollowers,
@@ -25,56 +26,53 @@ function LikeButton(props: any): JSX.Element {
 
   });
 
-  // like animation:
+  // add-remove-like animation:
   const [likeActive, setLikeActive] = useState<boolean>(false);
   const btnClasses = `likeBtn ${likeActive && 'like'}`;
   setTimeout(() => {
     setLikeActive(false);
   }, 300);
 
-  // check if admin:
-  const role = authStore.getState().user?.roleId;
-  const admin = role === 1 ? true : false;
-
-  const [isFollowing, setIsFollowing] = useState(props.vacations.isFollowing === 0 ? false : true);
+  const currentUser = authStore.getState().user.userId;
+  const [isFollowing, setIsFollowing] = useState(props.vacations.isFollowing);
   const [followersCount, setFollowersCount] = useState<number>(props.vacations.followersCount);
 
   useEffect(() => {
     const unsubscribe = vacationsStore.subscribe(() => {
-      const index = vacationsStore.getState().vacations.findIndex((v) => v.vacationId === props.vacations.vacationId);
-      const isFollowingState = Boolean(vacationsStore.getState().vacations[index].isFollowing);
-      const followersCount = vacationsStore.getState().vacations[index].followersCount;
+      const index = vacationsStore.getState().vacations.findIndex((v) => v.vacationId === props.vacations.vacationId); // getting current index
+      const isFollowingState = vacationsStore.getState().vacations[index].isFollowing; // getting up-to-date isFollowing state
+      const followersCount = vacationsStore.getState().vacations[index].followersCount; // getting up-to-date followersCount
       setIsFollowing(isFollowingState);
-      setFollowersCount(followersCount)
+      setFollowersCount(followersCount);
     });
 
     return () => unsubscribe();
-  }, [authStore.getState().user?.userId])
+  }, [isFollowing, followersCount, currentUser]);
 
+  const newFollowingState = props.vacations.isFollowing === 0 ? 1 : 0;
   async function handleLike() {
-    setLikeActive(true)
-    try {
-      let isFollowing = props.vacations.isFollowing;
-      const vacationId = +props.vacations.vacationId;
-      // TODO: refactoring
+    setLikeActive(true); // animation state
 
-      if (isFollowing === 0) {
-        await dataService.addLike(vacationId);
-        vacationsStore.dispatch({ type: VacationsActionType.UpdateFollowers, payload: { vacationId: vacationId, isFollowing: isFollowing ? 0 : 1 } });
-      } else {
-        await dataService.removeLike(vacationId);
-        vacationsStore.dispatch({ type: VacationsActionType.UpdateFollowers, payload: { vacationId: vacationId, isFollowing: isFollowing ? 0 : 1 } });
-      }
+    try {
+
+      const vacationId = +props.vacations.vacationId; // getting current vacation id
+      const newFollowingState = props.vacations.isFollowing === 0 ? 1 : 0; // initializing the new isFollowing state
+      isFollowing === 0 ? await dataService.addLike(vacationId) : await dataService.removeLike(vacationId); // defining add/remove action
+      vacationsStore.dispatch({ type: VacationsActionType.UpdateFollowers, payload: { vacationId: vacationId, isFollowing: newFollowingState, userId: +currentUser } }); // dispatching the data to Redux for an update
+      console.log(isFollowing);
 
     } catch (err: any) {
+
       notifyService.error(err.message)
-      console.log(err);
+      console.log(isFollowing);
+      console.log(newFollowingState);
+
     }
   };
 
   return (
     <div className="LikeButton">
-      <div className={btnClasses} onClick={() => handleLike()} style={{ display: admin ? "none" : "", color: isFollowing ? 'red' : 'lightblue' }}>
+      <div className={btnClasses} onClick={() => handleLike()} style={{ color: isFollowing ? 'red' : 'lightblue' }}>
         <Like />
         <div>{followersCount}</div>
       </div>

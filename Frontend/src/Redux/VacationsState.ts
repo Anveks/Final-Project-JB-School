@@ -11,12 +11,13 @@ export enum VacationsActionType {
   AddVacation,
   EditVacation,
   DeleteVacation,
-  UpdateFollowers
+  UpdateFollowers,
+  ResetVacations,
 }
 
 export interface VacationAction {
   type: VacationsActionType,
-  payload: any;
+  payload?: any;
 }
 
 export function vacationsReducer(currentState = new VacationState(), action: VacationAction): VacationState {
@@ -45,6 +46,11 @@ export function vacationsReducer(currentState = new VacationState(), action: Vac
       }  
       break;
 
+    case VacationsActionType.ResetVacations:
+      console.log('xx');
+      newState.vacations = [];
+      break;
+
     //  case VacationsActionType.UpdateVacations:
     //   const updatedVacations = newState.vacations.map((item) => {   
     //     if(item.vacationId === action.payload.vacationId){  
@@ -65,14 +71,19 @@ export function vacationsReducer(currentState = new VacationState(), action: Vac
     //   break;
 
       case VacationsActionType.UpdateFollowers:
-        const currentUser = +authStore.getState().user.userId;
+        // const currentUser = +authStore.getState().user.userId;
         const vacationIndex = newState.vacations.findIndex((v) => v.vacationId === action.payload.vacationId);
 
+        newState.vacations[vacationIndex].isFollowing = action.payload.isFollowing;
+        action.payload.isFollowing === 0 
+          ? --newState.vacations[vacationIndex].followersCount 
+          : ++newState.vacations[vacationIndex].followersCount;
+
         // newState.vacations[vacationIndex].isFollowing = action.payload.isFollowing;
-        if(currentUser === action.payload.userId){
-          newState.vacations[vacationIndex].isFollowing = action.payload.isFollowing;
-          action.payload.isFollowing === 0 ? --newState.vacations[vacationIndex].followersCount : ++newState.vacations[vacationIndex].followersCount;
-        }
+        // if(currentUser === action.payload.userId){
+        //   newState.vacations[vacationIndex].isFollowing = action.payload.isFollowing;
+        //   action.payload.isFollowing === 0 ? --newState.vacations[vacationIndex].followersCount : ++newState.vacations[vacationIndex].followersCount;
+        // }
         // if(action.payload.isFollowing === 0){
         //   --newState.vacations[vacationIndex].followersCount
         // } else {

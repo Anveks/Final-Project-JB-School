@@ -3,6 +3,7 @@ import authService from "../../Services/AuthService";
 import notifyService from "../../Services/NotifyService";
 import "./Logout.css";
 import LogoutIcon from '@mui/icons-material/Logout';
+import { VacationsActionType, vacationsStore } from "../../Redux/VacationsState";
 
 function Logout(): JSX.Element {
     const navigate = useNavigate();
@@ -10,9 +11,13 @@ function Logout(): JSX.Element {
         authService.logout();
         notifyService.success("Come back soon!");
 
-        setTimeout(() => {
-            navigate('/login');
-        }, 1500);
+        navigate('/login');
+        vacationsStore.dispatch({ type: VacationsActionType.ResetVacations });
+
+        // setTimeout(() => {
+        //     navigate('/login');
+        //     vacationsStore.dispatch({ type: VacationsActionType.ResetVacations });
+        // }, 1500);
     }
     return (
         <div className="Logout">

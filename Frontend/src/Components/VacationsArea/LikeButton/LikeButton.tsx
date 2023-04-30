@@ -40,8 +40,8 @@ function LikeButton(props: any): JSX.Element {
   useEffect(() => {
     const unsubscribe = vacationsStore.subscribe(() => {
       const index = vacationsStore.getState().vacations.findIndex((v) => v.vacationId === props.vacations.vacationId); // getting current index
-      const isFollowingState = vacationsStore.getState().vacations[index].isFollowing; // getting up-to-date isFollowing state
-      const followersCount = vacationsStore.getState().vacations[index].followersCount; // getting up-to-date followersCount
+      const isFollowingState = vacationsStore.getState().vacations[index]?.isFollowing; // getting up-to-date isFollowing state
+      const followersCount = vacationsStore.getState().vacations[index]?.followersCount; // getting up-to-date followersCount
       setIsFollowing(isFollowingState);
       setFollowersCount(followersCount);
     });
@@ -67,7 +67,7 @@ function LikeButton(props: any): JSX.Element {
         payload: {
           vacationId: vacationId,
           isFollowing: newFollowingState,
-          userId: +currentUser
+          // userId: +currentUser
         }
       }); // dispatching the data to Redux for an update
       console.log(isFollowing);

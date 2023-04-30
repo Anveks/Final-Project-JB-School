@@ -1,16 +1,11 @@
-import "./Card.css";
-import ModeEditIcon from '@mui/icons-material/ModeEdit';
-import ClearIcon from '@mui/icons-material/Clear';
-import { authStore } from "../../Redux/AuthState";
+import MoreHorizIcon from '@mui/icons-material/MoreVert';
+import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import LikeButton from "../../Components/VacationsArea/LikeButton/LikeButton";
+import { authStore } from "../../Redux/AuthState";
 import dataService from "../../Services/DataService";
 import notifyService from "../../Services/NotifyService";
-import NoLike from '@mui/icons-material/FavoriteBorder';
-import Like from '@mui/icons-material/Favorite';
-import { useState } from "react";
-import LikeButton from "../../Components/VacationsArea/LikeButton/LikeButton";
-import MoreHorizIcon from '@mui/icons-material/MoreVert';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import "./Card.css";
 
 function Card(props: any): JSX.Element {
 

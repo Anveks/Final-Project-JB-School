@@ -57,8 +57,19 @@ function LikeButton(props: any): JSX.Element {
 
       const vacationId = +props.vacations.vacationId; // getting current vacation id
       const newFollowingState = props.vacations.isFollowing === 0 ? 1 : 0; // initializing the new isFollowing state
-      isFollowing === 0 ? await dataService.addLike(vacationId) : await dataService.removeLike(vacationId); // defining add/remove action
-      vacationsStore.dispatch({ type: VacationsActionType.UpdateFollowers, payload: { vacationId: vacationId, isFollowing: newFollowingState, userId: +currentUser } }); // dispatching the data to Redux for an update
+
+      isFollowing === 0
+        ? await dataService.addLike(vacationId)
+        : await dataService.removeLike(vacationId); // defining add/remove action
+
+      vacationsStore.dispatch({
+        type: VacationsActionType.UpdateFollowers,
+        payload: {
+          vacationId: vacationId,
+          isFollowing: newFollowingState,
+          userId: +currentUser
+        }
+      }); // dispatching the data to Redux for an update
       console.log(isFollowing);
 
     } catch (err: any) {

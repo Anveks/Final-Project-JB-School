@@ -64,12 +64,6 @@ function VacationsList(): JSX.Element {
             }
         };
 
-        // filter out outdated vacations for regular users (and not for admins):
-        if (user) {
-            filteredVacations = filteredVacations.filter((v) => new Date(v.startDate).getTime() > Date.now());
-            console.log(filteredVacations);
-        }
-
         // in case no filters were applied the vacations state will go back to its original form (from the backup copy):
         setVacations(filteredVacations);
     }

@@ -16,12 +16,10 @@ function VacationsList(): JSX.Element {
     const user = authStore.getState().user?.roleId === 2;
 
     const [vacations, setVacations] = useState<VacationModel[]>([]);
-    const [noVacations, setNoVacations] = useState<boolean>(false);
 
     // handling pagination:
     const [currentPage, setCurrentPage] = useState<number>(1);
     const pageSize = 9;
-    const [filters, setFilters] = useState<string[]>([]);
     const startIndex = (currentPage - 1) * pageSize;
     const endIndex = startIndex + pageSize;
     const vacationsToDisplay = vacations.slice(startIndex, endIndex);
@@ -32,21 +30,24 @@ function VacationsList(): JSX.Element {
 
     useEffect(() => {
         dataService.getAllVacations()
-            .then((res) => {
-                setVacations(res);
+            .then((responseVacations) => {
+                // here we both check if current user is user (and not admin) and filter the vacations by the date:
+                setVacations(user ? responseVacations.filter((v) => new Date(v.startDate).getTime() > Date.now()) : responseVacations);
             })
             .catch((err) => notifyService.error(err.message));
     }, []);
 
+    // setting an array of filters:
+    const [filters, setFilters] = useState<string[]>([]);
+    // adding and removing filters based on "checked" attribute:
     function handleFilterChange(e: any) {
         const checked = e.target.checked;
         const filterName: string = e.target.name;
         checked ? setFilters([...filters, filterName]) : setFilters(filters.filter((f: any) => f !== filterName))
     };
 
-    let noVacationsMessage = <div><MiniNotFound /></div>;
-
     function filterVacations() {
+        // setting a 'backup' copy of vacations from redux:
         let filteredVacations: VacationModel[] = vacationsStore.getState().vacations;
 
         for (const filter of filters) {
@@ -63,22 +64,26 @@ function VacationsList(): JSX.Element {
             }
         };
 
+        // filter out outdated vacations for regular users (and not for admins):
+        if (user) {
+            filteredVacations = filteredVacations.filter((v) => new Date(v.startDate).getTime() > Date.now());
+            console.log(filteredVacations);
+        }
+
+        // in case no filters were applied the vacations state will go back to its original form (from the backup copy):
         setVacations(filteredVacations);
-
-        // adding slight delay so that the noVacations message won't be displayed upon component rendering (when we fetch the data)
-        setTimeout(() => {
-            if (filteredVacations.length === 0) {
-                setNoVacations(true)
-            } else {
-                setNoVacations(false);
-            }
-        }, 200);
-
     }
 
+    // making the component re-run the filter function every time something in the filters arr gets changed:
     useEffect(() => {
         filterVacations();
     }, [filters]);
+
+    // adding message in case there are no vacations found after applying filters:
+    let noVacationsMessage = null;
+    if (filters.length > 0 && vacationsToDisplay.length === 0) {
+        noVacationsMessage = <div><MiniNotFound /></div>
+    }
 
     return (
         <div className="VacationsList">
@@ -93,7 +98,7 @@ function VacationsList(): JSX.Element {
                 <input type="checkbox" name="future" value="future" onChange={(e) => handleFilterChange(e)} />
                 <label htmlFor="future">Future Vacations</label>
             </div >}
-            {authStore.getState().user.roleId !== 1 && noVacations && noVacationsMessage}
+            {noVacationsMessage}
             <div className="pagination">
                 <button disabled={currentPage === 1} onClick={() => handlePageChange(currentPage - 1)}> <ArrowBackIosIcon /> </button>
                 <button disabled={endIndex >= vacations.length} onClick={() => handlePageChange(currentPage + 1)}> <ArrowForwardIosIcon /> </button>

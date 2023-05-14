@@ -1,10 +1,10 @@
 import Like from '@mui/icons-material/Favorite';
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
+import { authStore } from '../../../Redux/AuthState';
 import { VacationsActionType, vacationsStore } from '../../../Redux/VacationsState';
 import dataService from '../../../Services/DataService';
 import notifyService from '../../../Services/NotifyService';
-import { authStore } from '../../../Redux/AuthState';
 import appConfig from '../../../Utils/AppConfig';
 
 // connecting to the socket.io port:
@@ -33,7 +33,6 @@ function LikeButton(props: any): JSX.Element {
     setLikeActive(false);
   }, 300);
 
-  const currentUser = authStore.getState().user.userId;
   const [isFollowing, setIsFollowing] = useState(props.vacations.isFollowing);
   const [followersCount, setFollowersCount] = useState<number>(props.vacations.followersCount);
 
@@ -47,7 +46,7 @@ function LikeButton(props: any): JSX.Element {
     });
 
     return () => unsubscribe();
-  }, [isFollowing, followersCount, currentUser]);
+  }, [isFollowing, followersCount]);
 
   const newFollowingState = props.vacations.isFollowing === 0 ? 1 : 0;
   async function handleLike() {
@@ -59,18 +58,8 @@ function LikeButton(props: any): JSX.Element {
       const newFollowingState = props.vacations.isFollowing === 0 ? 1 : 0; // initializing the new isFollowing state
 
       isFollowing === 0
-        ? await dataService.addLike(vacationId)
-        : await dataService.removeLike(vacationId); // defining add/remove action
-
-      vacationsStore.dispatch({
-        type: VacationsActionType.UpdateFollowers,
-        payload: {
-          vacationId: vacationId,
-          isFollowing: newFollowingState,
-          // userId: +currentUser
-        }
-      }); // dispatching the data to Redux for an update
-      console.log(isFollowing);
+        ? await dataService.handleLike(vacationId, newFollowingState)
+        : await dataService.handleLike(vacationId, newFollowingState, true); // sending an extra argument here to remove like
 
     } catch (err: any) {
 

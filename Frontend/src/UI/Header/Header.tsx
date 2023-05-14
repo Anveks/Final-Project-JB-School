@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom";
-import Logout from "../../Pages/Logout/Logout";
 import { authStore } from "../../Redux/AuthState";
 import "./Header.css";
 import dataService from "../../Services/DataService";
 import notifyService from "../../Services/NotifyService";
 import MenuIcon from '@mui/icons-material/Menu';
+import Logout from "../../Components/AuthArea/Logout/Logout";
 
 
 function Header(): JSX.Element {

@@ -12,6 +12,11 @@ function Card(props: any): JSX.Element {
     const navigate = useNavigate();
     const [visible, setVisible] = useState<boolean>(true);
 
+    const [modalOpen, setModalOpen] = useState<boolean>(false);
+    function handleModal() {
+        modalOpen ? setModalOpen(false) : setModalOpen(true);
+    }
+
     // check if admin:
     const role = authStore.getState().user?.roleId;
     const admin = role === 1 ? true : false;

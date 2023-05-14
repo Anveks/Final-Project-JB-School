@@ -45,13 +45,19 @@ class DataService {
     }
 
     // LIKES
-    // TODO: merge into one function later
-    public async addLike(vacationId: number): Promise<void>{
-        await axios.post(appConfig.likeUrl + vacationId);
-    }
+    public async handleLike(vacationId: number, newFollowingState: number, toDelete?:boolean): Promise<void>{
+        
+        // checking the "toDelete" argument: in case its true - delete like
+        toDelete ?  await axios.delete(appConfig.likeUrl + vacationId) : await axios.post(appConfig.likeUrl + vacationId);
 
-    public async removeLike(vacationId: number): Promise<void>{
-        await axios.delete(appConfig.likeUrl + vacationId);
+        // dispatching the data to Redux for an update
+        vacationsStore.dispatch({
+            type: VacationsActionType.UpdateFollowers,
+            payload: {
+              vacationId: vacationId,
+              isFollowing: newFollowingState,
+            }
+          });
     }
 
     // SCV file data:

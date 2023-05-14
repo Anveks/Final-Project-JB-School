@@ -1,9 +1,8 @@
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import CredentialsModel from "../../Models/CredentialsModel";
-import { authStore } from "../../Redux/AuthState";
-import authService from "../../Services/AuthService";
-import notifyService from "../../Services/NotifyService";
+import CredentialsModel from "../../../Models/CredentialsModel";
+import authService from "../../../Services/AuthService";
+import notifyService from "../../../Services/NotifyService";
 import "./Login.css";
 
 function Login(): JSX.Element {
@@ -15,8 +14,6 @@ function Login(): JSX.Element {
         try {
             await authService.login(credentials);
             notifyService.success("Welcome Back!");
-            // console.log(authStore.getState().user);
-            // console.log(authStore.getState().token);
             navigate("/");
         }
         catch (err: any) {

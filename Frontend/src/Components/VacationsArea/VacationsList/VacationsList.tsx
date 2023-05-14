@@ -2,14 +2,13 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useEffect, useState } from "react";
 import VacationModel from "../../../Models/VacationModel";
+import { authStore } from '../../../Redux/AuthState';
+import { vacationsStore } from '../../../Redux/VacationsState';
 import dataService from "../../../Services/DataService";
 import notifyService from "../../../Services/NotifyService";
 import Card from "../../../UI/Card/Card";
-import "./VacationsList.css";
-import { vacationsStore } from '../../../Redux/VacationsState';
 import MiniNotFound from '../../MiniNotFound/MiniNotFound';
-import { authStore } from '../../../Redux/AuthState';
-import appConfig from '../../../Utils/AppConfig';
+import "./VacationsList.css";
 
 function VacationsList(): JSX.Element {
 
@@ -65,7 +64,7 @@ function VacationsList(): JSX.Element {
         };
 
         // in case no filters were applied the vacations state will go back to its original form (from the backup copy):
-        setVacations(filteredVacations);
+        setVacations(filteredVacations.filter((v) => new Date(v.startDate).getTime() > Date.now())); // and filter the outdated vacations
     }
 
     // making the component re-run the filter function every time something in the filters arr gets changed:

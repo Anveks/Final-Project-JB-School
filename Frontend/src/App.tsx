@@ -1,11 +1,11 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AddVacation from "./Components/VacationsArea/AddVacation/AddVacation";
 import EditVacation from "./Components/VacationsArea/EditVacation/EditVacation";
-import Home from "./Pages/Home/Home";
-import Login from "./Pages/Login/Login";
-import Register from "./Pages/Register/Register";
+import Home from "./Components/LayoutArea/Home/Home";
+import Login from "./Components/AuthArea/Login/Login";
 import { authStore } from "./Redux/AuthState";
 import LikesChart from "./UI/ChartsArea/LikesChart/LikesChart";
+import Register from "./Components/AuthArea/Register/Register";
 
 function App(): JSX.Element {
 

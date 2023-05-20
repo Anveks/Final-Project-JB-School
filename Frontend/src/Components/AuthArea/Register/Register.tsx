@@ -4,6 +4,10 @@ import "./Register.css";
 import UserModel from "../../../Models/UserModel";
 import authService from "../../../Services/AuthService";
 import notifyService from "../../../Services/NotifyService";
+import view from "../../../assets/img/view.jpg"
+import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 
 function Register(): JSX.Element {
 
@@ -25,7 +29,7 @@ function Register(): JSX.Element {
         <div className="Register">
 
             <form onSubmit={handleSubmit(submit)}>
-                <h2>Registration</h2>
+                <h2 className="title">Sign Up</h2>
                 <label>First Name:</label>
                 <input type="text" {...register("firstName")} required minLength={2} maxLength={20} autoFocus />
 
@@ -40,9 +44,17 @@ function Register(): JSX.Element {
 
                 <button>Register</button>
 
-                <p>You do have an account? <Link to="/login">Login.</Link></p>
+                <p>Already have an account? <Link to="/login">Login.</Link></p>
 
             </form>
+
+            <img src={view} alt="view" />
+
+            <div className="about-text">
+                <p> <EmojiEmotionsIcon fontSize="large" /> Our travel site offers a wide range of customizable travel packages, allowing you to effortlessly plan your dream vacation.</p>
+                <p> <SupportAgentIcon fontSize="large" /> Our dedicated customer support team is available 24/7 to assist you with any queries, ensuring a seamless and hassle-free travel experience.</p>
+                <p> <AttachMoneyIcon fontSize="large" /> Enjoy peace of mind with our flexible refund policy, providing you with the assurance that your investment is protected in case of unforeseen circumstances.</p>
+            </div>
 
         </div>
     );

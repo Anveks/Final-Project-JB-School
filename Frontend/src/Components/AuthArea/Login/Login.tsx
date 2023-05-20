@@ -37,7 +37,7 @@ function Login(): JSX.Element {
                     <InstagramIcon fontSize="large" />
                 </p>
 
-                <p className="about">Welcome to our Travel Adventure! Explore breathtaking destinations, immerse yourself in vibrant cultures, and create unforgettable memories. Start your journey with us today!</p>
+                <p className="about">Welcome to Vacations! Explore breathtaking destinations, immerse yourself in vibrant cultures, and create unforgettable memories. Start your journey with us today!</p>
             </div>
 
             <form onSubmit={handleSubmit(submit)}>

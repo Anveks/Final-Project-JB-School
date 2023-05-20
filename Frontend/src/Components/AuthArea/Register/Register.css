@@ -1,25 +1,67 @@
+.Register{
+  display: flex;
+  border: 1px solid;
+  justify-content: center;
+  margin-top: 2%;
+  animation: slide-down 400ms ease-out forwards;
+}
+
+.Register > img {
+  width: 50%;
+  margin: 0;
+  border-radius: 0 10px 10px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  border-left: transparent;
+}
+
 .Register > form {
-    width: 350px;
-    margin: 5% auto;
-    text-align: left;
-    padding: 10px;
-    border: 1px solid transparent;
-    border-radius: 10px;
-    color: black;
-    background-color: white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-    animation: slide-down 400ms ease-out forwards;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding: 1%;
+  padding-top: 5%;
+  border: 1px solid transparent;
+  border-right: transparent;
+  background-color: white;
+  border-radius: 10px 0 0 10px;
+  color: #333333;
+  gap: 2%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
-.Register input, .Register button {
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+form > input {
+  margin-bottom: 5%;
 }
 
-.header {
-  width: 100%;
+form > button {
+  margin-bottom: 5%;
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  position: absolute;
+  right: 20%;
+  top: 25%;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  width: 40%;
+  /* line-height: 1.5; */
+  word-wrap: break-word;
+  gap: 7%;
+  /* background-color: rgba(0, 0, 0, 0.25); */
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.about-text > p{
+  display: flex;
+  text-align: justify;
+  display: flex;
+  align-items: center;
+  gap: 5%;
 }
 
 @keyframes slide-down {

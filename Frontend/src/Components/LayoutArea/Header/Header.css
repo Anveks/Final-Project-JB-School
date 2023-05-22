@@ -1,0 +1,13 @@
+.Header {
+	display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 5%;
+}
+
+.navigation{
+  display: flex;
+  flex-direction: row;
+  gap: 10%;
+  justify-content: space-evenly;
+}

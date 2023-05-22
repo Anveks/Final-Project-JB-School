@@ -1,0 +1,7 @@
+.Logout{
+  display: flex;
+  align-items: center;
+}
+.Logout > a {
+  cursor: pointer;
+}

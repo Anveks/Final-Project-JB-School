@@ -1,0 +1,39 @@
+.Login > form {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: 0 auto;
+}
+
+.Login > form  > input, button {
+  position: relative;
+  padding: 15px;
+  border-radius: 15px;
+  border: transparent;
+  background-color: lightgray;
+  margin-bottom: 5%;
+}
+
+.Login > form > button {
+  background-color: green;
+  font-weight: bold;
+  font-size: 100%;
+  color: whitesmoke;
+  cursor: pointer;
+}
+
+.Login > form > button:hover{
+  background-color: rgb(4, 163, 4);
+}
+
+.emailIcon {
+  position: absolute;
+  bottom: 76.5%;
+  right: 65%;
+}
+
+.passwordIcon {
+  position: absolute;
+  bottom: 66.5%;
+  right: 65%;
+}

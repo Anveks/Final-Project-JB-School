@@ -5,12 +5,11 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import interceptorsService from './Services/InterceptorService';
 
+interceptorsService.createInterceptors();
+
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
-
-
-interceptorsService.createInterceptors();
 
 root.render(
     <BrowserRouter>

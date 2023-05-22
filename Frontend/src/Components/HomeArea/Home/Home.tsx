@@ -1,9 +1,17 @@
+import { authStore } from "../../../Redux/AuthState";
+import VacationsList from "../../VacationsArea/VacationsList/VacationsList";
+import StartingPage from "../StartingPage/StartingPage";
 import "./Home.css";
 
 function Home(): JSX.Element {
+
+    const token = authStore.getState().token;
+
     return (
         <div className="Home">
-			<h2>Home Page</h2>
+            {
+                token ? <VacationsList /> : <StartingPage />
+            }
         </div>
     );
 }

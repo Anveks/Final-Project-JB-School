@@ -1,0 +1,36 @@
+.StartingPage {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 5% 8%;
+}
+
+.title {
+  font-size: 25px;
+  font-weight: bold;
+  color: rgb(4, 163, 4);
+}
+
+.intro {
+  text-align: justify;
+}
+
+.StartingPage > div > button {
+  display: flex;
+  background-color: transparent;
+  color: green;
+  font-size: 17px;
+  border: 2px solid green;
+  border-radius: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  justify-content: flex-start;
+}
+
+.StartingPage > div > button:hover {
+  transform: scale(1.01);
+  border: 2px solid rgb(4, 163, 4);
+  color: rgb(4, 163, 4);
+}

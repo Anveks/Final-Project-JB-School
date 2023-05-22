@@ -1,0 +1,27 @@
+.Register > form {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: 0 auto;
+}
+
+.Register > form  > input, button {
+  position: relative;
+  padding: 15px;
+  border-radius: 15px;
+  border: transparent;
+  background-color: lightgray;
+  margin-bottom: 5%;
+}
+
+.Register > form > button {
+  background-color: green;
+  font-weight: bold;
+  font-size: 100%;
+  color: whitesmoke;
+  cursor: pointer;
+}
+
+.Register > form > button:hover{
+  background-color: rgb(4, 163, 4);
+}

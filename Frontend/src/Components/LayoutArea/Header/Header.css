@@ -3,6 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
   margin: 0 5%;
+  align-items: center;
 }
 
 .navigation{
@@ -10,4 +11,11 @@
   flex-direction: row;
   gap: 10%;
   justify-content: space-evenly;
+  width: 25%;
+}
+
+.logo {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
 }

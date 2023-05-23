@@ -14,7 +14,6 @@ function Logout(): JSX.Element {
 
         navigate('/starting-page');
         vacationsStore.dispatch({ type: VacationsActionType.ResetVacations });
-        authStore.dispatch({ type: AuthActionType.UpdateLoggedIn, payload: false })
     }
     return (
         <div className="Logout">

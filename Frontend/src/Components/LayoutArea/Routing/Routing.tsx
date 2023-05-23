@@ -13,7 +13,7 @@ function Routing(): JSX.Element {
     }
 
     const ProtectedRoute = ({ children }: Props) => {
-        if (!authStore.getState().token) {
+        if (authStore.getState().token === null) {
             return <Navigate to="/starting-page" />
         }
         return children;

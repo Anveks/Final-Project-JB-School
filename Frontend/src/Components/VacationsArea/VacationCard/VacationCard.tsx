@@ -9,8 +9,10 @@ import LikeButton from '../LikeButton/LikeButton';
 
 function VacationCard(props: any): JSX.Element {
 
+    const { description, destination, startDate, endDate, followersCount, isFollowing, imageUrl, price, vacationId } = props.vacation;
+
     const navigate = useNavigate();
-    const [visible, setVisible] = useState<boolean>(true);
+    // const [visible, setVisible] = useState<boolean>(true);
 
     const [modalOpen, setModalOpen] = useState<boolean>(false);
     function handleModal() {
@@ -36,9 +38,9 @@ function VacationCard(props: any): JSX.Element {
             await dataService.deleteVacation(props.vacation.vacationId);
             notifyService.success("Vacation has been deleted");
 
-            setTimeout(() => {
-                setVisible(false)
-            }, 1500);
+            // setTimeout(() => {
+            //     setVisible(false)
+            // }, 1500);
         }
         catch (err: any) {
             notifyService.error(err);
@@ -48,35 +50,18 @@ function VacationCard(props: any): JSX.Element {
     }
 
     return (
-        <div className="VacationCard" style={{ display: visible ? "" : "none" }}>
-            <div className="head">
-                <div className="title">{props.vacation.destination}</div>
-                <p className="price">{props.vacation.price}$</p>
-                {!admin && <LikeButton vacations={props.vacation} />}
-                {
-                    admin && <div className="admin-field dropdown">
-                        <button className="dropBtn"><MoreHorizIcon /></button>
-                        <div className="dropdown-content">
-                            <NavLink
-                                to="edit"
-                                state={{ id: props.vacation.vacationId }}>
-                                Edit Vacation
-                            </NavLink>
-                            <a href="#" onClick={deleteVacation}>Delete Vacation</a>
-                        </div>
-                    </div>
-                }
-            </div>
-            <div className="body">
-                <div className="image">
-                    <img src={props.vacation.imageUrl} />
-                </div>
-                <div className="date">{formatDate(props.vacation.startDate)} - {formatDate(props.vacation.endDate)}</div>
-                <div className="description" style={{ height: admin ? "100px" : "140px" }}>
-                    {props.vacation.description}
+        <div className="main-container">
+
+            <div className="card">
+                <img src={imageUrl} alt="vacation-image" />
+
+                <div className="intro">
+                    <h3>{destination}</h3>
+                    <p>{description}</p>
                 </div>
             </div>
-        </div >
+
+        </div>
     );
 }
 

@@ -6,11 +6,11 @@ import { useState, useEffect } from "react";
 
 function Menu(): JSX.Element {
 
-    const [loggedIn, setIsLoggedIn] = useState<boolean>(authStore.getState().token !== null ? true : false);
+    const [token, setToken] = useState<string>(authStore.getState().token);
 
     useEffect(() => {
         const unsubscribe = authStore.subscribe(() => {
-            setIsLoggedIn(authStore.getState().isLoggedIn);
+            setToken(authStore.getState().token);
         });
 
         return () => unsubscribe();
@@ -21,7 +21,7 @@ function Menu(): JSX.Element {
             <div className="logo">vacations.com</div>
 
             {
-                !loggedIn ?
+                token === null ?
                     <div className="navigation">
                         <NavLink to="/home">Home</NavLink>
                         <NavLink to="/about">About</NavLink>

@@ -10,7 +10,7 @@ function Home(): JSX.Element {
     return (
         <div className="Home">
             {
-                token ? <VacationsList /> : <StartingPage />
+                token !== null ? <VacationsList /> : <StartingPage />
             }
         </div>
     );

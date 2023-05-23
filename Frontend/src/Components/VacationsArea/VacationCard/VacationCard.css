@@ -1,167 +1,64 @@
-.VacationCard{
-  border: 1px solid transparent;
-  border-radius: 12px;
+.main-container {
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  height: 300px;
+  width: 400px;
   margin: 10px;
-  padding: 10px;
-  width: 350px;
-  height: 415px;
-  /* background-color: whitesmoke; */
-  color: black;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
-  font-size: 16px;
-}
-
-.title {
-  font-weight: bold;
-  text-align: left;
-  font-size: 20px;
-}
-
-.description {
-  height: 150px;
-  overflow: auto;
-  font-size: 16px;
-  text-align: justify;
-}
-
-::-webkit-scrollbar{
-  display: none; 
- }
-
-.Card img {
-	width: 350px;
-  height: 200px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-}
-
-.date {
-  padding: 5px;
+  box-shadow: 5px 5px 20px black;
+  overflow: hidden;
+  position: relative;
   border-radius: 5px;
-  font-size: 15px;
-  text-align: left;
-  /* background-color: lightgray; */
-  font-weight: bold;
-  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); */
-  margin: 5px;
 }
 
-.head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 8%;
-}
-
-.price{
-  font-weight: bold;
-  font-size: 18px;
-  border: 3px solid #ffb700;
-  padding: 3px;
-  border-radius: 9px;
-}
-
-/* .Card button {
-  border: transparent;
-  border-radius: 10px;
-  font-weight: bold;
-  height: 20px;
-  font-size: 20px;
-} */
-/* 
-.admin-field {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 10px;
-  font-size: 17px;
-  height: 10%;
-} */
-/* 
-.edit, .delete {
-  display: flex;
-  align-items: center;
-  background-color: #003b95;
-  color: white;
-  font-weight: light;
-  padding: 5px;
-  border-radius: 10px;
+/* .card:hover{
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 } */
 
-/* .edit{
-  padding: 8px;
-} */
-
-/* .delete {
-  padding: 8px;
-  font-weight: bolder;
+.card > img {
+  height: inherit;
+  width: inherit;
+  border-radius: 3px;
+  transition: .5s;
 }
 
-.edit:hover, .delete:hover {
-  background-color:  #006ce4;
-} */
-
-/* LIKE */
-.likeBtn{
-  display: flex;
-  align-items: center;
-  color: lightblue;
+.card:hover img {
+  transform: scale(1.05);
 }
 
-.like{
-  animation: bump 300ms ease-out;
-  display: flex;
-  align-items: center;
-}
-
-@keyframes bump {
-  0% {
-    transform: scale(1);
-  }
-  10% {
-    transform: scale(0.9);
-  }
-  30% {
-    transform: scale(1.1);
-  }
-  50% {
-    transform: scale(1.15);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* DROPDOWN CSS */
-.dropBtn {
-  font-size: 16px;
-  border: transparent !important;
-  background-color: transparent !important;
-  padding-top: 0;
-}
-
-.dropdown-content {
-  border-radius: 5px;
-  display: none;
+.intro{
+  cursor: pointer;
+  height: 50px;
+  width: inherit;
+  padding: 6px;
+  box-sizing: border-box;
   position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+  background: rgb(27, 27, 27, .5);
+  color: white;
+  bottom: 0%;
+  transition: .5s;
 }
 
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+.card:hover .intro {
+  height: 40%;
+  background: rgb(27, 27, 27, .7);
 }
 
-.dropdown-content a:hover {
-  background-color: #ddd;
-  border-radius: 5px;
+h3{
+  margin: 10px;
+  font-size: 20px;
 }
 
-.dropdown:hover .dropdown-content {display: block;}
+p{
+  margin: 5px;
+  text-align: justify;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.card:hover p{
+  opacity: 1;
+  visibility: visible;
+}

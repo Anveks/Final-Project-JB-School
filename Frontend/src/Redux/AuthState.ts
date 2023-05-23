@@ -6,7 +6,6 @@ export class AuthState {
 
     public token: string = null;
     public user: UserModel = null;
-    public isLoggedIn: boolean = false;
     
     public constructor() {
         this.token = localStorage.getItem("token");
@@ -22,7 +21,6 @@ export enum AuthActionType {
     Login = "Login",
     Logout = "Logout",
     UpdateToken = "UpdateToken", // TODO: delete
-    UpdateLoggedIn = "UpdateLoggedIn"
 }
 
 export interface AuthAction {
@@ -49,10 +47,6 @@ export function authReducer(currentState = new AuthState(), action: AuthAction):
             newState.token = null;
             newState.user = null;
             localStorage.removeItem("token");
-            break;
-
-        case AuthActionType.UpdateLoggedIn:
-            newState.isLoggedIn = action.payload;
             break;
 
         // case AuthActionType.UpdateToken:

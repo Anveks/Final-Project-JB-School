@@ -16,7 +16,6 @@ class AuthService {
         const response = await axios.post<string>(appConfig.loginUrl, credentials);
         const token = response.data;
         authStore.dispatch({ type: AuthActionType.Login, payload: token });
-        authStore.dispatch({ type: AuthActionType.UpdateLoggedIn, payload: true });
     }
 
     public logout(): void {

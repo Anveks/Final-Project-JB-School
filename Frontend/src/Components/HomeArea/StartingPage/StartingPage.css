@@ -7,17 +7,20 @@
   margin: 5% 8%;
 }
 
-.title {
+.StartingPage > div > .start-title {
   font-size: 25px;
   font-weight: bold;
   color: rgb(4, 163, 4);
+  margin: 5% 0;
 }
 
-.intro {
+.StartingPage > div {
   text-align: justify;
+  color: #333;
 }
 
 .StartingPage > div > button {
+  margin-top: 5%;
   display: flex;
   background-color: transparent;
   color: green;

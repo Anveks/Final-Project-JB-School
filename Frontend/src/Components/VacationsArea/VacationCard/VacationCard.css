@@ -1,13 +1,14 @@
 .main-container {
   margin: 0;
   padding: 0;
+  position: relative;
 }
 
 .card {
   height: 300px;
   width: 400px;
   margin: 10px;
-  box-shadow: 5px 5px 20px black;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.75);
   overflow: hidden;
   position: relative;
   border-radius: 5px;
@@ -39,26 +40,109 @@
   color: white;
   bottom: 0%;
   transition: .5s;
+  margin-top: 0;
 }
 
 .card:hover .intro {
-  height: 40%;
+  height: 60%;
   background: rgb(27, 27, 27, .7);
 }
 
-h3{
-  margin: 10px;
+.details{
+  display: flex;
+  flex-direction: row;
+  height: 70px;
+  align-content: center;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+
+.price{
   font-size: 20px;
+  font-weight: bold;
+  margin-top: 2.75%;
+}
+
+.destination-date {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+h3{
+  margin: 3px 5px;
+  font-size: 20px;
+}
+
+h5{
+  margin-top: -5px;
+  margin-left: 5px;
 }
 
 p{
   margin: 5px;
+  margin-top: -5%;
   text-align: justify;
   visibility: hidden;
   opacity: 0;
+  overflow: auto;
+  height: 100px;
 }
 
 .card:hover p{
   opacity: 1;
   visibility: visible;
+}
+
+::-webkit-scrollbar{
+  display: none; 
+ }
+
+ /* LIKE BTN */
+
+ .LikeButton{
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  top: 7%;
+  right: 5%;
+  transform: scale(1.2);
+ }
+
+ .LikeButton > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  /* width: 45px;
+  height: 45px;
+  border-radius: 60%;
+  background: rgb(27, 27, 27, .4); */
+  cursor: pointer;
+ }
+
+ .like{
+  animation: bump 300ms ease-out;
+  display: flex;
+  align-items: center;
+}
+
+@keyframes bump {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(0.9);
+  }
+  30% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

@@ -18,8 +18,8 @@ function StartingPage(): JSX.Element {
     return (
         <div className="StartingPage">
             <div>
-                <p className="title">TAKE A BREAK AND LETS HOLIDAY!</p>
-                <p className="intro">Welcome to Vacations! Explore breathtaking destinations, immerse yourself in vibrant cultures, and create unforgettable memories. Start your journey with us today!</p>
+                <div className="start-title">TAKE A BREAK AND LET'S HOLIDAY!</div>
+                Welcome to Vacations! Explore breathtaking destinations, immerse yourself in vibrant cultures, and create unforgettable memories. Start your journey with us today!
                 <button>Learn More</button>
             </div>
 

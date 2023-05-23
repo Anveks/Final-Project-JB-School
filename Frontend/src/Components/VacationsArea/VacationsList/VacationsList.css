@@ -6,31 +6,35 @@
   animation: VacationsList-appear 1s ease-out forwards;
   margin-top: 3%;
   height: 100%;
+  position: relative;
 }
 
-.VacationsList button {
-  background-color: white;
+.VacationsList > .pagination > button {
+  background-color: transparent;
   border-radius: 5px;
-  border: 2px solid  #006ce4;
   margin: 2px;
-  color:  #006ce4;
+  color:  green;
   padding-top: 15px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transform: scale(1.2);
+  margin: 5px;
 }
 
-.VacationsList button:disabled{
-  color: lightblue;
+.VacationsList > .pagination > button:disabled{
+  color: darkgray;
 }
 
-.VacationsList button:hover{
-  transform: scale(1.05);
+.VacationsList > .pagination > button:hover{
+  transform: scale(1.25);
 }
 
 .pagination {
-  position: fixed;
-  /* position: relative; */
-  /* display: block; */
-  top: 0%;
-  right: 0.5%;
+  position: absolute;
+  top: -5%;
+  right: 5%;
+  display: flex;
 }
 
 @keyframes VacationsList-appear {
@@ -45,38 +49,14 @@
   }
 }
 
-/* next page animation: */
-@keyframes nextPage {
-  0% {
-    opacity: 0;
-    transform: translate(10em, 0);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
-}
-
-@keyframes prevPage {
-  0% {
-    opacity: 0;
-    transform: translate(-10em, 0);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
-}
-
 .filters {
-  color:#006ce4;
+  color: green;
   padding: 10px;
+  margin-left: -55%;
   display: inline;
   position: fixed;
   bottom: 100%;
   padding-top: 20px;
-  /* padding: 20px; */
-  /* background-color: lightblue; */
+  font-size: 17px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

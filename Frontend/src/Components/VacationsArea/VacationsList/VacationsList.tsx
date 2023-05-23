@@ -1,5 +1,5 @@
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useEffect, useState } from "react";
 import VacationModel from "../../../Models/VacationModel";
 import { authStore } from '../../../Redux/AuthState';
@@ -93,8 +93,9 @@ function VacationsList(): JSX.Element {
             </div >}
             {noVacationsMessage}
             <div className="pagination">
-                <button disabled={currentPage === 1} onClick={() => handlePageChange(currentPage - 1)}> <ArrowBackIosIcon /> </button>
-                <button disabled={endIndex >= vacations.length} onClick={() => handlePageChange(currentPage + 1)}> <ArrowForwardIosIcon /> </button>
+                <button disabled={currentPage === 1} onClick={() => handlePageChange(currentPage - 1)}> <ArrowBackIcon /> Prev </button>
+
+                <button disabled={endIndex >= vacations.length} onClick={() => handlePageChange(currentPage + 1)}> Next  <ArrowForwardIcon /> </button>
             </div>
         </div >
     );

@@ -17,7 +17,7 @@ function Logout(): JSX.Element {
     }
     return (
         <div className="Logout">
-            <a className="logout" onClick={logout}> <LogoutIcon /></a>
+            <a className="logout" onClick={logout}> Logout <LogoutIcon /></a>
         </div>
     );
 }

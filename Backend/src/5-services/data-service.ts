@@ -54,7 +54,7 @@ async function addVacation(vacation: VacationModel): Promise<VacationModel>{
 async function updateVacation(vacation: VacationModel): Promise<VacationModel>{
 
   const err = vacation.validatePut();
-  if (err) throw new ValidationError("Some changes are not valid.")
+  if (err) throw new ValidationError("Some changes are not valid.");
 
   console.log(vacation.vacationId);
 

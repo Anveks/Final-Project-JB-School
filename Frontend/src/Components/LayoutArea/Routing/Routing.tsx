@@ -5,6 +5,8 @@ import Home from "../../HomeArea/Home/Home";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import { authStore } from "../../../Redux/AuthState";
 import StartingPage from "../../HomeArea/StartingPage/StartingPage";
+import AddVacation from "../../VacationsArea/AddVacation/AddVacation";
+import EditVacation from "../../VacationsArea/EditVacation/EditVacation";
 
 function Routing(): JSX.Element {
 
@@ -33,9 +35,6 @@ function Routing(): JSX.Element {
                 <Home />
             </ProtectedRoute>} />
 
-
-            {/* <Route path="/list" element={<List />} />
-            <Route path="/insert" element={<Insert />} /> */}
             <Route path="/starting-page" element={<StartingPage />} />
             <Route path="/" element={<Navigate to="/home" />} />
             <Route path="*" element={<PageNotFound />} />
@@ -43,6 +42,25 @@ function Routing(): JSX.Element {
             {/* auth routes */}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+
+            {/* Admin Routes: */}
+            <Route path="add">
+                <Route index element={<ProtectedAdminRoute>
+                    <AddVacation />
+                </ProtectedAdminRoute>}></Route>
+            </Route>
+
+            <Route path="/home/edit">
+                <Route index element={<ProtectedAdminRoute>
+                    <EditVacation />
+                </ProtectedAdminRoute>}></Route>
+            </Route>
+
+            {/* <Route path="chart">
+                <Route index element={<ProtectedAdminRoute>
+                    <LikesChart />
+                </ProtectedAdminRoute>}></Route>
+            </Route> */}
         </Routes>
     );
 }

@@ -46,13 +46,13 @@ class VacationModel {
   private static putValidation = Joi.object({
     vacationId: Joi.number().integer().positive().optional(),
     destination: Joi.string().required().min(2).max(30),
-    description: Joi.string().required().min(20).max(1300),
+    description: Joi.string().required().min(10).max(1300),
     startDate: Joi.date().greater('now').required(),
     endDate: Joi.date().greater(Joi.ref('startDate')).required(),
     price: Joi.number().positive().required(),
-    imageUrl: Joi.string().optional().min(20).max(300),
-    image: Joi.any()
-  });
+    imageUrl: Joi.string().optional().min(2).max(1000),
+    image: Joi.any().optional()
+  }).options({ abortEarly: true });
 
   public validatePut(): string {
     const result = VacationModel.putValidation.validate(this);

@@ -1,7 +1,8 @@
-.Logout{
+.Logout > a {
   display: flex;
   align-items: center;
-}
-.Logout > a {
   cursor: pointer;
+  gap: 10%;
+  font-weight: bold;
 }
+

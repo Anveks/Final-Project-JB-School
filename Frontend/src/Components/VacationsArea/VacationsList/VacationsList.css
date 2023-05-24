@@ -11,15 +11,12 @@
 
 .VacationsList > .pagination > button {
   background-color: transparent;
-  border-radius: 5px;
   margin: 2px;
   color:  green;
-  padding-top: 15px;
   display: flex;
   align-items: center;
   cursor: pointer;
   transform: scale(1.2);
-  margin: 5px;
 }
 
 .VacationsList > .pagination > button:disabled{
@@ -52,11 +49,60 @@
 .filters {
   color: green;
   padding: 10px;
-  margin-left: -55%;
   display: inline;
-  position: fixed;
+  position: absolute;
   bottom: 100%;
   padding-top: 20px;
   font-size: 17px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+/* DROPDOWN CSS */
+.dropBtn {
+  position: absolute;
+  right: 3%;
+  top: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  color: white;
+  font-size: 16px;
+  width: 45px;
+  height: 45px;
+  border-radius: 60%;
+  background: rgb(27, 27, 27, .4);
+  cursor: pointer;
+}
+
+.dropBtn:hover{
+  color: #333;
+  background: rgba(255, 255, 255, 0.4);
+  transition: .2s;
+}
+
+.dropdown-content {
+  border-radius: 5px;
+  display: none;
+  position: absolute;
+  right: 3%;
+  top: 15%;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+  border-radius: 5px;
+}
+
+.dropdown:hover .dropdown-content {display: block;}

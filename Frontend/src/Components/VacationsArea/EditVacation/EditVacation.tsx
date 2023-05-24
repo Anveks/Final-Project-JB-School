@@ -22,11 +22,11 @@ function EditVacation(): JSX.Element {
 
         dataService.getOneVacation(id)
             .then((res) => {
-                setValue("vacationId", res.vacationId);
+                setValue("vacationId", +res.vacationId);
                 setValue("destination", res.destination);
                 setValue("description", res.description);
-                setValue("startDate", String(res.startDate));
-                setValue("endDate", String(res.endDate));
+                setValue("startDate", res.startDate);
+                setValue("endDate", res.endDate);
                 setValue("price", res.price);
                 setVacation(res);
             })
@@ -54,25 +54,25 @@ function EditVacation(): JSX.Element {
                 <input type="hidden" {...register("vacationId")} />
 
                 <label>Destination:</label>
-                <input type="text" {...register("destination")} />
+                <input type="text" {...register("destination")} pattern=".{2,100}" required title="Destination must have 2-100 characters" />
 
                 <label>Description:</label>
-                <input type="text" {...register("description")} />
+                <input type="text" {...register("description")} pattern=".{10,1300}" required title="Description must have 10-1300 characters" />
 
                 <label>Start Date:</label>
-                <input type="string" {...register("startDate")} />
+                <input type="date" {...register("startDate")} defaultValue={vacation?.startDate} required />
 
                 <label>End Date:</label>
-                <input type="string" {...register("endDate")} />
+                <input type="date" {...register("endDate")} defaultValue={vacation?.endDate} required />
 
                 <label>Price:</label>
-                <input type="number" {...register("price")} />
+                <input type="number" {...register("price")} required />
 
                 <div className="image">
                     <label htmlFor='file'>
                         <AddPhotoAlternateIcon fontSize='large' /> Upload New Image
                     </label>
-                    <input style={{ display: 'none' }} type='file' id="file" accept="image/*" {...register("image")} />
+                    <input style={{ display: 'none' }} type='file' id="file" accept="image/*" {...register("image", { required: false })} />
                 </div>
 
                 <img src={vacation?.imageUrl} />

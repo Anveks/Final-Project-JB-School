@@ -24,4 +24,5 @@
 
 .Register > form > button:hover{
   background-color: rgb(4, 163, 4);
+  transition: .2s;
 }

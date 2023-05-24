@@ -10,11 +10,21 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import LockIcon from '@mui/icons-material/Lock';
+import { useEffect } from "react";
+import { authStore } from "../../../Redux/AuthState";
 
 function Login(): JSX.Element {
 
-    const { register, handleSubmit, formState } = useForm<CredentialsModel>();
+    const token = authStore.getState().token;
     const navigate = useNavigate();
+
+    useEffect(() => {
+
+        if (token !== null) navigate("/home");
+
+    }, []);
+
+    const { register, handleSubmit, formState } = useForm<CredentialsModel>();
 
     async function submit(credentials: CredentialsModel) {
         try {

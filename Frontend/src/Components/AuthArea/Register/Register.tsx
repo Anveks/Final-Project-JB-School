@@ -8,11 +8,21 @@ import view from "../../../Assets/img/view.jpg";
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import { useEffect } from "react";
+import { authStore } from "../../../Redux/AuthState";
 
 function Register(): JSX.Element {
 
-    const { register, handleSubmit } = useForm<UserModel>();
+    const token = authStore.getState().token;
     const navigate = useNavigate();
+
+    useEffect(() => {
+
+        if (token !== null) navigate("/home");
+
+    }, []);
+
+    const { register, handleSubmit } = useForm<UserModel>();
 
     async function submit(user: UserModel) {
         try {

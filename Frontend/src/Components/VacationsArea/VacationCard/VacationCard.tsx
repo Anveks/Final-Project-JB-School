@@ -1,12 +1,13 @@
 import Like from '@mui/icons-material/Favorite';
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { authStore } from '../../../Redux/AuthState';
 import { vacationsStore } from '../../../Redux/VacationsState';
 import dataService from '../../../Services/DataService';
 import formatDate from '../../../Services/DateFormatter';
 import notifyService from '../../../Services/NotifyService';
 import "./VacationCard.css";
+import MoreHorizIcon from '@mui/icons-material/MoreVert';
 
 function VacationCard(props: any): JSX.Element {
 
@@ -22,8 +23,10 @@ function VacationCard(props: any): JSX.Element {
         try {
             const ok = window.confirm("Are you sure?");
             if (!ok) return;
-            await dataService.deleteVacation(props.vacation.vacationId);
+            await dataService.deleteVacation(vacationId);
             notifyService.success("Vacation has been deleted");
+
+
             // TODO: delete from the page
         }
         catch (err: any) {
@@ -72,12 +75,26 @@ function VacationCard(props: any): JSX.Element {
     return (
         <div className="main-container">
 
-            <div className="LikeButton">
+            {!admin && <div className="LikeButton">
                 <div className={btnClasses} onClick={() => handleLike()} style={{ color: isFollowing ? 'red' : 'lightgreen' }}>
                     <Like />
                     <div>{followersCount}</div>
                 </div>
-            </div >
+            </div>}
+
+            {
+                admin && <div className="admin-field dropdown">
+                    <button className="dropBtn"><MoreHorizIcon /></button>
+                    <div className="dropdown-content">
+                        <NavLink
+                            to="edit"
+                            state={{ id: vacationId }}>
+                            Edit Vacation
+                        </NavLink>
+                        <a href="#" onClick={deleteVacation}>Delete Vacation</a>
+                    </div>
+                </div>
+            }
 
             <div className="card">
                 <img src={imageUrl} alt="vacation-image" />

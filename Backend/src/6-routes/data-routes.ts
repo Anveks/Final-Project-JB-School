@@ -7,6 +7,7 @@ import { createCvs } from "../4-utils/cvs-file-writer";
 import cyber from "../4-utils/cyber";
 import imageHandler from "../4-utils/image-handler";
 import dataService from "../5-services/data-service";
+import { log } from "console";
 
 const router = express.Router();
 
@@ -37,6 +38,7 @@ router.get("/vacations/:id", [verifyLoggedIn, verifyAdmin], async (request: Requ
 
 router.post("/vacations", [verifyLoggedIn, verifyAdmin], async (request: Request, response: Response, next: NextFunction) => {
     try {
+        console.log('route');
         request.body.image = request.files?.image;
         const vacation = new VacationModel(request.body);
         const newVacation = await dataService.addVacation(vacation);

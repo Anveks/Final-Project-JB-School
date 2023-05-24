@@ -9,9 +9,11 @@
 .navigation{
   display: flex;
   flex-direction: row;
-  gap: 10%;
+  gap: 1%;
   justify-content: space-evenly;
   width: 25%;
+  align-items: center;
+  font-weight: bold;
 }
 
 .logo {
@@ -19,3 +21,4 @@
   font-size: 20px;
   font-weight: bold;
 }
+

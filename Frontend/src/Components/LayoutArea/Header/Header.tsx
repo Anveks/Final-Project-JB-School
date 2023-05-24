@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 function Menu(): JSX.Element {
 
     const [token, setToken] = useState<string>(authStore.getState().token);
+    const admin = authStore.getState().user.roleId === 1 ? true : false;
 
     useEffect(() => {
         const unsubscribe = authStore.subscribe(() => {
@@ -29,7 +30,14 @@ function Menu(): JSX.Element {
                         <NavLink to="/register">Sign Up</NavLink>
                     </div>
                     :
-                    <div>
+                    <div className="navigation">
+
+                        <NavLink to="/home">Home</NavLink>
+
+                        {admin &&
+                            <NavLink to="/add">Add Vacation</NavLink>
+                        }
+
                         <Logout />
                     </div>
             }

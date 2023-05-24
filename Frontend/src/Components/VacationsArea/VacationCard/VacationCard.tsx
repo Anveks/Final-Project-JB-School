@@ -26,6 +26,7 @@ function VacationCard(props: any): JSX.Element {
             await dataService.deleteVacation(vacationId);
             notifyService.success("Vacation has been deleted");
 
+            navigate("/home")
 
             // TODO: delete from the page
         }

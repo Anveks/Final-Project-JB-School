@@ -25,8 +25,8 @@ function EditVacation(): JSX.Element {
                 setValue("vacationId", +res.vacationId);
                 setValue("destination", res.destination);
                 setValue("description", res.description);
-                setValue("startDate", res.startDate);
-                setValue("endDate", res.endDate);
+                setValue("startDate", res.startDate.slice(0, 10));
+                setValue("endDate", res.endDate.slice(0, 10));
                 setValue("price", res.price);
                 setVacation(res);
             })
@@ -60,10 +60,10 @@ function EditVacation(): JSX.Element {
                 <input type="text" {...register("description")} pattern=".{10,1300}" required title="Description must have 10-1300 characters" />
 
                 <label>Start Date:</label>
-                <input type="date" {...register("startDate")} defaultValue={vacation?.startDate} required />
+                <input type="date" {...register("startDate")} required />
 
                 <label>End Date:</label>
-                <input type="date" {...register("endDate")} defaultValue={vacation?.endDate} required />
+                <input type="date" {...register("endDate")} required />
 
                 <label>Price:</label>
                 <input type="number" {...register("price")} required />

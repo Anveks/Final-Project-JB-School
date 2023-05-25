@@ -15,7 +15,7 @@ function ChartBar(props: any): JSX.Element {
         <>
             <div className="ChartBar">
 
-                <div className="column" style={{ height: barFillHeight, backgroundColor: "lightblue" }}>
+                <div className="column" style={{ height: barFillHeight }}>
                     <div className="value">{props.value}</div>
                 </div>
                 <div className="label">{props.label}</div>

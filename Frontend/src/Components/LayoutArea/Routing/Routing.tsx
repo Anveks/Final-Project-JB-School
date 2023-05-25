@@ -8,6 +8,7 @@ import StartingPage from "../../HomeArea/StartingPage/StartingPage";
 import AddVacation from "../../VacationsArea/AddVacation/AddVacation";
 import EditVacation from "../../VacationsArea/EditVacation/EditVacation";
 import LikesChart from "../../VacationsArea/ChartsArea/LikesChart/LikesChart";
+import ContactUs from "../../HomeArea/ContactUs/ContactUs";
 
 function Routing(): JSX.Element {
 
@@ -39,6 +40,7 @@ function Routing(): JSX.Element {
             <Route path="/starting-page" element={<StartingPage />} />
             <Route path="/" element={<Navigate to="/home" />} />
             <Route path="*" element={<PageNotFound />} />
+            <Route path="contactUs" element={<ContactUs />} />
 
             {/* auth routes */}
             <Route path="/login" element={<Login />} />

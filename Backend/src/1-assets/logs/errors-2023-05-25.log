@@ -2,3 +2,13 @@
 
 2023-05-25T08:22:25.502Z - ER_BAD_NULL_ERROR: Column 'imageFileName' cannot be null
 
+2023-05-25T11:25:54.639Z - Incorrect email or password!
+
+2023-05-25T11:26:01.382Z - Incorrect email or password!
+
+2023-05-25T11:36:33.980Z - anveks@mail.com is already in use.
+
+2023-05-25T11:39:06.926Z - anveks@mail.com is already in use.
+
+2023-05-25T11:39:19.150Z - "email" must be a valid email
+

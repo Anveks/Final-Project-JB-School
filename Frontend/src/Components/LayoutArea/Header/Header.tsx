@@ -42,30 +42,19 @@ function Menu(): JSX.Element {
             <div className="logo">vacations.com</div>
 
             {
-                token === null ?
-                    <div className="navigation">
+                token === null
+                    ? <div className="navigation">
                         <NavLink to="/home">Home</NavLink>
                         <NavLink to="/about">About</NavLink>
                         <NavLink to="/login">Login</NavLink>
                         <NavLink to="/register">Sign Up</NavLink>
-                        <Logout />
                     </div>
-                    :
-
-                    <div className="navigation admin">
-
-                        {admin &&
-
-                            <div className="admin-field">
-                                <NavLink to="/home">Home</NavLink>
-                                <NavLink to="/add">Add Vacation</NavLink>
-                                <NavLink to="chart"> See Chart </NavLink>
-                                <NavLink to="#" onClick={handleDownload}>Download CSV</NavLink>
-                                <Logout />
-                            </div>
-                        }
-
-
+                    : <div className="navigation">
+                        {admin && <NavLink to="/home">Home</NavLink>}
+                        {admin && <NavLink to="/add">Add Vacation</NavLink>}
+                        {admin && <NavLink to="chart"> See Chart </NavLink>}
+                        {admin && <NavLink to="#" onClick={handleDownload}>Download CSV</NavLink>}
+                        <Logout />
                     </div>
             }
 

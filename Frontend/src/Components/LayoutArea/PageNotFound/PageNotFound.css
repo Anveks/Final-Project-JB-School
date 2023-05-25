@@ -1,3 +1,8 @@
-.PageNotFound {
-	
+.PageNotFound > img {
+	width: 50%;
+}
+
+.PageNotFound > div > a{
+  color:green;
+  font-weight: bold;
 }

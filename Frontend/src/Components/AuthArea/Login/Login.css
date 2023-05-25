@@ -5,7 +5,16 @@
   margin: 0 auto;
 }
 
-.Login > form  > input, button {
+.Login > form > label {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 13px;
+  gap: 1%;
+}
+
+.Login > form > input,
+.Login > form > button {
   position: relative;
   padding: 15px;
   border-radius: 15px;
@@ -22,19 +31,17 @@
   cursor: pointer;
 }
 
-.Login > form > button:hover{
+.Login > form > button:hover {
   background-color: rgb(4, 163, 4);
   transition: .2s;
 }
 
-.emailIcon {
-  position: absolute;
-  bottom: 76.5%;
-  right: 65%;
+.Login > form > div > a {
+  font-weight: bold;
+  color: green;
 }
 
-.passwordIcon {
-  position: absolute;
-  bottom: 66.5%;
-  right: 65%;
+.Login > form > div > a:hover {
+  color: rgb(4, 163, 4);
+  transition: .2s;
 }

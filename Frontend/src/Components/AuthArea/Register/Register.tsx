@@ -1,15 +1,14 @@
+import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+import PasswordIcon from '@mui/icons-material/Password';
+import PersonIcon from '@mui/icons-material/Person';
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import "./Register.css";
 import UserModel from "../../../Models/UserModel";
+import { authStore } from "../../../Redux/AuthState";
 import authService from "../../../Services/AuthService";
 import notifyService from "../../../Services/NotifyService";
-import view from "../../../Assets/img/view.jpg";
-import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
-import SupportAgentIcon from '@mui/icons-material/SupportAgent';
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
-import { useEffect } from "react";
-import { authStore } from "../../../Redux/AuthState";
+import "./Register.css";
 
 function Register(): JSX.Element {
 
@@ -40,17 +39,21 @@ function Register(): JSX.Element {
 
             <form onSubmit={handleSubmit(submit)}>
                 <h2 className="title">Sign Up</h2>
-                <input type="text" {...register("firstName")} required minLength={2} maxLength={20} autoFocus placeholder="first name" />
+                <label><PersonIcon className="emailIcon" /> First Name: </label>
+                <input type="text" {...register("firstName")} required minLength={2} maxLength={20} autoFocus placeholder="Luke" />
 
-                <input type="text" {...register("lastName")} required minLength={2} maxLength={20} placeholder="last name" />
+                <label><PersonIcon className="emailIcon" /> Last Name: </label>
+                <input type="text" {...register("lastName")} required minLength={2} maxLength={20} placeholder="Skywalker" />
 
+                <label><AlternateEmailIcon className="emailIcon" /> Email:</label>
+                <input type="email" {...register("email")} required minLength={4} maxLength={20} placeholder="luke.skywalker@gmail.com" />
+
+                <label><PasswordIcon className="emailIcon" /> Password: </label>
                 <input type="password" {...register("password")} required minLength={4} maxLength={20} placeholder="password" />
-
-                <input type="email" {...register("email")} required minLength={4} maxLength={20} placeholder="email" />
 
                 <button>Register</button>
 
-                <p>Already have an account? <Link to="/login">Login.</Link></p>
+                <div>Already have an account? <Link to="/login">Login.</Link></div>
 
             </form>
 

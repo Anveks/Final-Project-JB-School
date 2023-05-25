@@ -5,6 +5,14 @@
   margin: 0 auto;
 }
 
+.Register > form > label {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 13px;
+  gap: 1%;
+}
+
 .Register > form  > input, button {
   position: relative;
   padding: 15px;
@@ -24,5 +32,15 @@
 
 .Register > form > button:hover{
   background-color: rgb(4, 163, 4);
+  transition: .2s;
+}
+
+.Register > form > div > a {
+  font-weight: bold;
+  color: green;
+}
+
+.Register > form > div > a:hover{
+  color: rgb(4, 163, 4);
   transition: .2s;
 }

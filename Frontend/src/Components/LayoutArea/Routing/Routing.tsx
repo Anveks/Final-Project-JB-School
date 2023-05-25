@@ -7,6 +7,7 @@ import { authStore } from "../../../Redux/AuthState";
 import StartingPage from "../../HomeArea/StartingPage/StartingPage";
 import AddVacation from "../../VacationsArea/AddVacation/AddVacation";
 import EditVacation from "../../VacationsArea/EditVacation/EditVacation";
+import LikesChart from "../../VacationsArea/ChartsArea/LikesChart/LikesChart";
 
 function Routing(): JSX.Element {
 
@@ -56,11 +57,11 @@ function Routing(): JSX.Element {
                 </ProtectedAdminRoute>}></Route>
             </Route>
 
-            {/* <Route path="chart">
+            <Route path="chart">
                 <Route index element={<ProtectedAdminRoute>
                     <LikesChart />
                 </ProtectedAdminRoute>}></Route>
-            </Route> */}
+            </Route>
         </Routes>
     );
 }

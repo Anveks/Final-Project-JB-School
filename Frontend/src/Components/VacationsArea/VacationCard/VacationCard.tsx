@@ -1,4 +1,5 @@
 import Like from '@mui/icons-material/Favorite';
+import MoreHorizIcon from '@mui/icons-material/MoreVert';
 import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { authStore } from '../../../Redux/AuthState';
@@ -7,7 +8,6 @@ import dataService from '../../../Services/DataService';
 import formatDate from '../../../Services/DateFormatter';
 import notifyService from '../../../Services/NotifyService';
 import "./VacationCard.css";
-import MoreHorizIcon from '@mui/icons-material/MoreVert';
 
 function VacationCard(props: any): JSX.Element {
 
@@ -18,6 +18,7 @@ function VacationCard(props: any): JSX.Element {
     const admin = authStore.getState().user?.roleId === 1 ? true : false;
 
     const navigate = useNavigate();
+    const [visible, setVisible] = useState<boolean>(true);
 
     async function deleteVacation() {
         try {
@@ -26,9 +27,10 @@ function VacationCard(props: any): JSX.Element {
             await dataService.deleteVacation(vacationId);
             notifyService.success("Vacation has been deleted");
 
-            navigate("/home")
-
             // TODO: delete from the page
+            setTimeout(() => {
+                setVisible(false)
+            }, 1500);
         }
         catch (err: any) {
             notifyService.error(err);
@@ -74,7 +76,7 @@ function VacationCard(props: any): JSX.Element {
     };
 
     return (
-        <div className="main-container">
+        <div className="main-container" style={{ display: visible ? "" : "none" }}>
 
             {!admin && <div className="LikeButton">
                 <div className={btnClasses} onClick={() => handleLike()} style={{ color: isFollowing ? 'red' : 'lightgreen' }}>

@@ -3,11 +3,13 @@ import "./Header.css";
 import { authStore } from "../../../Redux/AuthState";
 import Logout from "../../AuthArea/Logout/Logout";
 import { useState, useEffect } from "react";
+import dataService from "../../../Services/DataService";
+import notifyService from "../../../Services/NotifyService";
 
 function Menu(): JSX.Element {
 
     const [token, setToken] = useState<string>(authStore.getState().token);
-    const admin = authStore.getState().user.roleId === 1 ? true : false;
+    const admin = authStore.getState().user?.roleId === 1 ? true : false;
 
     useEffect(() => {
         const unsubscribe = authStore.subscribe(() => {
@@ -16,6 +18,24 @@ function Menu(): JSX.Element {
 
         return () => unsubscribe();
     }, []);
+
+    async function handleDownload(): Promise<any> {
+        try {
+            // get fileData and transform it to a Blob object:
+            const fileData = await dataService.getCSVFileData();
+            const blob = new Blob([fileData], { type: 'text/csv' });
+
+            // Create a link to download the CSV file:
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = 'vacations-data.csv';
+
+            // trigger click:
+            link.click();
+        } catch (err: any) {
+            notifyService.error(err.message);
+        }
+    }
 
     return (
         <div className="Header">
@@ -28,17 +48,24 @@ function Menu(): JSX.Element {
                         <NavLink to="/about">About</NavLink>
                         <NavLink to="/login">Login</NavLink>
                         <NavLink to="/register">Sign Up</NavLink>
+                        <Logout />
                     </div>
                     :
-                    <div className="navigation">
 
-                        <NavLink to="/home">Home</NavLink>
+                    <div className="navigation admin">
 
                         {admin &&
-                            <NavLink to="/add">Add Vacation</NavLink>
+
+                            <div className="admin-field">
+                                <NavLink to="/home">Home</NavLink>
+                                <NavLink to="/add">Add Vacation</NavLink>
+                                <NavLink to="chart"> See Chart </NavLink>
+                                <NavLink to="#" onClick={handleDownload}>Download CSV</NavLink>
+                                <Logout />
+                            </div>
                         }
 
-                        <Logout />
+
                     </div>
             }
 

@@ -9,6 +9,7 @@ import appConfig from "./4-utils/app-config";
 import helmet from "helmet";
 import socketIoService from "./5-services/socket.io-service";
 import path from "path";
+import logger from "./4-utils/logger";
 
 const server = express();
 
@@ -47,7 +48,10 @@ server.use("/api", authRoutes);
 server.use(routeNotFound);
 server.use(catchAll);
 
-server.listen(appConfig.port, () => console.log("Listening on http://localhost:" + appConfig.port));
+server.listen(appConfig.port, () => {
+  console.log("Listening on http://localhost:" + appConfig.port);
+  logger.logActivities("Server's up and running.");
+});
 
 // const httpServer = server.listen(appConfig.httpPort, () => console.log("Listening on http://localhost:" + appConfig.httpPort));
 // socketIoService.init(httpServer);

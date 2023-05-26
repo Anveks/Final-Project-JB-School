@@ -34,10 +34,10 @@ async function getOneVacation(id: number): Promise<VacationModel> {
 
 async function addVacation(vacation: VacationModel): Promise<VacationModel>{
   console.log('service');
-  //const err = vacation.validatePost();
+  const err = vacation.validatePost();
   console.log(vacation);
 
-    //if (err) throw new ValidationError("Vacation is not valid.")    
+    if (err) throw new ValidationError("Vacation is not valid.")    
 
     let imageName = null;
     if (vacation.image) {

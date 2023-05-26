@@ -34,7 +34,7 @@ class VacationModel {
     price: Joi.number().positive().required(),
     imageUrl: Joi.string().optional().min(20).max(300),
     image: Joi.any()
-});
+}).options({ abortEarly: true });;
 
   public validatePost(): string {
     const result = VacationModel.postValiation.validate(this);

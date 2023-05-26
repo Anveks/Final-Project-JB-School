@@ -55,3 +55,7 @@ server.listen(appConfig.port, () => {
 
 // const httpServer = server.listen(appConfig.httpPort, () => console.log("Listening on http://localhost:" + appConfig.httpPort));
 // socketIoService.init(httpServer);
+
+export default {
+  server
+}

@@ -49,5 +49,5 @@ server.use(catchAll);
 
 server.listen(appConfig.port, () => console.log("Listening on http://localhost:" + appConfig.port));
 
-const httpServer = server.listen(appConfig.httpPort, () => console.log("Listening on http://localhost:" + appConfig.httpPort));
-socketIoService.init(httpServer);
+// const httpServer = server.listen(appConfig.httpPort, () => console.log("Listening on http://localhost:" + appConfig.httpPort));
+// socketIoService.init(httpServer);

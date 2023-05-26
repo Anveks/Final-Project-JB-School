@@ -11,6 +11,17 @@ import { log } from "console";
 
 const router = express.Router();
 
+router.get("/docker", async (request: Request, response: Response, next: NextFunction) => {
+    try {
+        console.log("something");
+        
+        response.send("Hi from docker!");
+    }
+    catch(err: any) {
+        next(err);        
+    }
+});
+
 router.get("/vacations", verifyLoggedIn, async (request: Request, response: Response, next: NextFunction) => {
     try {
         const header = request.headers.authorization; // get the authorization header

@@ -8,7 +8,8 @@ import RoleModel from "../2-models/role-model";
 
 async function register(user: UserModel): Promise<string>{
 
-  // TODO: validation of user
+  const err = user.postValidation();
+  if(err) throw new ValidationError(err);
 
   if(await isEmailTaken(user.email)) throw new ValidationError(`${user.email} is already in use.`);
 

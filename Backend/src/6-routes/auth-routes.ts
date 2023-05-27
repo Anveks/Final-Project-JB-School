@@ -27,7 +27,7 @@ router.post("/auth/register", async (request: Request, response: Response, next:
     const user = new UserModel(request.body);
     const token = await authService.register(user);
     logger.logActivities("New user has registered.");
-    response.json(token);
+    response.status(201).json(token);
   }
   catch(err: any) {
       next(err);

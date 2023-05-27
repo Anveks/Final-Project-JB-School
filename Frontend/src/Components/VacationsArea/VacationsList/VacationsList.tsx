@@ -9,6 +9,7 @@ import notifyService from "../../../Services/NotifyService";
 // import MiniNotFound from '../../MiniNotFound/MiniNotFound';
 import "./VacationsList.css";
 import VacationCard from '../VacationCard/VacationCard';
+import authService from '../../../Services/AuthService';
 
 function VacationsList(): JSX.Element {
 
@@ -31,9 +32,12 @@ function VacationsList(): JSX.Element {
         dataService.getAllVacations()
             .then((responseVacations) => {
                 // here we both check if current user is user (and not admin) and filter the vacations by the date:
-                setVacations(user ? responseVacations.filter((v) => new Date(v.startDate).getTime() > Date.now()) : responseVacations);
+                setVacations(user ? responseVacations.filter((v) => new Date(v.endDate).getTime() > Date.now()) : responseVacations);
             })
-            .catch((err) => notifyService.error(err.message));
+            .catch((err) => {
+                notifyService.error(err.response.data);
+                err.response.status === 401 && authService.logout();
+            });
     }, []);
 
     // setting an array of filters:

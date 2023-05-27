@@ -25,7 +25,7 @@ class NotifyService {
         if (err.response?.data) return err.response.data;
 
         // Unknown error (JIC = Just in Case)
-        return "Some error, please try again";
+        return "Some error, please try again later.";
     }
 
 }

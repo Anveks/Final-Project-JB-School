@@ -44,19 +44,19 @@ function AddVacation(): JSX.Element {
             <h3>Add a Vacation</h3>
             <form onSubmit={handleSubmit(send)}>
                 <label>Destination:</label>
-                <input type="text" {...register("destination")} />
+                <input type="text" {...register("destination")} required minLength={2} maxLength={100} />
 
                 <label>Description:</label>
-                <input type="text" {...register("description")} />
+                <input type="text" {...register("description")} required minLength={20} maxLength={1300} />
 
                 <label>Start Date:</label>
-                <input type="date" {...register("startDate")} />
+                <input type="date" {...register("startDate")} required />
 
                 <label>End Date:</label>
-                <input type="date" {...register("endDate")} />
+                <input type="date" {...register("endDate")} required />
 
                 <label>Price:</label>
-                <input type="number" {...register("price")} />
+                <input type="number" {...register("price")} minLength={1} maxLength={10000} />
 
                 <div className="image">
 

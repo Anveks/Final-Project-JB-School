@@ -54,10 +54,10 @@ function EditVacation(): JSX.Element {
                 <input type="hidden" {...register("vacationId")} />
 
                 <label>Destination:</label>
-                <input type="text" {...register("destination")} pattern=".{2,100}" required title="Destination must have 2-100 characters" />
+                <input type="text" {...register("destination")} required minLength={2} maxLength={100} />
 
                 <label>Description:</label>
-                <input type="text" {...register("description")} pattern=".{10,1300}" required title="Description must have 10-1300 characters" />
+                <input type="text" {...register("description")} required minLength={20} maxLength={1300} />
 
                 <label>Start Date:</label>
                 <input type="date" {...register("startDate")} required />
@@ -66,7 +66,7 @@ function EditVacation(): JSX.Element {
                 <input type="date" {...register("endDate")} required />
 
                 <label>Price:</label>
-                <input type="number" {...register("price")} required />
+                <input type="number" {...register("price")} required minLength={1} maxLength={10000} />
 
                 <div className="image">
                     <label htmlFor='file'>
@@ -75,7 +75,7 @@ function EditVacation(): JSX.Element {
                     <input style={{ display: 'none' }} type='file' id="file" accept="image/*" {...register("image", { required: false })} />
                 </div>
 
-                <img src={vacation?.imageUrl} />
+                <img src={vacation.imageUrl} />
 
                 <button>Submit Changes</button>
             </form>

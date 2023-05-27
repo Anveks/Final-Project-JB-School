@@ -2414,3 +2414,7 @@
 
 2023-05-27T09:13:07.531Z - Invalid token
 
+2023-05-27T09:39:08.336Z - Incorrect email or password!
+
+2023-05-27T09:41:57.811Z - kafka@mail.com is already in use.
+

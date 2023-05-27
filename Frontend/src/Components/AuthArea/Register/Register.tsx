@@ -39,17 +39,17 @@ function Register(): JSX.Element {
 
             <form onSubmit={handleSubmit(submit)}>
                 <h2 className="title">Sign Up</h2>
-                <label><PersonIcon className="emailIcon" /> First Name: </label>
-                <input type="text" {...register("firstName")} required minLength={2} maxLength={20} autoFocus placeholder="Luke" />
+                <label><PersonIcon /> First Name: </label>
+                <input type="text" {...register("firstName")} required minLength={2} maxLength={60} autoFocus placeholder="Luke" />
 
-                <label><PersonIcon className="emailIcon" /> Last Name: </label>
-                <input type="text" {...register("lastName")} required minLength={2} maxLength={20} placeholder="Skywalker" />
+                <label><PersonIcon /> Last Name: </label>
+                <input type="text" {...register("lastName")} required minLength={2} maxLength={60} placeholder="Skywalker" />
 
-                <label><AlternateEmailIcon className="emailIcon" /> Email:</label>
-                <input type="email" {...register("email")} required minLength={4} maxLength={20} placeholder="luke.skywalker@gmail.com" />
+                <label><AlternateEmailIcon /> Email:</label>
+                <input type="email" {...register("email")} required minLength={7} maxLength={100} placeholder="luke.skywalker@gmail.com" />
 
-                <label><PasswordIcon className="emailIcon" /> Password: </label>
-                <input type="password" {...register("password")} required minLength={4} maxLength={20} placeholder="password" />
+                <label><PasswordIcon /> Password: </label>
+                <input type="password" {...register("password")} required minLength={4} maxLength={1024} placeholder="password" />
 
                 <button>Register</button>
 

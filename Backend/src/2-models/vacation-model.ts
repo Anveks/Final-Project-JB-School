@@ -27,11 +27,11 @@ class VacationModel {
   // post validation
   private static postValiation = Joi.object({
     vacationId: Joi.number().forbidden().positive().integer(),
-    destination: Joi.string().required().min(2).max(30),
+    destination: Joi.string().required().min(2).max(100),
     description: Joi.string().required().min(20).max(1300),
     startDate: Joi.date().greater('now').required(),
     endDate: Joi.date().greater(Joi.ref('startDate')).required(),
-    price: Joi.number().positive().required(),
+    price: Joi.number().positive().required().min(1).max(10000),
     imageUrl: Joi.string().optional().min(20).max(300),
     image: Joi.any()
 }).options({ abortEarly: true });;
@@ -49,7 +49,7 @@ class VacationModel {
     description: Joi.string().required().min(10).max(1300),
     startDate: Joi.date().greater('now').required(),
     endDate: Joi.date().greater(Joi.ref('startDate')).required(),
-    price: Joi.number().positive().required(),
+    price: Joi.number().positive().required().min(1).max(10000),
     imageUrl: Joi.string().optional().min(2).max(1000),
     image: Joi.any().optional()
   }).options({ abortEarly: true });

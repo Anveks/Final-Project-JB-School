@@ -10,7 +10,7 @@ export class CredentialsModel{
   }
 
   public static validationSchema = Joi.object({
-    email: Joi.string().email().required().min(7).max(50),
+    email: Joi.string().email().required().min(7).max(100),
     password: Joi.string().optional().min(4).max(1024),
   })
 

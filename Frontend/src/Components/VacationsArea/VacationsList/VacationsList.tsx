@@ -52,6 +52,9 @@ function VacationsList(): JSX.Element {
     function filterVacations() {
         // setting a 'backup' copy of vacations from redux:
         let filteredVacations: VacationModel[] = vacationsStore.getState().vacations;
+        console.log(vacations);
+
+        const now = new Date();
 
         for (const filter of filters) {
             if (filter === "favorites") {
@@ -59,11 +62,11 @@ function VacationsList(): JSX.Element {
             }
 
             if (filter === "current") {
-                filteredVacations = filteredVacations.filter((v) => new Date(v.startDate).getTime() < Date.now());
+                filteredVacations = filteredVacations.filter((v) => new Date(v.startDate) <= now);
             }
 
             if (filter === "future") {
-                filteredVacations = filteredVacations.filter((v) => new Date(v.startDate).getTime() > Date.now());
+                filteredVacations = filteredVacations.filter((v) => new Date(v.startDate) > now);
             }
         };
 

@@ -40,10 +40,10 @@ function Login(): JSX.Element {
                 <h2 className="title">Login</h2>
 
                 <label><AlternateEmailIcon className="emailIcon" /> Email:</label>
-                <input type="email" {...register("email")} placeholder="darth.vader@example.com" required minLength={4} maxLength={20} autoFocus />
+                <input type="email" {...register("email")} placeholder="darth.vader@example.com" required minLength={7} maxLength={100} />
 
                 <label><LockIcon className="passwordIcon" />Password:</label>
-                <input type="password" {...register("password")} placeholder="password" required minLength={4} maxLength={20} />
+                <input type="password" {...register("password")} placeholder="password" required minLength={4} maxLength={1024} />
 
                 <button>LOGIN</button>
 

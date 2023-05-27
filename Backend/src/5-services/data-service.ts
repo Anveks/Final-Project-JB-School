@@ -23,14 +23,16 @@ async function getVacations(userId: number): Promise<VacationModel[]> {
     return vacations;
   }
 
-async function getOneVacation(id: number): Promise<VacationModel> {
-  const sql = `SELECT * FROM vacations WHERE vacationId = ?
-  `;
-  const vacations = await dal.execute(sql, [id]);
-  const vacation = vacations[0];
-  if(!vacation) throw new ResourceNotFoundError(id);
-  return vacation;
-}
+  async function getOneVacation(id: number): Promise<VacationModel> {
+    const sql = `SELECT description, destination, startDate, CONCAT('${appConfig.imageUrl}', imageFileName) AS imageUrl, endDate, price, vacationId
+    FROM vacations
+    WHERE vacationId = ?
+    `;
+    const vacations = await dal.execute(sql, [id]);
+    const vacation = vacations[0];
+    if(!vacation) throw new ResourceNotFoundError(id);
+    return vacation;
+  }
 
 async function addVacation(vacation: VacationModel): Promise<VacationModel>{
   console.log('service');

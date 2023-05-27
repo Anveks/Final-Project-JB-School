@@ -1,11 +1,11 @@
-import { useForm } from "react-hook-form";
-import VacationModel from "../../../Models/VacationModel";
-import "./AddVacation.css";
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import VacationModel from "../../../Models/VacationModel";
 import dataService from "../../../Services/DataService";
 import notifyService from "../../../Services/NotifyService";
-import { useRef, useState } from "react";
+import "./AddVacation.css";
 
 function AddVacation(): JSX.Element {
     const { handleSubmit, register, setValue } = useForm<VacationModel>();

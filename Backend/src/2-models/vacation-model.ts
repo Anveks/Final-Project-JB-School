@@ -25,7 +25,7 @@ class VacationModel {
 
   // VALIDATIONS:
   // post validation
-  private static postValiation = Joi.object({
+  private static postValidation = Joi.object({
     vacationId: Joi.number().forbidden().positive().integer(),
     destination: Joi.string().required().min(2).max(100),
     description: Joi.string().required().min(20).max(1300),
@@ -37,14 +37,14 @@ class VacationModel {
 }).options({ abortEarly: true });;
 
   public validatePost(): string {
-    const result = VacationModel.postValiation.validate(this);
+    const result = VacationModel.postValidation.validate(this);
     console.log(result);
     return result.error?.message;
   }
 
   // put validation:
   private static putValidation = Joi.object({
-    vacationId: Joi.number().integer().positive().optional(),
+    vacationId: Joi.number().integer().positive().required(),
     destination: Joi.string().required().min(2).max(30),
     description: Joi.string().required().min(10).max(1300),
     startDate: Joi.date().greater('now').required(),

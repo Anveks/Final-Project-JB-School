@@ -15,13 +15,13 @@ class DataService {
        return vacations;
     }
 
-    public async getOneVacation(id: number): Promise<VacationModel> {
+    public async getOneVacation(vacationId: number): Promise<VacationModel> {
         let vacations = vacationsStore.getState().vacations;
-        let vacation = vacations.find(v => v.vacationId === id);
-    if (!vacation){
-        const result = await axios.get<VacationModel>(appConfig.vacationsUrl + id);
-        vacation = result.data;
-    }
+        let vacation = vacations.find(v => v.vacationId === vacationId);
+        if (!vacation) {
+            const response = await axios.get<VacationModel>(appConfig.vacationsUrl + vacationId);
+            vacation = response.data;
+        }
         return vacation;
     }
 
@@ -29,6 +29,7 @@ class DataService {
         const headers = { "Content-Type": "multipart/form-data" }
         const result = await axios.put<VacationModel>(appConfig.vacationsUrl + vacation.vacationId, vacation, {headers});
         const editedVacation = result.data;
+        console.log(editedVacation);
         vacationsStore.dispatch({type: VacationsActionType.EditVacation, payload: editedVacation});
     }
 

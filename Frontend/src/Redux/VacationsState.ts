@@ -46,7 +46,6 @@ export function vacationsReducer(currentState = new VacationState(), action: Vac
       break;
 
     case VacationsActionType.ResetVacations:
-      console.log('xx');
       newState.vacations = [];
       break;
 

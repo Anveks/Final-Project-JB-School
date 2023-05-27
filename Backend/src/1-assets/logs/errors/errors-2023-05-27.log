@@ -2418,3 +2418,15 @@
 
 2023-05-27T09:41:57.811Z - kafka@mail.com is already in use.
 
+2023-05-27T10:46:53.472Z - ER_BAD_FIELD_ERROR: Unknown column 'V.imageFileName' in 'field list'
+
+2023-05-27T10:47:02.534Z - ER_BAD_FIELD_ERROR: Unknown column 'V.imageFileName' in 'field list'
+
+2023-05-27T10:47:45.078Z - ER_BAD_FIELD_ERROR: Unknown column 'V.imageFileName' in 'field list'
+
+2023-05-27T11:04:12.828Z - Some changes are not valid.
+
+2023-05-27T11:05:31.575Z - Some changes are not valid.
+
+2023-05-27T11:10:43.300Z - Some changes are not valid.
+

@@ -15,14 +15,16 @@ function AddVacation(): JSX.Element {
     async function send(vacation: VacationModel) {
         try {
             const file = vacation.image as File;
-            console.log(file);
             vacation.image = file;
             await dataService.addVacation(vacation);
             notifyService.success("A new vacation has been added!");
             navigate("/home");
         } catch (err: any) {
-            notifyService.error(err);
-            console.log(err);
+            if (err.response.status === 500) {
+                notifyService.error("Image is required!")
+            } else {
+                notifyService.error(err);
+            }
         }
     }
 
@@ -56,7 +58,7 @@ function AddVacation(): JSX.Element {
                 <input type="date" {...register("endDate")} required />
 
                 <label>Price:</label>
-                <input type="number" {...register("price")} minLength={1} maxLength={10000} />
+                <input type="number" {...register("price")} required minLength={1} maxLength={10000} />
 
                 <div className="image">
 
@@ -64,8 +66,7 @@ function AddVacation(): JSX.Element {
                         <AddPhotoAlternateIcon fontSize='large' /> Upload Image
                     </label>
 
-                    <input
-                        style={{ display: 'none' }} type='file' id="file" accept="image/*" onChange={handleImageChange} />
+                    <input style={{ display: 'none' }} type='file' id="file" accept="image/*" onChange={handleImageChange} />
 
                 </div>
 

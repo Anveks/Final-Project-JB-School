@@ -618,3 +618,65 @@
 
 2023-05-28T10:30:04.442Z - Access denied
 
+2023-05-28T14:25:44.838Z - connect ECONNREFUSED ::1:3306
+
+2023-05-28T14:59:14.547Z - Incorrect email or password!
+
+2023-05-28T15:05:09.061Z - assaf@gmail.com is already in use.
+
+2023-05-28T15:08:51.966Z - Vacation is not valid.
+
+2023-05-28T15:08:56.184Z - Vacation is not valid.
+
+2023-05-28T15:09:28.744Z - Vacation is not valid.
+
+2023-05-28T15:09:37.477Z - Vacation is not valid.
+
+2023-05-28T15:09:56.636Z - Vacation is not valid.
+
+2023-05-28T15:10:04.889Z - Vacation is not valid.
+
+2023-05-28T15:10:09.057Z - Vacation is not valid.
+
+2023-05-28T15:10:12.834Z - ER_BAD_NULL_ERROR: Column 'imageFileName' cannot be null
+
+2023-05-28T16:02:59.185Z - Vacation is not valid.
+
+2023-05-28T16:03:04.884Z - Vacation is not valid.
+
+2023-05-28T16:03:14.765Z - Vacation is not valid.
+
+2023-05-28T16:05:44.799Z - Vacation is not valid.
+
+2023-05-28T16:07:49.328Z - Vacation is not valid.
+
+2023-05-28T16:08:07.279Z - Vacation is not valid.
+
+2023-05-28T16:12:47.035Z - ER_BAD_NULL_ERROR: Column 'imageFileName' cannot be null
+
+2023-05-28T16:13:57.115Z - ER_BAD_NULL_ERROR: Column 'imageFileName' cannot be null
+
+2023-05-28T16:14:21.752Z - ER_BAD_NULL_ERROR: Column 'imageFileName' cannot be null
+
+2023-05-28T16:14:30.685Z - ER_BAD_NULL_ERROR: Column 'imageFileName' cannot be null
+
+2023-05-28T16:14:42.778Z - ER_BAD_NULL_ERROR: Column 'imageFileName' cannot be null
+
+2023-05-28T16:16:17.975Z - ER_BAD_NULL_ERROR: Column 'imageFileName' cannot be null
+
+2023-05-28T16:20:06.452Z - ER_BAD_NULL_ERROR: Column 'imageFileName' cannot be null
+
+2023-05-28T16:20:35.977Z - ER_BAD_NULL_ERROR: Column 'imageFileName' cannot be null
+
+2023-05-28T16:20:51.756Z - ER_BAD_NULL_ERROR: Column 'imageFileName' cannot be null
+
+2023-05-28T16:21:01.426Z - ER_BAD_NULL_ERROR: Column 'imageFileName' cannot be null
+
+2023-05-28T16:51:04.765Z - Vacation is not valid.
+
+2023-05-28T16:51:08.796Z - Vacation is not valid.
+
+2023-05-28T16:52:15.820Z - Vacation is not valid.
+
+2023-05-28T16:52:34.264Z - Vacation is not valid.
+

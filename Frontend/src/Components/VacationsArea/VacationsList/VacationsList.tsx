@@ -6,10 +6,8 @@ import { authStore } from '../../../Redux/AuthState';
 import { vacationsStore } from '../../../Redux/VacationsState';
 import dataService from "../../../Services/DataService";
 import notifyService from "../../../Services/NotifyService";
-// import MiniNotFound from '../../MiniNotFound/MiniNotFound';
-import "./VacationsList.css";
 import VacationCard from '../VacationCard/VacationCard';
-import authService from '../../../Services/AuthService';
+import "./VacationsList.css";
 
 function VacationsList(): JSX.Element {
 
@@ -35,7 +33,6 @@ function VacationsList(): JSX.Element {
             })
             .catch((err) => {
                 notifyService.error(err.response.data);
-                err.response.status === 401 && authService.logout();
             });
     }, []);
 
@@ -51,7 +48,6 @@ function VacationsList(): JSX.Element {
     function filterVacations() {
         // setting a 'backup' copy of vacations from redux:
         let filteredVacations: VacationModel[] = vacationsStore.getState().vacations;
-        console.log(filters);
 
         const currentDate = new Date();
 
@@ -73,6 +69,7 @@ function VacationsList(): JSX.Element {
 
         // in case no filters were applied the vacations state will go back to its original form (from the backup copy):
         setVacations(filteredVacations);
+        setCurrentPage(1); // automatically return to the first page
     }
 
     // making the component re-run the filter function every time something in the filters arr gets changed:

@@ -97,7 +97,7 @@ function VacationCard(props: any): JSX.Element {
                             state={{ id: vacationId }}>
                             Edit Vacation
                         </NavLink>
-                        <a href="#" onClick={() => deleteVacation(vacationId)}>Delete Vacation</a>
+                        <a onClick={() => deleteVacation(vacationId)}>Delete Vacation</a>
                     </div>
                 </div>
             }

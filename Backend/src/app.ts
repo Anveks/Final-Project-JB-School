@@ -7,7 +7,7 @@ import routeNotFound from "./3-middleware/route-not-found";
 import catchAll from "./3-middleware/catch-all";
 import appConfig from "./4-utils/app-config";
 import helmet from "helmet";
-import socketIoService from "./5-services/socket.io-service";
+//import socketIoService from "./5-services/socket.io-service";
 import path from "path";
 import logger from "./4-utils/logger";
 

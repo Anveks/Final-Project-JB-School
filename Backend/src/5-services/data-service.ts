@@ -4,7 +4,7 @@ import VacationModel from "../2-models/vacation-model";
 import appConfig from "../4-utils/app-config";
 import { OtherNotFound, ResourceNotFoundError, ValidationError } from "../2-models/client-errors";
 import imageHandler from "../4-utils/image-handler";
-import socketIoService from "./socket.io-service";
+// import socketIoService from "./socket.io-service";
 
 // get all vacations:
 async function getVacations(userId: number): Promise<VacationModel[]> {
@@ -117,8 +117,8 @@ async function addLike(userId: number, vacationId: number): Promise<void>{
   WHERE NOT EXISTS (SELECT 1 FROM followers WHERE userId = ? AND vacationId = ?)`;
   await dal.execute(sql, [userId, vacationId, userId, vacationId]);
   
-  const socketServer = socketIoService.getSocketServer();
-  socketServer.sockets.emit('updateFollowers', {vacationId: vacationId, isFollowing: 1});
+  // const socketServer = socketIoService.getSocketServer();
+  // socketServer.sockets.emit('updateFollowers', {vacationId: vacationId, isFollowing: 1});
 }
 
 async function removeLike(userId: number, vacationId: number): Promise<void>{
@@ -126,8 +126,8 @@ async function removeLike(userId: number, vacationId: number): Promise<void>{
   const result: OkPacket = await dal.execute(sql, [vacationId, userId]);
   if(result.affectedRows === 0) throw new OtherNotFound("This like does not exist.")
 
-  const socketServer = socketIoService.getSocketServer();
-  socketServer.sockets.emit('updateFollowers', {vacationId: vacationId, isFollowing: 0});
+  // const socketServer = socketIoService.getSocketServer();
+  // socketServer.sockets.emit('updateFollowers', {vacationId: vacationId, isFollowing: 0});
 }
 
 async function getFollowersData(): Promise<{ destination: string, followers: number }[]>{

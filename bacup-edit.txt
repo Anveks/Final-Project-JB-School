@@ -6,7 +6,6 @@ import VacationModel from "../../../Models/VacationModel";
 import dataService from "../../../Services/DataService";
 import notifyService from "../../../Services/NotifyService";
 import "./EditVacation.css";
-import { format } from "date-fns";
 
 function EditVacation(): JSX.Element {
 
@@ -14,7 +13,7 @@ function EditVacation(): JSX.Element {
     const { register, handleSubmit, setValue } = useForm<VacationModel>();
     const navigate = useNavigate();
     const [vacation, setVacation] = useState<VacationModel>();
-    const [newImage, setNewImage] = useState<File>(null);
+    const [imagePreview, setImagePreview] = useState<any>();
 
     useEffect(() => {
         const id = +location.state.id;
@@ -25,9 +24,11 @@ function EditVacation(): JSX.Element {
                 setValue("vacationId", +res.vacationId);
                 setValue("destination", res.destination);
                 setValue("description", res.description);
-                setValue("startDate", format(new Date(res.startDate), "yyyy-MM-dd"));
-                setValue("endDate", format(new Date(res.endDate), "yyyy-MM-dd"));
+                setValue("startDate", res.startDate.slice(0, 10));
+                setValue("endDate", res.endDate.slice(0, 10));
                 setValue("price", res.price);
+                // setValue("image", res.imageFileName as res.ima);
+                setImagePreview(res.imageUrl);
                 setVacation(res);
             })
             .catch((err) => notifyService.error(err));
@@ -47,8 +48,10 @@ function EditVacation(): JSX.Element {
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
-        const newFile = e.target.files[0];
-        setNewImage(newFile);
+        const reader = new FileReader();
+        const file = e.target.files[0];
+        reader.onloadend = () => { setImagePreview(reader.result as string); };
+        reader.readAsDataURL(file);
     };
 
     return (
@@ -75,24 +78,13 @@ function EditVacation(): JSX.Element {
                 <input type="number" {...register("price")} required minLength={1} maxLength={10000} />
 
                 <div className="image">
-
                     <label htmlFor='file'>
                         <AddPhotoAlternateIcon fontSize='large' /> Upload New Image
                     </label>
-
-                    <input
-                        style={{ display: 'none' }}
-                        type='file'
-                        id="file"
-                        accept="image/*"
-                        onChangeCapture={handleImageChange}
-                        {...register("image", { required: false })}
-                    />
-
-
+                    <input style={{ display: 'none' }} type='file' id="file" accept="image/*" onChange={handleImageChange} {...register("image", { required: false })} />
                 </div>
 
-                <img src={newImage === null ? vacation?.imageUrl : URL.createObjectURL(newImage)} alt="image preview" />
+                <img src={imagePreview} alt="image preview" />
 
                 <button>Submit Changes</button>
             </form>

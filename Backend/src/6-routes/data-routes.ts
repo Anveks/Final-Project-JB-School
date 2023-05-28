@@ -105,6 +105,7 @@ router.post("/vacations/like/:id([0-9]+)", async (request: Request, response: Re
         const user = await cyber.decodeToken(token);
         const userId = +user.userId;
         const vacationId = +request.params.id;
+        console.log(userId, vacationId);
         await dataService.addLike(userId, vacationId);
         logger.logActivities("Like has been added.");
         response.send("Like has been added");    

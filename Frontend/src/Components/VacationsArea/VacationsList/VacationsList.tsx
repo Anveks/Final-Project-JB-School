@@ -31,8 +31,7 @@ function VacationsList(): JSX.Element {
     useEffect(() => {
         dataService.getAllVacations()
             .then((responseVacations) => {
-                // here we both check if current user is user (and not admin) and filter the vacations by the date:
-                setVacations(user ? responseVacations.filter((v) => new Date(v.endDate).getTime() > Date.now()) : responseVacations);
+                setVacations(responseVacations);
             })
             .catch((err) => {
                 notifyService.error(err.response.data);
@@ -52,26 +51,28 @@ function VacationsList(): JSX.Element {
     function filterVacations() {
         // setting a 'backup' copy of vacations from redux:
         let filteredVacations: VacationModel[] = vacationsStore.getState().vacations;
-        console.log(vacations);
+        console.log(filters);
 
-        const now = new Date();
+        const currentDate = new Date();
 
         for (const filter of filters) {
             if (filter === "favorites") {
                 filteredVacations = filteredVacations.filter((v) => v.isFollowing === 1);
             }
 
-            if (filter === "current") {
-                filteredVacations = filteredVacations.filter((v) => new Date(v.startDate) <= now);
+            if (filters.includes("current")) {
+                filteredVacations = filteredVacations.filter((v) => new Date(v.startDate) < currentDate && new Date(v.endDate) > currentDate);
             }
 
             if (filter === "future") {
-                filteredVacations = filteredVacations.filter((v) => new Date(v.startDate) > now);
+                filteredVacations = filteredVacations.filter(
+                    (v) => new Date(v.startDate) > currentDate
+                );
             }
-        };
+        }
 
         // in case no filters were applied the vacations state will go back to its original form (from the backup copy):
-        setVacations(filteredVacations.filter((v) => new Date(v.startDate).getTime() > Date.now())); // and filter the outdated vacations
+        setVacations(filteredVacations);
     }
 
     // making the component re-run the filter function every time something in the filters arr gets changed:

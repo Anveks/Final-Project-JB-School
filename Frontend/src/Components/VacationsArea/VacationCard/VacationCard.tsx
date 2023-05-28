@@ -71,7 +71,8 @@ function VacationCard(props: any): JSX.Element {
                 ? await dataService.handleLike(currentVacationId, newFollowingState)
                 : await dataService.handleLike(currentVacationId, newFollowingState, true); // sending an extra argument here to remove like
         } catch (err: any) {
-            notifyService.error(err.message)
+            notifyService.error(err.message);
+            console.log(err)
         }
     };
 

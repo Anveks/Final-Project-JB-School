@@ -66,8 +66,10 @@ function AddVacation(): JSX.Element {
 
                     <input
                         style={{ display: 'none' }} type='file' id="file" accept="image/*" onChange={handleImageChange} />
-                    {imagePreview && <img src={imagePreview} alt="Image Preview" />}
+
                 </div>
+
+                {imagePreview && <img src={imagePreview} alt="Image Preview" />}
 
                 <button type="submit">Submit</button>
             </form>

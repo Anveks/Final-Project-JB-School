@@ -8,3 +8,613 @@
 
 2023-05-28T07:07:23.503Z - No token found
 
+2023-05-28T09:06:28.769Z - "email" is required
+
+2023-05-28T09:06:28.780Z - "email" must be a valid email
+
+2023-05-28T09:06:28.794Z - "firstName" is required
+
+2023-05-28T09:06:28.806Z - dvader@mail.com is already in use.
+
+2023-05-28T09:06:28.817Z - Invalid token
+
+2023-05-28T09:08:28.394Z - "email" is required
+
+2023-05-28T09:08:28.403Z - "email" must be a valid email
+
+2023-05-28T09:08:28.421Z - "firstName" is required
+
+2023-05-28T09:08:28.433Z - dvader@mail.com is already in use.
+
+2023-05-28T09:08:28.442Z - Invalid token
+
+2023-05-28T09:08:28.450Z - No token found
+
+2023-05-28T09:17:19.961Z - "email" is required
+
+2023-05-28T09:17:19.968Z - "email" must be a valid email
+
+2023-05-28T09:17:19.984Z - "firstName" is required
+
+2023-05-28T09:17:19.992Z - dvader@mail.com is already in use.
+
+2023-05-28T09:17:20.002Z - No token found
+
+2023-05-28T09:17:20.010Z - Invalid token
+
+2023-05-28T09:17:20.019Z - Invalid token
+
+2023-05-28T09:17:37.400Z - "email" is required
+
+2023-05-28T09:17:37.411Z - "email" must be a valid email
+
+2023-05-28T09:17:37.427Z - "firstName" is required
+
+2023-05-28T09:17:37.439Z - dvader@mail.com is already in use.
+
+2023-05-28T09:17:37.448Z - No token found
+
+2023-05-28T09:17:37.456Z - Invalid token
+
+2023-05-28T09:18:09.582Z - "email" is required
+
+2023-05-28T09:18:09.593Z - "email" must be a valid email
+
+2023-05-28T09:18:09.610Z - "firstName" is required
+
+2023-05-28T09:18:09.621Z - dvader@mail.com is already in use.
+
+2023-05-28T09:18:09.630Z - No token found
+
+2023-05-28T09:18:09.639Z - Invalid token
+
+2023-05-28T09:21:24.512Z - "email" is required
+
+2023-05-28T09:21:24.520Z - "email" must be a valid email
+
+2023-05-28T09:21:24.537Z - "firstName" is required
+
+2023-05-28T09:21:24.549Z - dvader@mail.com is already in use.
+
+2023-05-28T09:21:24.557Z - No token found
+
+2023-05-28T09:21:24.566Z - Invalid token
+
+2023-05-28T09:22:29.395Z - "email" is required
+
+2023-05-28T09:22:29.406Z - "email" must be a valid email
+
+2023-05-28T09:22:29.425Z - "firstName" is required
+
+2023-05-28T09:22:29.436Z - dvader@mail.com is already in use.
+
+2023-05-28T09:22:29.446Z - No token found
+
+2023-05-28T09:22:29.454Z - Invalid token
+
+2023-05-28T09:22:29.476Z - Access denied
+
+2023-05-28T09:23:36.588Z - "email" is required
+
+2023-05-28T09:23:36.601Z - "email" must be a valid email
+
+2023-05-28T09:23:36.619Z - "firstName" is required
+
+2023-05-28T09:23:36.631Z - dvader@mail.com is already in use.
+
+2023-05-28T09:23:36.639Z - No token found
+
+2023-05-28T09:23:36.648Z - Invalid token
+
+2023-05-28T09:23:36.669Z - Access denied
+
+2023-05-28T09:23:36.682Z - Access denied
+
+2023-05-28T09:23:57.135Z - "email" is required
+
+2023-05-28T09:23:57.145Z - "email" must be a valid email
+
+2023-05-28T09:23:57.162Z - "firstName" is required
+
+2023-05-28T09:23:57.177Z - dvader@mail.com is already in use.
+
+2023-05-28T09:23:57.206Z - No token found
+
+2023-05-28T09:23:57.214Z - Invalid token
+
+2023-05-28T09:23:57.253Z - Access denied
+
+2023-05-28T09:24:23.520Z - "email" is required
+
+2023-05-28T09:24:23.529Z - "email" must be a valid email
+
+2023-05-28T09:24:23.547Z - "firstName" is required
+
+2023-05-28T09:24:23.557Z - dvader@mail.com is already in use.
+
+2023-05-28T09:24:23.567Z - No token found
+
+2023-05-28T09:24:23.576Z - Invalid token
+
+2023-05-28T09:24:23.617Z - Access denied
+
+2023-05-28T09:30:55.716Z - "email" is required
+
+2023-05-28T09:30:55.723Z - "email" must be a valid email
+
+2023-05-28T09:30:55.739Z - "firstName" is required
+
+2023-05-28T09:30:55.749Z - dvader@mail.com is already in use.
+
+2023-05-28T09:30:55.758Z - No token found
+
+2023-05-28T09:30:55.766Z - Invalid token
+
+2023-05-28T09:30:55.799Z - Access denied
+
+2023-05-28T09:36:33.756Z - "email" is required
+
+2023-05-28T09:36:33.767Z - "email" must be a valid email
+
+2023-05-28T09:36:33.785Z - "firstName" is required
+
+2023-05-28T09:36:33.797Z - dvader@mail.com is already in use.
+
+2023-05-28T09:36:33.806Z - No token found
+
+2023-05-28T09:36:33.814Z - Invalid token
+
+2023-05-28T09:36:33.845Z - Access denied
+
+2023-05-28T09:36:45.031Z - "email" is required
+
+2023-05-28T09:36:45.041Z - "email" must be a valid email
+
+2023-05-28T09:36:45.059Z - "firstName" is required
+
+2023-05-28T09:36:45.071Z - dvader@mail.com is already in use.
+
+2023-05-28T09:36:45.080Z - No token found
+
+2023-05-28T09:36:45.088Z - Invalid token
+
+2023-05-28T09:36:45.121Z - Access denied
+
+2023-05-28T09:37:29.399Z - "email" is required
+
+2023-05-28T09:37:29.410Z - "email" must be a valid email
+
+2023-05-28T09:37:29.426Z - "firstName" is required
+
+2023-05-28T09:37:29.436Z - dvader@mail.com is already in use.
+
+2023-05-28T09:37:29.444Z - No token found
+
+2023-05-28T09:37:29.451Z - Invalid token
+
+2023-05-28T09:37:29.483Z - Access denied
+
+2023-05-28T09:38:13.344Z - "email" is required
+
+2023-05-28T09:38:13.354Z - "email" must be a valid email
+
+2023-05-28T09:38:13.370Z - "firstName" is required
+
+2023-05-28T09:38:13.381Z - dvader@mail.com is already in use.
+
+2023-05-28T09:38:13.390Z - No token found
+
+2023-05-28T09:38:13.399Z - Invalid token
+
+2023-05-28T09:38:13.430Z - Access denied
+
+2023-05-28T09:44:25.195Z - "email" is required
+
+2023-05-28T09:44:25.204Z - "email" must be a valid email
+
+2023-05-28T09:44:25.220Z - "firstName" is required
+
+2023-05-28T09:44:25.230Z - dvader@mail.com is already in use.
+
+2023-05-28T09:44:25.241Z - No token found
+
+2023-05-28T09:44:25.249Z - Invalid token
+
+2023-05-28T09:44:25.280Z - Access denied
+
+2023-05-28T09:47:35.880Z - "email" is required
+
+2023-05-28T09:47:35.887Z - "email" must be a valid email
+
+2023-05-28T09:47:35.905Z - "firstName" is required
+
+2023-05-28T09:47:35.915Z - dvader@mail.com is already in use.
+
+2023-05-28T09:47:35.923Z - No token found
+
+2023-05-28T09:47:35.932Z - Invalid token
+
+2023-05-28T09:47:35.965Z - Access denied
+
+2023-05-28T09:48:14.814Z - "email" is required
+
+2023-05-28T09:48:14.825Z - "email" must be a valid email
+
+2023-05-28T09:48:14.843Z - "firstName" is required
+
+2023-05-28T09:48:14.854Z - dvader@mail.com is already in use.
+
+2023-05-28T09:48:14.863Z - No token found
+
+2023-05-28T09:48:14.871Z - Invalid token
+
+2023-05-28T09:48:14.902Z - Access denied
+
+2023-05-28T09:48:35.383Z - "email" is required
+
+2023-05-28T09:48:35.396Z - "email" must be a valid email
+
+2023-05-28T09:48:35.412Z - "firstName" is required
+
+2023-05-28T09:48:35.423Z - dvader@mail.com is already in use.
+
+2023-05-28T09:48:35.432Z - No token found
+
+2023-05-28T09:48:35.441Z - Invalid token
+
+2023-05-28T09:48:35.471Z - Access denied
+
+2023-05-28T09:50:28.435Z - "email" is required
+
+2023-05-28T09:50:28.444Z - "email" must be a valid email
+
+2023-05-28T09:50:28.463Z - "firstName" is required
+
+2023-05-28T09:50:28.488Z - dvader@mail.com is already in use.
+
+2023-05-28T09:50:28.498Z - No token found
+
+2023-05-28T09:50:28.508Z - Invalid token
+
+2023-05-28T09:50:28.543Z - Access denied
+
+2023-05-28T09:54:35.793Z - "email" is required
+
+2023-05-28T09:54:35.802Z - "email" must be a valid email
+
+2023-05-28T09:54:35.823Z - "firstName" is required
+
+2023-05-28T09:54:35.836Z - dvader@mail.com is already in use.
+
+2023-05-28T09:54:35.847Z - No token found
+
+2023-05-28T09:54:35.854Z - Invalid token
+
+2023-05-28T09:54:35.886Z - Access denied
+
+2023-05-28T09:56:31.772Z - "email" is required
+
+2023-05-28T09:56:31.779Z - "email" must be a valid email
+
+2023-05-28T09:56:31.799Z - "firstName" is required
+
+2023-05-28T09:56:31.811Z - dvader@mail.com is already in use.
+
+2023-05-28T09:56:31.820Z - No token found
+
+2023-05-28T09:56:31.828Z - Invalid token
+
+2023-05-28T09:56:31.864Z - Access denied
+
+2023-05-28T09:56:31.904Z - Invalid vacation data.
+
+2023-05-28T09:57:07.573Z - "email" is required
+
+2023-05-28T09:57:07.582Z - "email" must be a valid email
+
+2023-05-28T09:57:07.600Z - "firstName" is required
+
+2023-05-28T09:57:07.611Z - dvader@mail.com is already in use.
+
+2023-05-28T09:57:07.619Z - No token found
+
+2023-05-28T09:57:07.627Z - Invalid token
+
+2023-05-28T09:57:07.658Z - Access denied
+
+2023-05-28T09:57:07.693Z - Invalid vacation data.
+
+2023-05-28T09:58:23.804Z - "email" is required
+
+2023-05-28T09:58:23.812Z - "email" must be a valid email
+
+2023-05-28T09:58:23.828Z - "firstName" is required
+
+2023-05-28T09:58:23.840Z - dvader@mail.com is already in use.
+
+2023-05-28T09:58:23.851Z - No token found
+
+2023-05-28T09:58:23.859Z - Invalid token
+
+2023-05-28T09:58:23.892Z - Access denied
+
+2023-05-28T09:58:23.930Z - Invalid vacation data.
+
+2023-05-28T09:59:15.703Z - "email" is required
+
+2023-05-28T09:59:15.711Z - "email" must be a valid email
+
+2023-05-28T09:59:15.726Z - "firstName" is required
+
+2023-05-28T09:59:15.735Z - dvader@mail.com is already in use.
+
+2023-05-28T09:59:15.745Z - No token found
+
+2023-05-28T09:59:15.752Z - Invalid token
+
+2023-05-28T09:59:15.783Z - Access denied
+
+2023-05-28T09:59:15.803Z - Access denied
+
+2023-05-28T10:04:40.106Z - Unexpected token " in JSON at position 4
+
+2023-05-28T10:05:12.186Z - Unexpected token " in JSON at position 4
+
+2023-05-28T10:05:41.417Z - Vacation is not valid.
+
+2023-05-28T10:14:26.188Z - "email" is required
+
+2023-05-28T10:14:26.195Z - "email" must be a valid email
+
+2023-05-28T10:14:26.211Z - "firstName" is required
+
+2023-05-28T10:14:26.223Z - dvader@mail.com is already in use.
+
+2023-05-28T10:14:26.233Z - No token found
+
+2023-05-28T10:14:26.242Z - Invalid token
+
+2023-05-28T10:14:26.278Z - Access denied
+
+2023-05-28T10:15:35.956Z - "email" is required
+
+2023-05-28T10:15:35.967Z - "email" must be a valid email
+
+2023-05-28T10:15:35.985Z - "firstName" is required
+
+2023-05-28T10:15:35.996Z - dvader@mail.com is already in use.
+
+2023-05-28T10:15:36.006Z - No token found
+
+2023-05-28T10:15:36.014Z - Invalid token
+
+2023-05-28T10:15:36.045Z - Access denied
+
+2023-05-28T10:16:47.893Z - "email" is required
+
+2023-05-28T10:16:47.902Z - "email" must be a valid email
+
+2023-05-28T10:16:47.920Z - "firstName" is required
+
+2023-05-28T10:16:47.932Z - dvader@mail.com is already in use.
+
+2023-05-28T10:16:47.942Z - No token found
+
+2023-05-28T10:16:47.949Z - Invalid token
+
+2023-05-28T10:16:47.980Z - Access denied
+
+2023-05-28T10:18:13.341Z - "email" is required
+
+2023-05-28T10:18:13.349Z - "email" must be a valid email
+
+2023-05-28T10:18:13.366Z - "firstName" is required
+
+2023-05-28T10:18:13.377Z - dvader@mail.com is already in use.
+
+2023-05-28T10:18:13.386Z - No token found
+
+2023-05-28T10:18:13.394Z - Invalid token
+
+2023-05-28T10:18:13.425Z - Access denied
+
+2023-05-28T10:18:58.471Z - "email" is required
+
+2023-05-28T10:18:58.480Z - "email" must be a valid email
+
+2023-05-28T10:18:58.497Z - "firstName" is required
+
+2023-05-28T10:18:58.509Z - dvader@mail.com is already in use.
+
+2023-05-28T10:18:58.518Z - No token found
+
+2023-05-28T10:18:58.526Z - Invalid token
+
+2023-05-28T10:18:58.557Z - Access denied
+
+2023-05-28T10:19:24.615Z - "email" is required
+
+2023-05-28T10:19:24.624Z - "email" must be a valid email
+
+2023-05-28T10:19:24.640Z - "firstName" is required
+
+2023-05-28T10:19:24.651Z - dvader@mail.com is already in use.
+
+2023-05-28T10:19:24.659Z - No token found
+
+2023-05-28T10:19:24.667Z - Invalid token
+
+2023-05-28T10:19:24.696Z - Access denied
+
+2023-05-28T10:20:13.301Z - "email" is required
+
+2023-05-28T10:20:13.311Z - "email" must be a valid email
+
+2023-05-28T10:20:13.329Z - "firstName" is required
+
+2023-05-28T10:20:13.340Z - dvader@mail.com is already in use.
+
+2023-05-28T10:20:13.349Z - No token found
+
+2023-05-28T10:20:13.356Z - Invalid token
+
+2023-05-28T10:20:13.388Z - Access denied
+
+2023-05-28T10:20:13.411Z - Access denied
+
+2023-05-28T10:20:54.705Z - "email" is required
+
+2023-05-28T10:20:54.714Z - "email" must be a valid email
+
+2023-05-28T10:20:54.732Z - "firstName" is required
+
+2023-05-28T10:20:54.744Z - dvader@mail.com is already in use.
+
+2023-05-28T10:20:54.752Z - No token found
+
+2023-05-28T10:20:54.759Z - Invalid token
+
+2023-05-28T10:20:54.790Z - Access denied
+
+2023-05-28T10:20:54.807Z - Access denied
+
+2023-05-28T10:21:18.789Z - "email" is required
+
+2023-05-28T10:21:18.795Z - "email" must be a valid email
+
+2023-05-28T10:21:18.811Z - "firstName" is required
+
+2023-05-28T10:21:18.822Z - dvader@mail.com is already in use.
+
+2023-05-28T10:21:18.829Z - No token found
+
+2023-05-28T10:21:18.837Z - Invalid token
+
+2023-05-28T10:21:18.866Z - Access denied
+
+2023-05-28T10:21:18.883Z - Access denied
+
+2023-05-28T10:27:01.653Z - "email" is required
+
+2023-05-28T10:27:01.664Z - "email" must be a valid email
+
+2023-05-28T10:27:01.683Z - "firstName" is required
+
+2023-05-28T10:27:01.695Z - dvader@mail.com is already in use.
+
+2023-05-28T10:27:01.704Z - No token found
+
+2023-05-28T10:27:01.713Z - Invalid token
+
+2023-05-28T10:27:01.745Z - Access denied
+
+2023-05-28T10:27:01.763Z - Access denied
+
+2023-05-28T10:27:01.771Z - Route /api/vacations/ not found
+
+2023-05-28T10:27:30.852Z - "email" is required
+
+2023-05-28T10:27:30.861Z - "email" must be a valid email
+
+2023-05-28T10:27:30.877Z - "firstName" is required
+
+2023-05-28T10:27:30.889Z - dvader@mail.com is already in use.
+
+2023-05-28T10:27:30.898Z - No token found
+
+2023-05-28T10:27:30.906Z - Invalid token
+
+2023-05-28T10:27:30.938Z - Access denied
+
+2023-05-28T10:27:30.957Z - Access denied
+
+2023-05-28T10:27:30.964Z - Route /api/vacations/ not found
+
+2023-05-28T10:28:05.983Z - "email" is required
+
+2023-05-28T10:28:05.991Z - "email" must be a valid email
+
+2023-05-28T10:28:06.009Z - "firstName" is required
+
+2023-05-28T10:28:06.019Z - dvader@mail.com is already in use.
+
+2023-05-28T10:28:06.027Z - No token found
+
+2023-05-28T10:28:06.037Z - Invalid token
+
+2023-05-28T10:28:06.068Z - Access denied
+
+2023-05-28T10:28:06.087Z - Access denied
+
+2023-05-28T10:28:17.442Z - "email" is required
+
+2023-05-28T10:28:17.453Z - "email" must be a valid email
+
+2023-05-28T10:28:17.470Z - "firstName" is required
+
+2023-05-28T10:28:17.483Z - dvader@mail.com is already in use.
+
+2023-05-28T10:28:17.492Z - No token found
+
+2023-05-28T10:28:17.501Z - Invalid token
+
+2023-05-28T10:28:17.533Z - Access denied
+
+2023-05-28T10:28:17.551Z - Access denied
+
+2023-05-28T10:28:52.569Z - "email" is required
+
+2023-05-28T10:28:52.581Z - "email" must be a valid email
+
+2023-05-28T10:28:52.599Z - "firstName" is required
+
+2023-05-28T10:28:52.610Z - dvader@mail.com is already in use.
+
+2023-05-28T10:28:52.619Z - No token found
+
+2023-05-28T10:28:52.627Z - Invalid token
+
+2023-05-28T10:28:52.657Z - Access denied
+
+2023-05-28T10:28:52.674Z - Access denied
+
+2023-05-28T10:28:52.694Z - Access denied
+
+2023-05-28T10:29:06.122Z - "email" is required
+
+2023-05-28T10:29:06.131Z - "email" must be a valid email
+
+2023-05-28T10:29:06.148Z - "firstName" is required
+
+2023-05-28T10:29:06.159Z - dvader@mail.com is already in use.
+
+2023-05-28T10:29:06.167Z - No token found
+
+2023-05-28T10:29:06.175Z - Invalid token
+
+2023-05-28T10:29:06.204Z - Access denied
+
+2023-05-28T10:29:06.220Z - Access denied
+
+2023-05-28T10:29:06.236Z - Access denied
+
+2023-05-28T10:30:04.322Z - "email" is required
+
+2023-05-28T10:30:04.329Z - "email" must be a valid email
+
+2023-05-28T10:30:04.347Z - "firstName" is required
+
+2023-05-28T10:30:04.356Z - dvader@mail.com is already in use.
+
+2023-05-28T10:30:04.363Z - Route /api/abc not found
+
+2023-05-28T10:30:04.370Z - No token found
+
+2023-05-28T10:30:04.376Z - Invalid token
+
+2023-05-28T10:30:04.407Z - Access denied
+
+2023-05-28T10:30:04.424Z - Access denied
+
+2023-05-28T10:30:04.442Z - Access denied
+

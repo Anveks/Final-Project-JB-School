@@ -38,7 +38,6 @@ class VacationModel {
 
   public validatePost(): string {
     const result = VacationModel.postValidation.validate(this);
-    console.log(result);
     return result.error?.message;
   }
 

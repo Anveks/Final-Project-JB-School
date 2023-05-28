@@ -5,6 +5,7 @@
   align-items: center;
   justify-content: center;
   margin: 5% 8%;
+  animation: startingPage-appear ease-out .5s;
 }
 
 .StartingPage > div > .start-title {
@@ -36,4 +37,16 @@
   transform: scale(1.01);
   border: 2px solid rgb(4, 163, 4);
   color: rgb(4, 163, 4);
+}
+
+@keyframes startingPage-appear {
+  from {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

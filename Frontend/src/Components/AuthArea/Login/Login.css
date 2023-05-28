@@ -3,6 +3,7 @@
   flex-direction: column;
   width: 30%;
   margin: 0 auto;
+  animation: login-appear ease-out .5s;
 }
 
 .Login > form > label {
@@ -44,4 +45,16 @@
 .Login > form > div > a:hover {
   color: rgb(4, 163, 4);
   transition: .2s;
+}
+
+@keyframes login-appear {
+  from {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

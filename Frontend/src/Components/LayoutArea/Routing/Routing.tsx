@@ -1,14 +1,14 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+import { authStore } from "../../../Redux/AuthState";
 import Login from "../../AuthArea/Login/Login";
 import Register from "../../AuthArea/Register/Register";
+import ContactUs from "../../HomeArea/ContactUs/ContactUs";
 import Home from "../../HomeArea/Home/Home";
-import PageNotFound from "../PageNotFound/PageNotFound";
-import { authStore } from "../../../Redux/AuthState";
 import StartingPage from "../../HomeArea/StartingPage/StartingPage";
 import AddVacation from "../../VacationsArea/AddVacation/AddVacation";
-import EditVacation from "../../VacationsArea/EditVacation/EditVacation";
 import LikesChart from "../../VacationsArea/ChartsArea/LikesChart/LikesChart";
-import ContactUs from "../../HomeArea/ContactUs/ContactUs";
+import EditVacation from "../../VacationsArea/EditVacation/EditVacation";
+import PageNotFound from "../PageNotFound/PageNotFound";
 
 function Routing(): JSX.Element {
 

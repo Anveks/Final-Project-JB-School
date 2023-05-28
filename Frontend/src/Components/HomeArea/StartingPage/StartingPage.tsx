@@ -20,7 +20,7 @@ function StartingPage(): JSX.Element {
             <div>
                 <div className="start-title">TAKE A BREAK AND LET'S HOLIDAY!</div>
                 Welcome to Vacations! Explore breathtaking destinations, immerse yourself in vibrant cultures, and create unforgettable memories. Start your journey with us today!
-                <button>Learn More</button>
+                <button onClick={() => { navigate("/login") }}>Get Started</button>
             </div>
 
             <img src={vacations} alt="vacations" />

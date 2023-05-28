@@ -45,7 +45,6 @@ function Menu(): JSX.Element {
                 token === null
                     ? <div className="navigation">
                         <NavLink to="/home">Home</NavLink>
-                        <NavLink to="/about">About</NavLink>
                         <NavLink to="/login">Login</NavLink>
                         <NavLink to="/register">Sign Up</NavLink>
                     </div>

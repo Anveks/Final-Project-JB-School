@@ -10,7 +10,6 @@ class VacationModel {
   public imageUrl: string;
   public image: File;
   public isFollowing: number;
-  public likes: number;
 }
 
 export default VacationModel;

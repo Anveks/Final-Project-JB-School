@@ -1,10 +1,9 @@
 
 function formatDate(dateString: string): string {
-    const date = new Date(dateString);
-    // date.setDate(date.getDate()); // Subtract 1 day from the date
-    const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const year = date.getFullYear().toString();
+    const date = new Date(dateString); // turning date string into date obj
+    const day = date.getDate().toString().padStart(2, '0'); // formatting day
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // formatting month
+    const year = date.getFullYear().toString(); // formatting year
     return `${day}.${month}.${year}`;
 }
 

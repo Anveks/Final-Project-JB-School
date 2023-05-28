@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import ChartBar from "../ChartBar/ChartBar";
-import "./LikesChart.css";
 import VacationModel from "../../../../Models/VacationModel";
 import dataService from "../../../../Services/DataService";
 import notifyService from "../../../../Services/NotifyService";
+import ChartBar from "../ChartBar/ChartBar";
+import "./LikesChart.css";
 
 function LikesChart(): JSX.Element {
 
     const [vacations, setVacations] = useState<VacationModel[]>([]);
-    const followersCountArr = Array.from(vacations.map((v) => v.followersCount));
-    const maxValue = Math.max(...followersCountArr);
-    console.log(followersCountArr, maxValue);
+    const followersCountArr = Array.from(vacations.map((v) => v.followersCount)); // getting arr of followers count
+    const maxValue = Math.max(...followersCountArr); // checking it's max value
 
     useEffect(() => {
         dataService.getAllVacations()

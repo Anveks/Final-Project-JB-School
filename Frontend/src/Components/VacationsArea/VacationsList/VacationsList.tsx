@@ -83,29 +83,36 @@ function VacationsList(): JSX.Element {
     // adding message in case there are no vacations found after applying filters:
     let noVacationsMessage = null;
     if (filters.length > 0 && vacationsToDisplay.length === 0) {
-        noVacationsMessage = <div>No vacations found... </div>
+        noVacationsMessage = <div>No vacations found... ☹️ Try resetting the filters.</div>
     }
 
     return (
         <div className="VacationsList">
+
             {vacationsToDisplay.map((v) => (<VacationCard vacation={v} key={v.vacationId}></VacationCard>))}
-            {user && <div className="filters" >
-                <input type="checkbox" name="favorites" value="favorites" onChange={(e) => handleFilterChange(e)} />
-                <label htmlFor="favorites">My Favorites</label>
 
-                <input type="checkbox" name="current" value="current" onChange={(e) => handleFilterChange(e)} />
-                <label htmlFor="current">Current Vacations</label>
+            <div className="filters-pagination">
 
-                <input type="checkbox" name="future" value="future" onChange={(e) => handleFilterChange(e)} />
-                <label htmlFor="future">Future Vacations</label>
-            </div >}
-            {noVacationsMessage}
-            <div className="pagination">
-                <button disabled={currentPage === 1} onClick={() => handlePageChange(currentPage - 1)}> <ArrowBackIcon /> Prev </button>
+                {user && <div className="filters">
+                    <input type="checkbox" name="favorites" value="favorites" onChange={(e) => handleFilterChange(e)} />
+                    <label htmlFor="favorites">My Favorites</label>
 
-                <button disabled={endIndex >= vacations.length} onClick={() => handlePageChange(currentPage + 1)}> Next  <ArrowForwardIcon /> </button>
+                    <input type="checkbox" name="current" value="current" onChange={(e) => handleFilterChange(e)} />
+                    <label htmlFor="current">Current Vacations</label>
+
+                    <input type="checkbox" name="future" value="future" onChange={(e) => handleFilterChange(e)} />
+                    <label htmlFor="future">Future Vacations</label>
+                </div>}
+                {noVacationsMessage}
+
+                <div className="pagination">
+                    <button disabled={currentPage === 1} onClick={() => handlePageChange(currentPage - 1)}> <ArrowBackIcon /> Prev </button>
+                    <button disabled={endIndex >= vacations.length} onClick={() => handlePageChange(currentPage + 1)}> Next  <ArrowForwardIcon /> </button>
+                </div>
+
             </div>
-        </div >
+
+        </div>
     );
 }
 

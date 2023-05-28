@@ -20,14 +20,14 @@ function VacationCard(props: any): JSX.Element {
     const navigate = useNavigate();
     const [visible, setVisible] = useState<boolean>(true);
 
-    async function deleteVacation() {
+    async function deleteVacation(vacationId: number) {
         try {
             const ok = window.confirm("Are you sure?");
             if (!ok) return;
             await dataService.deleteVacation(vacationId);
             notifyService.success("Vacation has been deleted");
 
-            // TODO: delete from the page
+            // deleting from the page with timeout - so it would be smooth
             setTimeout(() => {
                 setVisible(false)
             }, 1500);
@@ -76,11 +76,13 @@ function VacationCard(props: any): JSX.Element {
         }
     };
 
+    if (!visible) return null; // if not visible, don't render the card at all
+
     return (
-        <div className="main-container" style={{ display: visible ? "" : "none" }}>
+        <div className="main-container" >
 
             {!admin && <div className="LikeButton">
-                <div className={btnClasses} onClick={() => handleLike()} style={{ color: isFollowing ? 'red' : 'lightgreen' }}>
+                <div className={btnClasses} onClick={() => handleLike()} style={{ color: isFollowing ? 'red' : 'rgba(255, 255, 255, 0.9)' }}>
                     <Like />
                     <div>{followersCount}</div>
                 </div>
@@ -95,7 +97,7 @@ function VacationCard(props: any): JSX.Element {
                             state={{ id: vacationId }}>
                             Edit Vacation
                         </NavLink>
-                        <a href="#" onClick={deleteVacation}>Delete Vacation</a>
+                        <a href="#" onClick={() => deleteVacation(vacationId)}>Delete Vacation</a>
                     </div>
                 </div>
             }

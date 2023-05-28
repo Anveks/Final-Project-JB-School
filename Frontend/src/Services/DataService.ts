@@ -60,7 +60,7 @@ class DataService {
           });
     }
 
-    // SCV file data:
+    // CSV file data:
     public async getCSVFileData(): Promise<any>{
         const response = await axios.get(appConfig.CSVFileUrl);
         return response.data;

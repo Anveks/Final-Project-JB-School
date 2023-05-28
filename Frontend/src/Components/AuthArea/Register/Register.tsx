@@ -51,7 +51,7 @@ function Register(): JSX.Element {
                 <label><PasswordIcon /> Password: </label>
                 <input type="password" {...register("password")} required minLength={4} maxLength={1024} placeholder="password" />
 
-                <button>Register</button>
+                <button>REGISTER</button>
 
                 <div>Already have an account? <Link to="/login">Login.</Link></div>
 

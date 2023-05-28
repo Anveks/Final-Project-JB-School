@@ -35,18 +35,6 @@ function verifyToken(request: Request, response: Response, adminCheck?: boolean)
 
   const token = request.header("authorization")?.substring(7);  
 
-  const decodedToken: any = jwt.decode(token); // decoding the token
-  console.log(decodedToken);
-  
-  // TODO: continue with token refresh (the following code wont work with expired tokens):
-  const expTime = new Date(decodedToken.exp * 1000); // getting the exp element of the decoded token and converting it to a date
-  const currentTime = new Date(); // getting the current date
-  if (currentTime <= expTime || currentTime > expTime) { // if the current date is less than exp date - attach a header with new token to the response
-    const newToken = createToken(decodedToken.user);
-    response.setHeader("Access-Control-Expose-Headers", "authorization"); // extra header needed for cors restrictions
-    response.setHeader("authorization", `Bearer ${newToken}`);
-  }
-
   if(!token) throw new UnauthorizedError('No token found');
 
   jwt.verify(token, secretKey, (err, container:{user: UserModel})=>{

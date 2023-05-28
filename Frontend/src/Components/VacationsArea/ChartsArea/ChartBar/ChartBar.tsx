@@ -1,15 +1,11 @@
 import "./ChartBar.css";
 
 function ChartBar(props: any): JSX.Element {
-    console.log("Values: " + props.value);
-    console.log("Max value: " + props.maxValue);
 
-    let barFillHeight = "0%";
+    let barFillHeight = "0%"; // setting default bar fill height in % - later we use it to define the height of each bar in comparison to maxValue
     if (props.maxValue > 0) {
         barFillHeight = Math.ceil((props.value / props.maxValue) * 100) + "%";
     }
-
-    console.log('height: ' + barFillHeight);
 
     return (
         <>

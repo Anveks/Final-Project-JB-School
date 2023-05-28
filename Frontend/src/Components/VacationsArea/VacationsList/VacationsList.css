@@ -4,12 +4,16 @@
   flex-wrap: wrap;
   justify-content: center;
   animation: VacationsList-appear 1s ease-out forwards;
-  margin-top: 3%;
   height: 100%;
   position: relative;
+  margin-top: 2%;
 }
 
-.VacationsList > .pagination > button {
+.VacationsList > .filters-pagination > .pagination {
+  display: flex;
+}
+
+.VacationsList > .filters-pagination > .pagination > button {
   background-color: transparent;
   margin: 2px;
   color:  green;
@@ -19,19 +23,12 @@
   transform: scale(1.2);
 }
 
-.VacationsList > .pagination > button:disabled{
+.VacationsList > .filters-pagination > .pagination > button:disabled{
   color: darkgray;
 }
 
-.VacationsList > .pagination > button:hover{
+.VacationsList > .filters-pagination > .pagination > button:hover{
   transform: scale(1.25);
-}
-
-.pagination {
-  position: absolute;
-  top: -5%;
-  right: 5%;
-  display: flex;
 }
 
 @keyframes VacationsList-appear {
@@ -47,21 +44,28 @@
 }
 
 .filters {
+  display: flex;
   color: green;
-  padding: 10px;
-  display: inline;
-  position: absolute;
-  bottom: 100%;
-  padding-top: 20px;
   font-size: 17px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.filters-pagination{
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10%;
+  white-space: nowrap;
+  top: 0%;
+  bottom: 100%;
 }
 
 /* DROPDOWN CSS */
 .dropBtn {
   position: absolute;
-  right: 3%;
-  top: 5%;
+  right: 5%;
+  top: 14%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -85,8 +89,8 @@
   border-radius: 5px;
   display: none;
   position: absolute;
-  right: 3%;
-  top: 15%;
+  right: 3.5%;
+  top: 10%;
   background-color: #f1f1f1;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -105,4 +109,6 @@
   border-radius: 5px;
 }
 
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropdown-content {
+  display: block;
+}

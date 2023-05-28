@@ -1,24 +1,25 @@
+import cors from "cors";
 import express from "express";
 import expressFileUpload from "express-fileupload";
-import cors from "cors";
-import dataRoutes from "./6-routes/data-routes";
-import authRoutes from "./6-routes/auth-routes"
-import routeNotFound from "./3-middleware/route-not-found";
-import catchAll from "./3-middleware/catch-all";
-import appConfig from "./4-utils/app-config";
 import helmet from "helmet";
+import catchAll from "./3-middleware/catch-all";
+import routeNotFound from "./3-middleware/route-not-found";
+import appConfig from "./4-utils/app-config";
+import authRoutes from "./6-routes/auth-routes";
+import dataRoutes from "./6-routes/data-routes";
 //import socketIoService from "./5-services/socket.io-service";
-import path from "path";
 import logger from "./4-utils/logger";
+import expressRateLimit from "express-rate-limit";
+import preventXss from "./3-middleware/prevent-xss";
 
 const server = express();
 
 // preventing ddos:
-// server.use(expressRateLimit({
-//   windowMs: 1000,
-//   max: 10,
-//   message: "R u a hacker?"
-// }))
+server.use(expressRateLimit({
+  windowMs: 1000, // timer to count requests
+  max: 25, // max requests
+  message: "R u a hacker?"
+}))
 
 // protecting headers
 server.use(helmet({
@@ -36,12 +37,9 @@ server.use((req, res, next) => {
   next();
 });
 
-// TODO: check express.static() and how does it work
-// const folder = path.join(__dirname, '..', '1-assets', 'csv-data');
-// server.use(express.static(folder))
-
 server.use(cors());
 server.use(express.json());
+server.use(preventXss);
 server.use(expressFileUpload());
 server.use("/api", dataRoutes);
 server.use("/api", authRoutes);

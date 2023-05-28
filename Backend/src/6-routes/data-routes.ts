@@ -5,8 +5,8 @@ import verifyLoggedIn from "../3-middleware/verify-logged-in";
 import { createCvs } from "../4-utils/cvs-file-writer";
 import cyber from "../4-utils/cyber";
 import imageHandler from "../4-utils/image-handler";
-import dataService from "../5-services/data-service";
 import logger from "../4-utils/logger";
+import dataService from "../5-services/data-service";
 
 const router = express.Router();
 
@@ -132,13 +132,10 @@ router.delete("/vacations/like/:id([0-9]+)", async (request: Request, response: 
     }
 });
 
-// get Followers Data route [TEST]
-router.get("/vacations/files/csv-file", async (request: Request, response: Response, next: NextFunction) => {
+// get CSV file data
+router.get("/vacations/files/csv-file", [verifyLoggedIn, verifyAdmin], async (request: Request, response: Response, next: NextFunction) => {
     try {
-        // TODO: delete stringify package
         const CSVFile = await createCvs();
-        // response.setHeader('Content-Disposition', `attachment; filename="${CSVFile}"`);
-        // response.setHeader('Content-Type', 'text/csv');
         logger.logActivities("CSV file has been requested.");
         response.send(CSVFile);
     }
@@ -149,4 +146,3 @@ router.get("/vacations/files/csv-file", async (request: Request, response: Respo
 
 export default router;
 
-// TODO: see how can get-userId-from-token code be refactored into one-line code 

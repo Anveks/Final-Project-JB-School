@@ -131,12 +131,6 @@ The main menu should be displayed depending on the user's status:
 - Admin can add/edit/delete vacations, view the Reports page, download a CSV file, or log out.
 - The full name of the user should be displayed for registered users (including admin).
 
-### Bonuses:
-Bonuses will be given for:
-- Building the project on Docker Containers.
-- Adding Integration Testing and Unit Testing.
-- Uploading the site to the Cloud.
-
 ### Submitting the project:
 - The project is a personal project. It should not be done in pairs or groups.
 - The project should be in a folder with the student's full name in English and containing three folders:
@@ -148,5 +142,3 @@ o Frontend - Contains the client-side project.
 - The project should also be uploaded to a Private Repository on GitHub.
 - The project should be submitted a week before the end of the course.
 - After submitting the project, a defense lesson will be held in the classroom.
-
-### Good luck!
